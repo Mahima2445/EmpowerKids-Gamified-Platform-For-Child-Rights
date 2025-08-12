@@ -311,12 +311,11 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Team
+## � Developer
 
-### Core Contributors
-- **Project Lead**: [Your Name](https://github.com/your-username)
-- **Developer**: [Team Member](https://github.com/member-username)
-- **Designer**: [Designer Name](https://github.com/designer-username)
+**Mahima Singh** - Creator & Full Stack Developer
+
+Passionate about creating educational technology solutions that empower children and promote awareness of their fundamental rights.
 
 ## 🙏 Acknowledgments
 
@@ -325,22 +324,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Unsplash](https://unsplash.com/) for placeholder images
 - Indian Ministry of Education for RTE Act guidelines
 
-## 📞 Contact
-
-### Support
-- **Email**: support@empowerkids.org
-- **Issues**: [GitHub Issues](https://github.com/your-username/empowerkids-platform/issues)
-
-### Connect With Us
-- **Website**: [empowerkids.org](https://empowerkids.org)
-- **Twitter**: [@EmpowerKidsOrg](https://twitter.com/empowerkidsorg)
-- **LinkedIn**: [EmpowerKids](https://linkedin.com/company/empowerkids)
-
 ---
 
 <div align="center">
   <p>Made with ❤️ for children's education rights in India</p>
-  <p>© 2025 EmpowerKids. All rights reserved.</p>
+  <p>© 2025 EmpowerKids Platform. Created by Mahima Singh.</p>
 </div>
 
 
