@@ -10,6 +10,7 @@
 </div>
 
 ## 📋 Table of Contents
+
 - [About](#about)
 - [Features](#features)
 - [Demo](#demo)
@@ -25,23 +26,27 @@
 **EmpowerKids** is a comprehensive gamified platform designed to educate Indian children about their fundamental rights through interactive learning. The platform combines education, awareness, and engagement to create a child-friendly environment for learning about legal rights, education policies, and social responsibilities.
 
 ### 🌟 Mission
+
 To empower children and parents with knowledge about educational rights and opportunities through interactive, engaging, and accessible learning experiences.
 
 ## ✨ Features
 
 ### 🎮 For Children
+
 - **Interactive Learning Modules**: Rights education through games and stories
 - **Quiz System**: Multi-level quizzes with scoring and progress tracking
 - **Rights Explorer**: Learn about different types of children's rights
 - **Progress Tracking**: Personal dashboards with achievements
 
 ### 👥 For Parents & Teachers
+
 - **Resource Hub**: Comprehensive guides on RTE Act and education rights
 - **Checklist Generator**: School admission and RTE application helpers
 - **FAQ Section**: Common questions about education rights
 - **Legal Resources**: Access to important documents and guidelines
 
 ### 🔧 Platform Features
+
 - **Responsive Design**: Works on all devices
 - **User Authentication**: Secure login and registration
 - **Progress Tracking**: Save and track learning progress
@@ -51,9 +56,11 @@ To empower children and parents with knowledge about educational rights and oppo
 ## 🚀 Demo
 
 ### Live Demo
+
 🔗 **[Visit EmpowerKids Platform](https://your-github-username.github.io/empowerkids-platform)**
 
 ### Screenshots
+
 <div align="center">
   <img src="docs/screenshots/homepage.png" alt="Homepage" width="300"/>
   <img src="docs/screenshots/courses.png" alt="Courses" width="300"/>
@@ -63,17 +70,21 @@ To empower children and parents with knowledge about educational rights and oppo
 ## 🛠️ Installation
 
 ### Prerequisites
+
 - Modern web browser (Chrome, Firefox, Safari, Edge)
 - Basic knowledge of HTML/CSS/JavaScript for development
 
 ### Quick Start
+
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-username/empowerkids-platform.git
    cd empowerkids-platform
    ```
 
 2. **Open in browser**
+
    ```bash
    # Simply open homepage.html in your browser
    # or use a local server
@@ -83,13 +94,14 @@ To empower children and parents with knowledge about educational rights and oppo
    ```
 
 3. **For Development**
+
    ```bash
    # Install dependencies
    npm install
-   
+
    # Start development server
    npm run dev
-   
+
    # Build CSS
    npm run build
    ```
@@ -97,6 +109,7 @@ To empower children and parents with knowledge about educational rights and oppo
 ## 💻 Usage
 
 ### Getting Started
+
 1. Visit the platform homepage
 2. Create an account or login
 3. Choose your learning path:
@@ -105,6 +118,7 @@ To empower children and parents with knowledge about educational rights and oppo
    - **Teachers**: Access Teacher Guidelines
 
 ### Navigation Guide
+
 - **Homepage**: Overview and quick access to all features
 - **Courses**: Structured learning modules on different rights
 - **Quiz**: Test knowledge with interactive quizzes
@@ -191,6 +205,7 @@ empowerkids-platform/
 ## 🎨 Design System
 
 ### Color Palette
+
 - **Primary Purple**: `#8b5cf6`
 - **Primary Blue**: `#3b82f6`
 - **Accent Yellow**: `#fbbf24`
@@ -198,6 +213,7 @@ empowerkids-platform/
 - **Warning Red**: `#ef4444`
 
 ### Typography
+
 - **Primary Font**: Poppins
 - **Fallback**: System fonts (ui-sans-serif, system-ui)
 
@@ -206,6 +222,7 @@ empowerkids-platform/
 ### GitHub Pages Deployment
 
 1. **Prepare your repository**
+
    ```bash
    git add .
    git commit -m "Initial commit"
@@ -213,6 +230,7 @@ empowerkids-platform/
    ```
 
 2. **Enable GitHub Pages**
+
    - Go to repository Settings
    - Scroll to "Pages" section
    - Select source: "Deploy from a branch"
@@ -226,6 +244,7 @@ empowerkids-platform/
    ```
 
 ### Alternative Deployment Options
+
 - **Netlify**: Drag & drop deployment
 - **Vercel**: Git-based deployment
 - **GitHub Codespaces**: Development environment
@@ -235,6 +254,7 @@ empowerkids-platform/
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
 ### Development Workflow
+
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit changes (`git commit -m 'Add amazing feature'`)
@@ -242,6 +262,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 5. Open a Pull Request
 
 ### Code Standards
+
 - Use semantic HTML5
 - Follow TailwindCSS conventions
 - Ensure mobile responsiveness
@@ -251,6 +272,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ## 🧪 Testing
 
 ### Manual Testing Checklist
+
 - [ ] All navigation links work
 - [ ] Forms validate properly
 - [ ] Responsive design on mobile/tablet
@@ -258,6 +280,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 - [ ] User authentication flow
 
 ### Browser Compatibility
+
 - ✅ Chrome 90+
 - ✅ Firefox 88+
 - ✅ Safari 14+
@@ -266,18 +289,21 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ## 📈 Roadmap
 
 ### Phase 1 (Current)
+
 - [x] Basic platform structure
 - [x] Rights education modules
 - [x] Quiz system
 - [x] Parent/teacher resources
 
 ### Phase 2 (Upcoming)
+
 - [ ] User progress tracking
 - [ ] Achievement system
 - [ ] Multi-language support
 - [ ] Mobile app development
 
 ### Phase 3 (Future)
+
 - [ ] AI-powered personalization
 - [ ] Community features
 - [ ] API for third-party integration
@@ -286,6 +312,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ## 📊 Analytics & Metrics
 
 ### Key Performance Indicators
+
 - User engagement rate
 - Course completion rate
 - Quiz performance metrics
@@ -300,8 +327,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ## 📱 Browser Support
 
-| Browser | Version | Status |
-|---------|---------|--------|
+| Browser | Version | Status       |
+| ------- | ------- | ------------ |
 | Chrome  | 90+     | ✅ Supported |
 | Firefox | 88+     | ✅ Supported |
 | Safari  | 14+     | ✅ Supported |
@@ -330,6 +357,3 @@ Passionate about creating educational technology solutions that empower children
   <p>Made with ❤️ for children's education rights in India</p>
   <p>© 2025 EmpowerKids Platform. Created by Mahima Singh.</p>
 </div>
-
-
-
