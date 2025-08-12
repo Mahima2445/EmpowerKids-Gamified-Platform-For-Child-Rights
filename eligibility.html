@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTE Eligibility Checker | Education Rights Hub</title>
+    <link rel="stylesheet" href="output.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark-primary text-white transition-colors duration-300">
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white animate-fadeIn">
+        <nav class="container mx-auto px-4 py-2">
+            <a href="parentsu.html" class="text-white hover:text-gray-200"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+        </nav>
+        <h1 class="text-4xl font-semibold font-mono text-center text-gray-950 py-7">RTE Eligibility Checker</h1>
+    </header>
+
+    <main class="container mx-auto p-4">
+        <div class="max-w-2xl mx-auto bg-dark-secondary p-6 rounded-lg shadow-md">
+            <form id="eligibilityChecker" class="space-y-6">
+                <div class="space-y-4">
+                    <label class="block">
+                        <span class="text-lg font-medium">Child's Age</span>
+                        <input type="number" id="age" min="0" max="18" required
+                            class="mt-1 block w-full rounded-md bg-dark-primary border-gray-600 text-white focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
+                            placeholder="Enter age in years">
+                    </label>
+
+                    <label class="block">
+                        <span class="text-lg font-medium">Annual Family Income (in ₹)</span>
+                        <input type="number" id="income" required
+                            class="mt-1 block w-full rounded-md bg-dark-primary border-gray-600 text-white focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
+                            placeholder="Enter annual income">
+                    </label>
+
+                    <label class="block">
+                        <span class="text-lg font-medium">Category</span>
+                        <select id="category" class="mt-1 block w-full rounded-md bg-dark-primary border-gray-600 text-white focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+                            <option value="general">General</option>
+                            <option value="sc">SC</option>
+                            <option value="st">ST</option>
+                            <option value="obc">OBC</option>
+                            <option value="ews">EWS</option>
+                        </select>
+                    </label>
+
+                    <label class="block">
+                        <span class="text-lg font-medium">Distance from Nearest Private School (in km)</span>
+                        <input type="number" id="distance" step="0.1" required
+                            class="mt-1 block w-full rounded-md bg-dark-primary border-gray-600 text-white focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
+                            placeholder="Enter distance in kilometers">
+                    </label>
+
+                    <label class="block">
+                        <span class="text-lg font-medium">Current Education Status</span>
+                        <select id="educationStatus" class="mt-1 block w-full rounded-md bg-dark-primary border-gray-600 text-white focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+                            <option value="none">Not Enrolled in Any School</option>
+                            <option value="government">Enrolled in Government School</option>
+                            <option value="private">Enrolled in Private School</option>
+                        </select>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-purple-600 text-white px-6 py-3 rounded-lg transform transition-all duration-300 hover:bg-blue-600 hover:shadow-xl flex items-center justify-center">
+                    <i class="fas fa-check-circle mr-2"></i>Check Eligibility
+                </button>
+            </form>
+
+            <div id="result" class="mt-8 p-6 bg-dark-primary rounded-lg hidden">
+                <div id="eligibleResult" class="hidden">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-check-circle text-green-500 text-5xl"></i>
+                        <h3 class="text-xl font-semibold mt-4 text-green-500">Eligible for RTE Admission</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-300">Your child meets the eligibility criteria for RTE admission. Here are the next steps:</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300">
+                            <li>Collect all required documents</li>
+                            <li>Visit the nearest private school</li>
+                            <li>Submit application during admission period</li>
+                            <li>Keep tracking your application status</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="notEligibleResult" class="hidden">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-times-circle text-red-500 text-5xl"></i>
+                        <h3 class="text-xl font-semibold mt-4 text-red-500">Not Eligible for RTE Admission</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-gray-300">Your child does not meet the eligibility criteria. Here's why:</p>
+                        <ul id="reasonsList" class="list-disc list-inside space-y-2 text-gray-300">
+                            <!-- Reasons will be inserted here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('eligibilityChecker').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const age = parseInt(document.getElementById('age').value);
+            const income = parseInt(document.getElementById('income').value);
+            const category = document.getElementById('category').value;
+            const distance = parseFloat(document.getElementById('distance').value);
+            const educationStatus = document.getElementById('educationStatus').value;
+            
+            let isEligible = true;
+            const reasons = [];
+            
+            // Check age criteria
+            if (age < 6 || age > 14) {
+                isEligible = false;
+                reasons.push('Age must be between 6 and 14 years for RTE admission');
+            }
+            
+            // Check income criteria
+            const incomeLimit = 100000; // Example income limit
+            if (income > incomeLimit && category === 'general') {
+                isEligible = false;
+                reasons.push('Annual family income exceeds the limit for RTE admission');
+            }
+            
+            // Check distance criteria
+            if (distance > 3) {
+                isEligible = false;
+                reasons.push('Distance to nearest private school should be within 3 kilometers');
+            }
+            
+            // Check current education status
+            if (educationStatus === 'private') {
+                isEligible = false;
+                reasons.push('Child is already enrolled in a private school');
+            }
+            
+            // Show results
+            document.getElementById('result').classList.remove('hidden');
+            
+            if (isEligible) {
+                document.getElementById('eligibleResult').classList.remove('hidden');
+                document.getElementById('notEligibleResult').classList.add('hidden');
+            } else {
+                document.getElementById('eligibleResult').classList.add('hidden');
+                document.getElementById('notEligibleResult').classList.remove('hidden');
+                document.getElementById('reasonsList').innerHTML = reasons.map(reason => `<li>${reason}</li>`).join('');
+            }
+        });
+    </script>
+</body>
+</html>

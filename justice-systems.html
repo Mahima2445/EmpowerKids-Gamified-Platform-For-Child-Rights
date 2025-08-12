@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justice Systems - Kids Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            transform: scale(1.02);
+        }
+        .correct-answer {
+            background-color: #4ade80 !important;
+            color: white !important;
+        }
+        .wrong-answer {
+            background-color: #f87171 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    <header class="bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-gavel text-2xl"></i>
+                <h1 class="text-2xl font-bold">Justice Systems</h1>
+            </div>
+            <a href="../index.html" class="bg-white text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-100 transition duration-300">
+                <i class="fas fa-home mr-2"></i>Home
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="mb-12">
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-purple-800 mb-4">Understanding Legal Rights and Justice</h2>
+                    <div class="video-container mb-6">
+                        <iframe src="Social Justice - Explained.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="prose max-w-none">
+                        <p class="text-gray-600 mb-4">Justice systems help protect people's rights and ensure everyone is treated fairly. Understanding how justice works helps us know our rights and responsibilities in society.</p>
+                        <h3 class="text-xl font-semibold text-purple-700 mb-3">Important Aspects of Justice:</h3>
+                        <ul class="list-disc pl-6 mb-6 text-gray-600">
+                            <li>Fair treatment for everyone</li>
+                            <li>Protection of rights</li>
+                            <li>Peaceful resolution of conflicts</li>
+                            <li>Rules and laws that keep us safe</li>
+                            <li>Help for those who need it</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-purple-800 mb-6 text-center">Test Your Knowledge</h2>
+                <div class="space-y-6" id="quiz">
+                    <!-- Quiz questions will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const quizData = [
+            {
+                question: "What is the main purpose of a justice system?",
+                options: [
+                    "To make people unhappy",
+                    "To protect rights and ensure fair treatment",
+                    "To create problems",
+                    "To ignore people's rights"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why do we need rules and laws?",
+                options: [
+                    "To make life difficult",
+                    "To stop people from having fun",
+                    "To keep everyone safe and protected",
+                    "To create confusion"
+                ],
+                correct: 2
+            },
+            {
+                question: "What does 'fair treatment' mean?",
+                options: [
+                    "Treating everyone the same way",
+                    "Being mean to others",
+                    "Ignoring people's rights",
+                    "Only helping your friends"
+                ],
+                correct: 0
+            },
+            {
+                question: "How should conflicts be resolved?",
+                options: [
+                    "Through fighting",
+                    "By ignoring them",
+                    "Through peaceful discussion",
+                    "By being mean"
+                ],
+                correct: 2
+            },
+            {
+                question: "Who does the justice system protect?",
+                options: [
+                    "Only rich people",
+                    "Only adults",
+                    "Everyone equally",
+                    "Only children"
+                ],
+                correct: 2
+            },
+            {
+                question: "What should you do if you see someone being treated unfairly?",
+                options: [
+                    "Join in the unfair treatment",
+                    "Tell a trusted adult or authority",
+                    "Ignore it",
+                    "Make fun of them"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why is it important to know your rights?",
+                options: [
+                    "So you can break rules",
+                    "To protect yourself and others",
+                    "To ignore others' rights",
+                    "It's not important"
+                ],
+                correct: 1
+            },
+            {
+                question: "What helps make a justice system work well?",
+                options: [
+                    "When people don't follow rules",
+                    "When everyone ignores it",
+                    "When everyone understands and follows the rules",
+                    "When only some people follow rules"
+                ],
+                correct: 2
+            },
+            {
+                question: "How can you help make society more just?",
+                options: [
+                    "By breaking rules",
+                    "By being mean to others",
+                    "By treating others fairly",
+                    "By ignoring problems"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is a responsibility that comes with rights?",
+                options: [
+                    "Ignoring others' rights",
+                    "Respecting others' rights too",
+                    "Breaking rules",
+                    "Being selfish"
+                ],
+                correct: 1
+            }
+        ];
+
+        function createQuiz() {
+            const quizContainer = document.getElementById('quiz');
+            quizData.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'bg-white rounded-xl shadow-lg p-6';
+                questionDiv.innerHTML = `
+                    <h3 class="text-lg font-semibold text-purple-800 mb-4">Question ${index + 1}: ${question.question}</h3>
+                    <div class="space-y-3">
+                        ${question.options.map((option, optionIndex) => `
+                            <div class="quiz-option cursor-pointer bg-purple-50 hover:bg-purple-100 rounded-lg p-3 transition-colors duration-300"
+                                 data-question="${index}"
+                                 data-option="${optionIndex}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                quizContainer.appendChild(questionDiv);
+            });
+
+            // Add event listeners to options
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', handleOptionClick);
+            });
+        }
+
+        function handleOptionClick(event) {
+            const questionIndex = parseInt(event.currentTarget.dataset.question);
+            const selectedOption = parseInt(event.currentTarget.dataset.option);
+            const correctOption = quizData[questionIndex].correct;
+
+            // Remove previous answer styling
+            const questionDiv = event.currentTarget.parentElement;
+            questionDiv.querySelectorAll('.quiz-option').forEach(option => {
+                option.classList.remove('correct-answer', 'wrong-answer');
+            });
+
+            // Add new answer styling
+            if (selectedOption === correctOption) {
+                event.currentTarget.classList.add('correct-answer');
+            } else {
+                event.currentTarget.classList.add('wrong-answer');
+                questionDiv.querySelectorAll('.quiz-option')[correctOption].classList.add('correct-answer');
+            }
+        }
+
+        // Initialize the quiz when the page loads
+        window.addEventListener('load', createQuiz);
+    </script>
+</body>
+</html>

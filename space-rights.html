@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Rights - Kids Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            transform: scale(1.02);
+        }
+        .correct-answer {
+            background-color: #4ade80 !important;
+            color: white !important;
+        }
+        .wrong-answer {
+            background-color: #f87171 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    <header class="bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="../index.html" class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Kids Rights Hub
+                </a>
+            </div>
+            <nav>
+                <a href="corusesreal.html" class="hover:text-blue-200 transition-colors duration-300">
+                    <i class="fas fa-home mr-1"></i> Home
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center text-purple-800 mb-8">Space Rights</h1>
+
+        <section class="mb-12 bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">Learn About Space Rights</h2>
+            <div class="video-container mb-6">
+                <iframe src="What Is AI  _ Artificial Intelligence _ What is Artificial Intelligence  _ AI In 5 Mins _Simplilearn.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="prose max-w-none">
+                <p class="text-gray-700 mb-4">Space rights are about:</p>
+                <ul class="list-disc pl-6 mb-6 text-gray-700">
+                    <li>Fair access to space exploration</li>
+                    <li>Protecting space environments</li>
+                    <li>Sharing space discoveries</li>
+                    <li>Space safety and security</li>
+                    <li>International cooperation in space</li>
+                </ul>
+                <p class="text-gray-700 mb-4">Why space rights matter:</p>
+                <ul class="list-disc pl-6 mb-6 text-gray-700">
+                    <li>Future of space exploration</li>
+                    <li>Scientific discoveries</li>
+                    <li>Space resources management</li>
+                    <li>Peaceful use of space</li>
+                    <li>Benefits for all humanity</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-12 bg-white rounded-xl shadow-lg p-6" id="quiz-section">
+            <h2 class="text-2xl font-bold text-purple-700 mb-6">Test Your Knowledge</h2>
+            <div id="quiz" class="space-y-6">
+                <!-- Quiz questions will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-purple-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2024 Kids Rights Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: "What are space rights?",
+                options: [
+                    "Rights to own stars",
+                    "Rules for fair space exploration and use",
+                    "Rights to build houses in space",
+                    "Rules for astronaut games"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why is space exploration important?",
+                options: [
+                    "It's not important",
+                    "Only for fun",
+                    "For scientific discovery and human progress",
+                    "To find aliens"
+                ],
+                correct: 2
+            },
+            {
+                question: "What are space resources?",
+                options: [
+                    "Only stars",
+                    "Valuable materials found in space",
+                    "Space games",
+                    "Astronaut food"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why do we need international cooperation in space?",
+                options: [
+                    "We don't need it",
+                    "Only for fun",
+                    "To work together and share benefits",
+                    "To race each other"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is space safety?",
+                options: [
+                    "Only for astronauts",
+                    "Not important",
+                    "Protecting people and equipment in space",
+                    "Space games"
+                ],
+                correct: 2
+            },
+            {
+                question: "Why should we protect space environments?",
+                options: [
+                    "We shouldn't",
+                    "To keep space clean and safe for exploration",
+                    "Only for aliens",
+                    "To make it pretty"
+                ],
+                correct: 1
+            },
+            {
+                question: "What are space discoveries?",
+                options: [
+                    "Only stars",
+                    "Space games",
+                    "New things we learn about space",
+                    "Astronaut food"
+                ],
+                correct: 2
+            },
+            {
+                question: "How can space benefit humanity?",
+                options: [
+                    "It can't help",
+                    "Only for fun",
+                    "Through scientific discoveries and new technologies",
+                    "Only for astronauts"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is peaceful use of space?",
+                options: [
+                    "Space wars",
+                    "Only exploration",
+                    "Using space for everyone's benefit without conflict",
+                    "Space games"
+                ],
+                correct: 2
+            },
+            {
+                question: "Why should space benefits be shared?",
+                options: [
+                    "They shouldn't be",
+                    "Only for some countries",
+                    "So everyone can benefit from space exploration",
+                    "Only for scientists"
+                ],
+                correct: 2
+            }
+        ];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function createQuiz() {
+            const quizContainer = document.getElementById('quiz');
+            const shuffledQuestions = shuffleArray([...questions]);
+
+            shuffledQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'mb-8';
+                questionDiv.innerHTML = `
+                    <p class="text-lg font-semibold mb-4">${index + 1}. ${q.question}</p>
+                    <div class="space-y-3">
+                        ${q.options.map((option, i) => `
+                            <div class="quiz-option cursor-pointer bg-purple-50 hover:bg-purple-100 p-3 rounded-lg" 
+                                 data-question="${index}" data-option="${i}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                quizContainer.appendChild(questionDiv);
+            });
+
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const questionIndex = parseInt(this.dataset.question);
+                    const selectedOption = parseInt(this.dataset.option);
+                    const correctAnswer = shuffledQuestions[questionIndex].correct;
+
+                    // Remove previous answers
+                    const questionDiv = this.parentElement;
+                    questionDiv.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('correct-answer', 'wrong-answer');
+                    });
+
+                    // Add new answer
+                    if (selectedOption === correctAnswer) {
+                        this.classList.add('correct-answer');
+                    } else {
+                        this.classList.add('wrong-answer');
+                        questionDiv.querySelectorAll('.quiz-option')[correctAnswer].classList.add('correct-answer');
+                    }
+                });
+            });
+        }
+
+        createQuiz();
+    </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genetic Rights - Kids Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            transform: scale(1.02);
+        }
+        .correct-answer {
+            background-color: #4ade80 !important;
+            color: white !important;
+        }
+        .wrong-answer {
+            background-color: #f87171 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    <header class="bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="corusesreal.html" class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-dna mr-2"></i>
+                    Kids Rights Hub
+                </a>
+            </div>
+            <nav>
+                <a href="../index.html" class="hover:text-blue-200 transition-colors duration-300">
+                    <i class="fas fa-home mr-1"></i> Home
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center text-purple-800 mb-8">Genetic Rights</h1>
+
+        <section class="mb-12 bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">Learn About Genetic Rights</h2>
+            <div class="video-container mb-6">
+                <iframe src="https://www.youtube.com/embed/AJj04eWX_DM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="prose max-w-none">
+                <p class="text-gray-700 mb-4">Genetic rights are important because they protect:</p>
+                <ul class="list-disc pl-6 mb-6 text-gray-700">
+                    <li>Privacy of genetic information</li>
+                    <li>Right to know about genetic conditions</li>
+                    <li>Protection from genetic discrimination</li>
+                    <li>Access to genetic testing when needed</li>
+                    <li>Ethical use of genetic research</li>
+                </ul>
+                <p class="text-gray-700 mb-4">Understanding genetics helps us:</p>
+                <ul class="list-disc pl-6 mb-6 text-gray-700">
+                    <li>Know about inherited traits</li>
+                    <li>Understand family health history</li>
+                    <li>Make informed health decisions</li>
+                    <li>Respect genetic diversity</li>
+                    <li>Support medical research</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-12 bg-white rounded-xl shadow-lg p-6" id="quiz-section">
+            <h2 class="text-2xl font-bold text-purple-700 mb-6">Test Your Knowledge</h2>
+            <div id="quiz" class="space-y-6">
+                <!-- Quiz questions will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-purple-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2024 Kids Rights Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: "What are genes?",
+                options: [
+                    "Types of clothes",
+                    "Instructions that make us who we are",
+                    "A type of food",
+                    "A kind of toy"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why is genetic privacy important?",
+                options: [
+                    "It's not important",
+                    "Only for adults",
+                    "To protect personal health information",
+                    "To hide secrets"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is genetic discrimination?",
+                options: [
+                    "Being nice to someone",
+                    "Treating someone unfairly because of their genes",
+                    "Choosing favorite genes",
+                    "Learning about genes"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why do we study genetics?",
+                options: [
+                    "To make everyone the same",
+                    "It's not useful",
+                    "To understand health and inheritance",
+                    "Just for fun"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is genetic diversity?",
+                options: [
+                    "Everyone being the same",
+                    "Only one type of gene",
+                    "Different genetic variations in people",
+                    "A type of food"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is genetic testing?",
+                options: [
+                    "Testing school subjects",
+                    "Checking for genetic conditions",
+                    "Playing games",
+                    "Reading books"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why is family health history important?",
+                options: [
+                    "It's not important",
+                    "Only for old people",
+                    "To understand inherited health patterns",
+                    "To make family trees"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is genetic research used for?",
+                options: [
+                    "Making toys",
+                    "Playing games",
+                    "Understanding diseases and finding treatments",
+                    "Writing stories"
+                ],
+                correct: 2
+            },
+            {
+                question: "Who owns genetic information?",
+                options: [
+                    "The government",
+                    "Doctors",
+                    "The person it belongs to",
+                    "Scientists"
+                ],
+                correct: 2
+            },
+            {
+                question: "Why should we protect genetic rights?",
+                options: [
+                    "We shouldn't",
+                    "Only for some people",
+                    "To ensure fair and ethical treatment for everyone",
+                    "To make money"
+                ],
+                correct: 2
+            }
+        ];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function createQuiz() {
+            const quizContainer = document.getElementById('quiz');
+            const shuffledQuestions = shuffleArray([...questions]);
+
+            shuffledQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'mb-8';
+                questionDiv.innerHTML = `
+                    <p class="text-lg font-semibold mb-4">${index + 1}. ${q.question}</p>
+                    <div class="space-y-3">
+                        ${q.options.map((option, i) => `
+                            <div class="quiz-option cursor-pointer bg-purple-50 hover:bg-purple-100 p-3 rounded-lg" 
+                                 data-question="${index}" data-option="${i}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                quizContainer.appendChild(questionDiv);
+            });
+
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const questionIndex = parseInt(this.dataset.question);
+                    const selectedOption = parseInt(this.dataset.option);
+                    const correctAnswer = shuffledQuestions[questionIndex].correct;
+
+                    // Remove previous answers
+                    const questionDiv = this.parentElement;
+                    questionDiv.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('correct-answer', 'wrong-answer');
+                    });
+
+                    // Add new answer
+                    if (selectedOption === correctAnswer) {
+                        this.classList.add('correct-answer');
+                    } else {
+                        this.classList.add('wrong-answer');
+                        questionDiv.querySelectorAll('.quiz-option')[correctAnswer].classList.add('correct-answer');
+                    }
+                });
+            });
+        }
+
+        createQuiz();
+    </script>
+</body>
+</html>

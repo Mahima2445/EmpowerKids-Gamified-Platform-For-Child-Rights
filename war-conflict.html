@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>War & Conflict Rights - Kids Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            transform: scale(1.02);
+        }
+        .correct-answer {
+            background-color: #4ade80 !important;
+            color: white !important;
+        }
+        .wrong-answer {
+            background-color: #f87171 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    <header class="bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="../index.html" class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    Kids Rights Hub
+                </a>
+            </div>
+            <nav>
+                <a href="corusesreal.html" class="hover:text-blue-200 transition-colors duration-300">
+                    <i class="fas fa-home mr-1"></i> Home
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center text-purple-800 mb-8">War & Conflict Rights</h1>
+
+        <section class="mb-12 bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">Learn About War & Conflict Rights</h2>
+            <div class="video-container mb-6">
+                <iframe src="Human Rights 101 _ Episode 6_ What are the laws of war .mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="prose max-w-none">
+                <p class="text-gray-700 mb-4">Children have special rights during times of war and conflict. These include:</p>
+                <ul class="list-disc pl-6 mb-6 text-gray-700">
+                    <li>The right to protection from violence and harm</li>
+                    <li>The right to humanitarian assistance</li>
+                    <li>The right to education even during conflict</li>
+                    <li>The right to family reunification</li>
+                    <li>The right to psychological support and recovery</li>
+                </ul>
+                <p class="text-gray-700 mb-4">International laws and organizations work to protect children in conflict zones by:</p>
+                <ul class="list-disc pl-6 mb-6 text-gray-700">
+                    <li>Preventing recruitment of child soldiers</li>
+                    <li>Ensuring access to food, water, and medical care</li>
+                    <li>Providing safe spaces for learning and play</li>
+                    <li>Supporting mental health and trauma recovery</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-12 bg-white rounded-xl shadow-lg p-6" id="quiz-section">
+            <h2 class="text-2xl font-bold text-purple-700 mb-6">Test Your Knowledge</h2>
+            <div id="quiz" class="space-y-6">
+                <!-- Quiz questions will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-purple-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2024 Kids Rights Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: "What is a fundamental right of children in conflict zones?",
+                options: [
+                    "The right to join armed forces",
+                    "The right to protection from violence",
+                    "The right to choose sides in conflict",
+                    "The right to carry weapons"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which of these is NOT typically provided in humanitarian assistance?",
+                options: [
+                    "Food and water",
+                    "Medical care",
+                    "Luxury items",
+                    "Shelter"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is family reunification?",
+                options: [
+                    "Creating new families",
+                    "Bringing separated family members back together",
+                    "Building family houses",
+                    "Making family rules"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why is education important during conflict?",
+                options: [
+                    "It's not important during conflict",
+                    "To learn about weapons",
+                    "To maintain normalcy and continue learning",
+                    "To make new friends only"
+                ],
+                correct: 2
+            },
+            {
+                question: "What kind of support do children need after experiencing conflict?",
+                options: [
+                    "Only physical medical care",
+                    "Only educational support",
+                    "Only financial support",
+                    "Both physical and psychological support"
+                ],
+                correct: 3
+            },
+            {
+                question: "What is a child soldier?",
+                options: [
+                    "A child who plays war games",
+                    "A child forced to participate in armed conflict",
+                    "A child who studies military history",
+                    "A child who wears military clothes"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which organization helps protect children in conflict zones?",
+                options: [
+                    "UNICEF",
+                    "FIFA",
+                    "NASA",
+                    "WWE"
+                ],
+                correct: 0
+            },
+            {
+                question: "What is a safe space in conflict zones?",
+                options: [
+                    "A place to hide weapons",
+                    "A place for military training",
+                    "A protected area for learning and play",
+                    "A place to store food only"
+                ],
+                correct: 2
+            },
+            {
+                question: "Why do children need psychological support after conflict?",
+                options: [
+                    "To learn new languages",
+                    "To make them stronger fighters",
+                    "To help them cope with trauma",
+                    "To improve their grades"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is humanitarian assistance?",
+                options: [
+                    "Military training",
+                    "Help with homework",
+                    "Aid to meet basic needs during crisis",
+                    "Sports coaching"
+                ],
+                correct: 2
+            }
+        ];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function createQuiz() {
+            const quizContainer = document.getElementById('quiz');
+            const shuffledQuestions = shuffleArray([...questions]);
+
+            shuffledQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'mb-8';
+                questionDiv.innerHTML = `
+                    <p class="text-lg font-semibold mb-4">${index + 1}. ${q.question}</p>
+                    <div class="space-y-3">
+                        ${q.options.map((option, i) => `
+                            <div class="quiz-option cursor-pointer bg-purple-50 hover:bg-purple-100 p-3 rounded-lg" 
+                                 data-question="${index}" data-option="${i}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                quizContainer.appendChild(questionDiv);
+            });
+
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const questionIndex = parseInt(this.dataset.question);
+                    const selectedOption = parseInt(this.dataset.option);
+                    const correctAnswer = shuffledQuestions[questionIndex].correct;
+
+                    // Remove previous answers
+                    const questionDiv = this.parentElement;
+                    questionDiv.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('correct-answer', 'wrong-answer');
+                    });
+
+                    // Add new answer
+                    if (selectedOption === correctAnswer) {
+                        this.classList.add('correct-answer');
+                    } else {
+                        this.classList.add('wrong-answer');
+                        questionDiv.querySelectorAll('.quiz-option')[correctAnswer].classList.add('correct-answer');
+                    }
+                });
+            });
+        }
+
+        createQuiz();
+    </script>
+</body>
+</html>

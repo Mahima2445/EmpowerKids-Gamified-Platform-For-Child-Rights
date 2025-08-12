@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerKids</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        @keyframes fadeInOut {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        @keyframes flyAway {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, -50px); }
+            50% { transform: translate(-50px, -100px); }
+            75% { transform: translate(100px, -150px); }
+            100% { transform: translate(-100px, -200px); }
+        }
+        .fly-away {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/6/6e/Monarch_Butterfly_Danaus_plexippus_on_Echinacea_purpurea_2800px.jpg') no-repeat center center/cover;
+            width: 70px;
+            height: 50px;
+            border-radius: 50%;
+            animation: flyAway 3s linear infinite;
+            color: #000000;
+        }
+        .animate-fadeInOut {
+            animation: fadeInOut 2s infinite alternate;
+        }
+    </style>
+</head>
+<body class="m-0 p-0 flex justify-center items-center h-screen bg-cover bg-center overflow-hidden" style="background-image: url('81ujA49MtHL.jpg')">
+    <div class="w-[600px] p-[60px] bg-cover bg-center rounded-lg text-center shadow-none animate__animated animate__fadeInDown" style="background-image: url('paper-scrol.png')">
+        <h2 class="mb-[50px] text-[40px] font-['Comic_Sans_MS'] animate__animated animate__rubberBand">Login</h2>
+        <nav class="container mx-auto px-4 py-2">
+            <a href="homepage.html" class="text-black hover:text-yellow-700"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+        </nav>
+        
+        <div class="flex justify-center gap-[25px] mb-[40px]">
+            <a href="#" class="w-[50px] h-[50px] flex justify-center items-center bg-black rounded-full transition-all duration-500 ease-in-out hover:scale-110 animate-fadeInOut">
+                <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" class="w-[30px] h-[30px]">
+            </a>
+            <a href="#" class="w-[50px] h-[50px] flex justify-center items-center bg-black rounded-full transition-all duration-500 ease-in-out hover:scale-110 animate-fadeInOut">
+                <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" class="w-[30px] h-[30px]">
+            </a>
+            <a href="#" class="w-[50px] h-[50px] flex justify-center items-center bg-black rounded-full transition-all duration-500 ease-in-out hover:scale-110 animate-fadeInOut">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" class="w-[30px] h-[30px]">
+            </a>
+        </div>
+        <!-- <form action="login.php" method="post" > -->
+        <div class="mb-[15px] flex flex-col">
+            <input type="text" id="username" placeholder="Username" class="p-3 border-[3px] border-black rounded outline-none text-[16px] font-['Comic_Sans_MS'] transition-all duration-300 ease-in-out animate__animated animate__bounce" name="username">
+        </div>
+        <div class="mb-[15px] flex flex-col">
+            <input type="password" id="password" placeholder="Password" class="p-3 border-[3px] border-black rounded outline-none text-[16px] font-['Comic_Sans_MS'] transition-all duration-300 ease-in-out animate__animated animate__bounce" name="password">
+        </div>
+        <button src="/project/homepage.html" id="login-btn" name="login" class="bg-gradient-to-r from-[#ff416c] to-[#ff4b2b] text-white border-2 border-black p-[10px] rounded cursor-pointer transition-transform duration-300 ease-in-out text-[18px] font-['Comic_Sans_MS'] animate__animated animate__pulse relative">
+            Login
+        </button>
+    <!-- </form> -->
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#login-btn').hover(function() {
+                if ($('#username').val() === '' || $('#password').val() === '') {
+                    $(this).addClass('fly-away');
+                }
+            }, function() {
+                $(this).removeClass('fly-away');
+            });
+
+            $('.flex.flex-col input').on('input', function() {
+                if ($('#username').val() !== '' && $('#password').val() !== '') {
+                    $('#login-btn').removeClass('fly-away');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

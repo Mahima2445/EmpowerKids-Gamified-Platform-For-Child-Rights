@@ -1,0 +1,26 @@
+{
+  "name": "empowerkids-platform",
+  "version": "1.0.0",
+  "description": "A gamified platform for children's rights education",
+  "main": "homepage.html",
+  "scripts": {
+    "dev": "serve . -p 3000",
+    "build": "tailwindcss -i ./CSS/input.css -o ./CSS/output.css --watch",
+    "build-prod": "tailwindcss -i ./CSS/input.css -o ./CSS/output.css --minify"
+  },
+  "keywords": [
+    "children-rights",
+    "education",
+    "gamification",
+    "learning-platform"
+  ],
+  "author": "EmpowerKids Team",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.4",
+    "tailwindcss": "^3.4.17"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

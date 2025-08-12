@@ -1,0 +1,211 @@
+/* Main CSS file for EmpowerKids Platform */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-purple: #8b5cf6;
+  --primary-blue: #3b82f6;
+  --accent-yellow: #fbbf24;
+  --success-green: #10b981;
+  --warning-red: #ef4444;
+  --dark-primary: #1a1a1a;
+  --dark-secondary: #2d2d2d;
+}
+
+/* Base Styles */
+body {
+  font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* Hero Pattern */
+.hero-pattern {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Card Hover Effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Navigation Links */
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-yellow);
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-yellow);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover:after {
+  width: 100%;
+}
+
+/* Quiz Styles */
+.quiz-option {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.quiz-option:hover {
+  transform: scale(1.02);
+  border-color: var(--primary-blue);
+}
+
+.quiz-option.selected {
+  border-color: var(--primary-purple);
+  background-color: rgba(139, 92, 246, 0.1);
+}
+
+.correct-answer {
+  background-color: var(--success-green) !important;
+  color: white !important;
+  border-color: var(--success-green) !important;
+}
+
+.incorrect-answer {
+  background-color: var(--warning-red) !important;
+  color: white !important;
+  border-color: var(--warning-red) !important;
+}
+
+/* Button Styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-purple);
+  border: 2px solid var(--primary-purple);
+  padding: 10px 22px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-purple);
+  color: white;
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+  transition: width 0.3s ease;
+}
+
+/* Achievement Badge */
+.achievement-badge {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--primary-purple);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .nav-link:after {
+    display: none;
+  }
+  
+  .card-hover:hover {
+    transform: none;
+  }
+}
+
+/* Dark Mode Styles */
+.dark .hero-pattern {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+}
+
+.dark .quiz-option {
+  background-color: var(--dark-secondary);
+  color: white;
+}
+
+.dark .quiz-option:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Animation Classes */
+.animate-bounce-slow {
+  animation: bounce 2s infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-purple);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue);
+}

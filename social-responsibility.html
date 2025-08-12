@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Responsibility - Kids Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            transform: scale(1.02);
+        }
+        .correct-answer {
+            background-color: #4ade80 !important;
+            color: white !important;
+        }
+        .wrong-answer {
+            background-color: #f87171 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    <header class="bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-hands-helping text-2xl"></i>
+                <h1 class="text-2xl font-bold">Social Responsibility</h1>
+            </div>
+            <a href="corusesreal.html" class="bg-white text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-100 transition duration-300">
+                <i class="fas fa-home mr-2"></i>Home
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="mb-12">
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-purple-800 mb-4">Understanding Social Responsibility</h2>
+                    <div class="video-container mb-6">
+                        <iframe src="What Is Corporate Social Responsibility (CSR)_ _ Business_ Explained (1).mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="prose max-w-none">
+                        <p class="text-gray-600 mb-4">Social responsibility means understanding how our actions affect others and taking steps to make positive contributions to our community and society. It's about being aware of our role in making the world a better place.</p>
+                        <h3 class="text-xl font-semibold text-purple-700 mb-3">Key Aspects of Social Responsibility:</h3>
+                        <ul class="list-disc pl-6 mb-6 text-gray-600">
+                            <li>Helping others in need</li>
+                            <li>Being kind and respectful to everyone</li>
+                            <li>Taking care of our environment</li>
+                            <li>Standing up against unfairness</li>
+                            <li>Contributing to community projects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-purple-800 mb-6 text-center">Test Your Knowledge</h2>
+                <div class="space-y-6" id="quiz">
+                    <!-- Quiz questions will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const quizData = [
+            {
+                question: "What is social responsibility?",
+                options: [
+                    "Taking care of only yourself",
+                    "Understanding how our actions affect others and acting positively",
+                    "Following rules only when someone is watching",
+                    "Doing whatever you want"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which of these is an example of being socially responsible?",
+                options: [
+                    "Throwing trash on the ground",
+                    "Ignoring someone who needs help",
+                    "Helping clean up your community",
+                    "Being mean to others"
+                ],
+                correct: 2
+            },
+            {
+                question: "Why is it important to be socially responsible?",
+                options: [
+                    "To get rewards",
+                    "To make the world a better place",
+                    "To become famous",
+                    "To avoid punishment"
+                ],
+                correct: 1
+            },
+            {
+                question: "What can you do to show social responsibility at school?",
+                options: [
+                    "Keep to yourself and ignore others",
+                    "Help a classmate who is struggling",
+                    "Leave your trash for someone else to clean",
+                    "Make fun of others"
+                ],
+                correct: 1
+            },
+            {
+                question: "How can you be socially responsible towards the environment?",
+                options: [
+                    "Use more plastic",
+                    "Waste water",
+                    "Recycle and reduce waste",
+                    "Leave lights on when not needed"
+                ],
+                correct: 2
+            },
+            {
+                question: "What does being 'kind and respectful' mean?",
+                options: [
+                    "Only being nice to your friends",
+                    "Treating everyone with dignity and consideration",
+                    "Being nice only when you want something",
+                    "Ignoring people you don't like"
+                ],
+                correct: 1
+            },
+            {
+                question: "How can you contribute to your community?",
+                options: [
+                    "Stay at home all the time",
+                    "Volunteer and participate in community events",
+                    "Avoid talking to neighbors",
+                    "Keep all your good ideas to yourself"
+                ],
+                correct: 1
+            },
+            {
+                question: "What does 'standing up against unfairness' mean?",
+                options: [
+                    "Fighting with others",
+                    "Running away from problems",
+                    "Speaking up when you see something wrong",
+                    "Agreeing with everything"
+                ],
+                correct: 2
+            },
+            {
+                question: "Why should we help others in need?",
+                options: [
+                    "To get something in return",
+                    "Because it makes us feel good about ourselves",
+                    "To show off",
+                    "Because it creates a stronger, more caring community"
+                ],
+                correct: 3
+            },
+            {
+                question: "What is the best way to learn about social responsibility?",
+                options: [
+                    "Reading about it only",
+                    "Watching others but never participating",
+                    "Through practice and active participation",
+                    "Ignoring it completely"
+                ],
+                correct: 2
+            }
+        ];
+
+        function createQuiz() {
+            const quizContainer = document.getElementById('quiz');
+            quizData.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'bg-white rounded-xl shadow-lg p-6';
+                questionDiv.innerHTML = `
+                    <h3 class="text-lg font-semibold text-purple-800 mb-4">Question ${index + 1}: ${question.question}</h3>
+                    <div class="space-y-3">
+                        ${question.options.map((option, optionIndex) => `
+                            <div class="quiz-option cursor-pointer bg-purple-50 hover:bg-purple-100 rounded-lg p-3 transition-colors duration-300"
+                                 data-question="${index}"
+                                 data-option="${optionIndex}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                quizContainer.appendChild(questionDiv);
+            });
+
+            // Add event listeners to options
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', handleOptionClick);
+            });
+        }
+
+        function handleOptionClick(event) {
+            const questionIndex = parseInt(event.currentTarget.dataset.question);
+            const selectedOption = parseInt(event.currentTarget.dataset.option);
+            const correctOption = quizData[questionIndex].correct;
+
+            // Remove previous answer styling
+            const questionDiv = event.currentTarget.parentElement;
+            questionDiv.querySelectorAll('.quiz-option').forEach(option => {
+                option.classList.remove('correct-answer', 'wrong-answer');
+            });
+
+            // Add new answer styling
+            if (selectedOption === correctOption) {
+                event.currentTarget.classList.add('correct-answer');
+            } else {
+                event.currentTarget.classList.add('wrong-answer');
+                questionDiv.querySelectorAll('.quiz-option')[correctOption].classList.add('correct-answer');
+            }
+        }
+
+        // Initialize the quiz when the page loads
+        window.addEventListener('load', createQuiz);
+    </script>
+</body>
+</html>

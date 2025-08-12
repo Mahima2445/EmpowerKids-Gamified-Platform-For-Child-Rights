@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerKids - Children's Rights Education Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="icon" href="assets/503-Kid-Game-Pre-Designed-Logo-removebg-preview.png" type="image/png">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo and Navigation -->
+            <div class="flex items-center space-x-8">
+                <div class="flex items-center">
+                    <img src="assets/503-Kid-Game-Pre-Designed-Logo-removebg-preview.png" alt="EmpowerKids Logo" class="h-12 w-12">
+                    <span class="ml-2 text-2xl font-bold">EmpowerKids</span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-6">
+                    <a href="homepage.html" class="nav-link px-2 py-2 transition">Home</a>
+                    <a href="corusesreal.html" class="nav-link px-2 py-2 transition">Courses</a>
+                    <a href="quiz.html" class="nav-link px-2 py-2 transition">Quiz</a>
+                    <a href="parentsu.html" class="nav-link px-2 py-2 transition">Parents</a>
+                    <a href="games.html" class="nav-link px-2 py-2 transition">Games</a>
+                    <a href="faq.html" class="nav-link px-2 py-2 transition">FAQ</a>
+                    <a href="#about" class="nav-link px-2 py-2 transition">About</a>
+                </nav>
+            </div>
+            
+            <!-- User Section -->
+            <div class="flex items-center space-x-4">
+                <div id="user-info" class="hidden items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center font-bold text-purple-800">
+                        <span id="user-initial">U</span>
+                    </div>
+                    <div class="text-sm hidden md:block">
+                        <div id="username" class="font-medium"></div>
+                        <div id="user-email" class="text-xs text-purple-200"></div>
+                    </div>
+                    <button id="logout-btn" class="ml-2 text-white hover:text-yellow-300 transition">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+                
+                <div id="auth-buttons" class="flex space-x-3">
+                    <a href="login page.html" class="bg-white text-indigo-600 hover:bg-gray-100 px-5 py-2 rounded-full text-sm font-medium transition btn-hover shadow-sm">
+                        Login
+                    </a>
+                    <a href="singinpage.html" class="bg-yellow-400 hover:bg-yellow-500 text-purple-800 px-5 py-2 rounded-full text-sm font-medium transition btn-hover shadow-sm">
+                        Signup
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-indigo-700 px-4 py-3 transition-all duration-300 ease-in-out">
+            <a href="homepage.html" class="block py-3 text-white hover:text-yellow-300 transition border-b border-indigo-600">Home</a>
+            <a href="corusesreal.html" class="block py-3 text-white hover:text-yellow-300 transition border-b border-indigo-600">Courses</a>
+            <a href="quiz.html" class="block py-3 text-white hover:text-yellow-300 transition border-b border-indigo-600">Quiz</a>
+            <a href="parentsu.html" class="block py-3 text-white hover:text-yellow-300 transition border-b border-indigo-600">Parents</a>
+            <a href="#about" class="block py-3 text-white hover:text-yellow-300 transition">About</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-pattern bg-indigo-100">
+        <div class="container mx-auto px-4 py-16 md:py-28">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-indigo-900 mb-6 leading-tight">
+                        Know Your <span class="gradient-text">Education Rights</span>
+                    </h1>
+                    <p class="text-lg text-indigo-800 mb-8 max-w-lg">
+                        Empowering children and parents with knowledge about educational rights and opportunities through interactive learning.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="corusesreal.html" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-medium transition btn-hover shadow-lg text-center">
+                            Explore Courses <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="quiz.html" class="bg-white hover:bg-gray-100 text-indigo-600 px-8 py-3 rounded-full font-medium border border-indigo-200 transition btn-hover shadow-lg text-center">
+                            Take a Quiz <i class="fas fa-play-circle ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="Children_playing.png" alt="Education Rights" class="w-full max-w-md floating">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold mb-3">LEARNING PATHS</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-indigo-900 mb-4">Educational Rights Courses</h2>
+                <p class="text-lg text-indigo-600 max-w-2xl mx-auto">
+                    Interactive courses designed to help you understand and advocate for educational rights
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center relative">
+                        <i class="fas fa-balance-scale text-white text-6xl"></i>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-blue-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-indigo-800">Right to Education</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Beginner</span>
+                        </div>
+                        <p class="text-indigo-600 mb-5">
+                            Understanding the fundamental right to education for all children, regardless of background or ability.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-sm text-indigo-500 mr-2">
+                                    <i class="fas fa-star text-yellow-400"></i> 4.8
+                                </span>
+                                <span class="text-sm text-indigo-400">
+                                    <i class="fas fa-user-graduate mr-1"></i> 120+
+                                </span>
+                            </div>
+                            <button class="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-4 py-2 rounded-full text-sm transition btn-hover">
+                                <a href="education-rights.html">Enroll Now</a> <i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-teal-500 flex items-center justify-center relative">
+                        <i class="fas fa-graduation-cap text-white text-6xl"></i>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-green-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-teal-800">Special Needs Education</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Intermediate</span>
+                        </div>
+                        <p class="text-teal-600 mb-5">
+                            Rights and accommodations for children with special needs in educational settings.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-sm text-teal-500 mr-2">
+                                    <i class="fas fa-star text-yellow-400"></i> 4.9
+                                </span>
+                                <span class="text-sm text-teal-400">
+                                    <i class="fas fa-user-graduate mr-1"></i> 95+
+                                </span>
+                            </div>
+                            <button class="bg-teal-100 hover:bg-teal-200 text-teal-700 px-4 py-2 rounded-full text-sm transition btn-hover">
+                            <a href="equality-rights.html"> Enroll Now</a> <i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center relative">
+                        <i class="fas fa-child text-white text-6xl"></i>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-purple-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-pink-800">Child Protection</h3>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Advanced</span>
+                        </div>
+                        <p class="text-pink-600 mb-5">
+                            Understanding protection from discrimination, harassment, and unfair treatment in schools.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-sm text-pink-500 mr-2">
+                                   
+                                </span>
+                                <span class="text-sm text-pink-400">
+                                   
+                                </span>
+                            </div>
+                            <button  class="bg-pink-100 hover:bg-pink-200 text-pink-700 px-4 py-2 rounded-full text-sm transition btn-hover">
+                               <a href="protection-rights.html"> Enroll Now </a>  <i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="corusesreal.html" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium transition">
+                    View All Courses <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parents Section -->
+    <section id="parents" class="py-16 bg-indigo-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <span class="inline-block bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold mb-3">FOR PARENTS</span>
+                    <h2 class="text-3xl font-bold text-indigo-900 mb-6">Advocate for Your Child's Education</h2>
+                    <p class="text-indigo-600 mb-6">
+                        We provide parents with the knowledge and tools to ensure their children receive the education they're entitled to.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check-circle text-yellow-500 text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-indigo-800">Know Your Rights</h4>
+                                <p class="text-indigo-600 text-sm">Understand legal protections and entitlements</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-comments text-yellow-500 text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-indigo-800">Effective Communication</h4>
+                                <p class="text-indigo-600 text-sm">Learn how to effectively communicate with schools</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-gavel text-yellow-500 text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-indigo-800">Legal Resources</h4>
+                                <p class="text-indigo-600 text-sm">Access to legal protections and advocacy resources</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="parentsu.html" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-medium transition btn-hover shadow-lg inline-flex items-center">
+                        Explore Parent Resources <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <img src="OIP.jpg" alt="Parent and child" class="w-full max-w-md rounded-xl shadow-xl">
+                        <div class="absolute -bottom-6 -right-6 bg-yellow-400 p-4 rounded-xl shadow-lg hidden md:block">
+                            <div class="text-purple-800 font-bold text-2xl">500+</div>
+                            <div class="text-purple-700 text-sm">Parents Empowered</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold mb-3">OUR MISSION</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-indigo-900 mb-4">About EduRights</h2>
+                <p class="text-lg text-indigo-600 max-w-3xl mx-auto">
+                    We're dedicated to making educational rights accessible and understandable for everyone
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-8 shadow-sm">
+                    <div class="bg-indigo-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bullseye text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-indigo-800 mb-4">Our Vision</h3>
+                    <p class="text-indigo-600 mb-4">
+                        A world where every child has equal access to quality education and the tools to succeed, regardless of their background or circumstances.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-indigo-500 mt-1 mr-3"></i>
+                            <span class="text-indigo-700">Education as a fundamental right, not a privilege</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-indigo-500 mt-1 mr-3"></i>
+                            <span class="text-indigo-700">Empowered communities advocating for their children</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-indigo-500 mt-1 mr-3"></i>
+                            <span class="text-indigo-700">Inclusive education systems that serve all learners</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-sm">
+                    <div class="bg-purple-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-purple-800 mb-4">Our Team</h3>
+                    <p class="text-purple-600 mb-6">
+                        A passionate group of educators, legal experts, and child advocates working together to make a difference.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-indigo-200 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-gavel text-indigo-600 text-xl"></i>
+                            </div>
+                            <span class="text-sm font-medium text-indigo-700">Legal Experts</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-200 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-chalkboard-teacher text-blue-600 text-xl"></i>
+                            </div>
+                            <span class="text-sm font-medium text-blue-700">Educators</span>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-200 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-child text-purple-600 text-xl"></i>
+                            </div>
+                            <span class="text-sm font-medium text-purple-700">Advocates</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white shadow-xl">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-2/3 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-3">Join Our Community</h3>
+                        <p class="text-indigo-100 max-w-2xl">
+                            Be part of the movement to ensure educational rights for all children. Sign up today to access all our resources and connect with other advocates.
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center md:justify-end">
+                        <a href="singinpage.html" class="bg-yellow-400 hover:bg-yellow-500 text-purple-800 px-8 py-3 rounded-full font-medium transition btn-hover shadow-lg whitespace-nowrap">
+                            Get Started <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-indigo-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="503-Kid-Game-Pre-Designed-Logo-removebg-preview.png" alt="EduRights Logo" class="h-10 w-10">
+                        <span class="ml-2 text-xl font-bold">EduRights</span>
+                    </div>
+                    <p class="text-indigo-300 text-sm mb-4">
+                        Empowering children and parents through education rights awareness.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-indigo-300 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-indigo-300 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-indigo-300 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-indigo-300 hover:text-white transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="homepage.html" class="text-indigo-300 hover:text-white transition">Home</a></li>
+                        <li><a href="corusesreal.html" class="text-indigo-300 hover:text-white transition">Courses</a></li>
+                        <li><a href="quiz.html" class="text-indigo-300 hover:text-white transition">Quiz</a></li>
+                        <li><a href="parentsu.html" class="text-indigo-300 hover:text-white transition">Parents</a></li>
+                        <li><a href="#about" class="text-indigo-300 hover:text-white transition">About</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-indigo-300 hover:text-white transition">Blog</a></li>
+                        <li><a href="faq.html" class="text-indigo-300 hover:text-white transition">FAQs</a></li>
+                        <li><a href="calculator.html" class="text-indigo-300 hover:text-white transition">Glossary</a></li>
+                        <li><a href="parent.html" class="text-indigo-300 hover:text-white transition">Case Studies</a></li>
+                        <li><a href="teacher.html" class="text-indigo-300 hover:text-white transition">Research</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-indigo-300 mt-1 mr-3"></i>
+                            <span class="text-indigo-300">kids@edurights.org</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt text-indigo-300 mt-1 mr-3"></i>
+                            <span class="text-indigo-300">+91 99497 57270
+                                +91 78781 68324
+                                +91 80085 90502
+                                +91 98472 91996
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-indigo-300 mt-1 mr-3"></i>
+                            <span class="text-indigo-300">Lovly proffesional university ,punjab</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-indigo-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-center md:text-left text-indigo-400 text-sm mb-4 md:mb-0">
+                        &copy; 2025 EduRights. All rights reserved.
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-indigo-400 hover:text-white text-sm transition">Privacy Policy</a>
+                        <a href="#" class="text-indigo-400 hover:text-white text-sm transition">Terms of Service</a>
+                        <a href="#" class="text-indigo-400 hover:text-white text-sm transition">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('block');
+            
+            // Toggle icon between bars and times
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Check for logged in user
+        document.addEventListener('DOMContentLoaded', function() {
+            const userData = localStorage.getItem('empowerkids_current_user');
+            const userInfo = document.getElementById('user-info');
+            const authButtons = document.getElementById('auth-buttons');
+            
+            if (userData) {
+                const user = JSON.parse(userData);
+                document.getElementById('username').textContent = user.name || user.username;
+                document.getElementById('user-email').textContent = user.email;
+                document.getElementById('user-initial').textContent = (user.name || user.username).charAt(0).toUpperCase();
+                
+                userInfo.classList.remove('hidden');
+                authButtons.classList.add('hidden');
+                
+                // Logout functionality
+                document.getElementById('logout-btn').addEventListener('click', function() {
+                    localStorage.removeItem('empowerkids_current_user');
+                    window.location.reload();
+                });
+            }
+        });
+
+        // Course enrollment functionality
+        document.querySelectorAll('.bg-indigo-100, .bg-teal-100, .bg-pink-100').forEach(button => {
+            button.addEventListener('click', function() {
+                const userData = localStorage.getItem('empowerkids_current_user');
+                if (!userData) {
+                    window.location.href = 'homepage.html';
+                    return;
+                }
+                
+                const courseTitle = this.closest('.bg-white').querySelector('h3').textContent;
+                this.innerHTML = 'Enrolled! <i class="fas fa-check ml-1"></i>';
+                this.classList.remove('bg-indigo-100', 'hover:bg-indigo-200', 
+                                    'bg-teal-100', 'hover:bg-teal-200',
+                                    'bg-pink-100', 'hover:bg-pink-200');
+                this.classList.add('bg-green-100', 'text-green-800', 'cursor-default');
+                this.disabled = true;
+                
+                // Create a notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center animate-fade-in';
+                notification.innerHTML = `
+                    <i class="fas fa-check-circle mr-2"></i>
+                    Successfully enrolled in ${courseTitle}
+                `;
+                document.body.appendChild(notification);
+                
+                // Remove notification after 3 seconds
+                setTimeout(() => {
+                    notification.classList.add('animate-fade-out');
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            });
+        });
+
+        // Add animation classes
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.card-hover, .floating, [class*="bg-gradient"]');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate-fade-up');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        document.addEventListener('DOMContentLoaded', animateOnScroll);
+    </script>
+    
+    <!-- Main JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

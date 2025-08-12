@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmpowerKids Quiz - Children's Rights Quiz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="CSS/main.css">
+  <link rel="icon" href="assets/503-Kid-Game-Pre-Designed-Logo-removebg-preview.png" type="image/png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
+      color: white;
+      overflow: hidden;
+      height: 100vh;
+    }
+    .quiz-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.3;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+    .level-display {
+      background: rgba(255,255,255,0.3);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+     
+      color: black;
+    }
+    .topic-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.3);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+ 
+      color: black;
+      font-size: 1.2rem;
+    }
+    .question-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+     
+    }
+    .question-box {
+      background: rgba(255,255,255,0.2);
+      /* backdrop-filter: blur(10px); */
+      border-radius: 20px;
+      padding: 30px;
+      margin: 20px 0;
+      width: 90%;
+      max-width: 800px;
+      border: 3px dashed rgba(255,255,255,0.4);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      color: black;
+    
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      width: 90%;
+      max-width: 800px;
+    }
+    .option-btn {
+      padding: 20px;
+      border-radius: 15px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      font-weight: bold;
+      color: black;
+    }
+    .progress-container {
+      width: 90%;
+      max-width: 800px;
+      height: 20px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%);
+      transition: width 0.5s ease;
+    }
+    .score-card {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      padding: 40px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      display: none;
+      z-index: 100;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      color: #333;
+    }
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 99;
+    }
+    .character {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 150px;
+      z-index: 10;
+      transition: all 0.5s ease;
+    }
+    @media (max-width: 768px) {
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+      .character {
+        width: 100px;
+      }
+      .topic-title {
+        font-size: 1rem;
+        top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Background -->
+  <video autoplay muted loop class="video-background">
+    <source src="yt1z.net - Cartoon Cloud background Free motion graphics clouds overlay After Effects Clouds animation (1080p).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="quiz-container" id="quizContainer">
+    <div class="header">
+      <div class="level-display">Level <span id="currentLevel">1</span>/30</div>
+      <div class="topic-title" id="topicTitle">Basic Rights</div>
+      <div class="level-display">Question <span id="currentQuestion">1</span>/10</div>
+    </div>
+      <a href="homepage.html" class="text-black hover:text-yellow-700"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+ 
+
+    <div class="question-container">
+      <div class="question-box" id="questionBox">
+        Loading question...
+      </div>
+
+      <div class="options-grid" id="options"></div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <img src="https://www.pngmart.com/files/15/Happy-Kid-PNG-Transparent-Image.png" alt="Character" class="character" id="characterImage">
+  </div>
+
+  <div class="score-card" id="scoreCard">
+    <h2 class="text-3xl font-bold mb-4" style="color: #6e45e2;">Level Complete!</h2>
+    <div class="text-xl mb-6">
+      You scored <span id="scoreText" class="font-bold" style="color: #6e45e2;">0</span> out of 10
+    </div>
+    <div id="motivationText" class="text-lg mb-8"></div>
+    <div class="flex flex-col space-y-4">
+      <button id="nextLevelBtn" class="py-3 px-6 bg-gradient-to-r from-purple-400 to-purple-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition">
+        Next Level
+      </button>
+      <button id="retryBtn" class="py-3 px-6 bg-gradient-to-r from-pink-400 to-pink-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition">
+        Try Again
+      </button>
+    </div>
+  </div>
+  
+
+  <canvas id="confettiCanvas" class="confetti"></canvas>
+
+  <script>
+    // Topic names for each level
+    const levelTopics = {
+      1: "Basic Rights",
+      2: "Protection Rights",
+      3: "Health Rights",
+      4: "Education Rights",
+      5: "Equality Rights",
+      6: "Family Rights",
+      7: "Expression Rights",
+      8: "Play & Culture",
+      9: "Digital Rights",
+      10: "Global Citizenship",
+      11: "Social Responsibility",
+      12: "Balancing Rights",
+      13: "Justice Systems",
+      14: "Rights Dilemmas",
+      15: "Critical Thinking",
+      16: "Child Labor",
+      17: "Youth Participation",
+      18: "Rights Principles",
+      19: "UN Systems",
+      20: "Philosophy",
+      21: "War & Conflict",
+      22: "Climate Rights",
+      23: "Tech & AI",
+      24: "Genetic Rights",
+      25: "Neuro Rights",
+      26: "Nature Rights",
+      27: "Consciousness",
+      28: "Quantum Rights",
+      29: "Space Rights",
+      30: "Future Rights"
+    };
+
+    // Character images for each level
+    const levelCharacters = {
+      1: "OIP__1_-removebg-preview.png",
+      2: "OIP__2_-removebg-preview.png",
+      3: "OIP__3_-removebg-preview.png",
+      4: "OIP__4_-removebg-preview.png",
+      5: "OIP__5_-removebg-preview.png",
+      6: "OIP__6_-removebg-preview.png",
+      7: "OIP__7_-removebg-preview.png",
+      8: "OIP__8_-removebg-preview.png",
+      9: "OIP__9_-removebg-preview.png",
+      10: "OIP__10_-removebg-preview.png",
+      11: "OIP__11_-removebg-preview.png",
+      12: "OIP__12_-removebg-preview.png",
+      13: "OIP__13_-removebg-preview.png",
+      14: "OIP__14_-removebg-preview.png",
+      15: "OIP__15_-removebg-preview.png",
+      16: "OIP__16_-removebg-preview.png",
+      17: "OIP__17_-removebg-preview.png",
+      18: "OIP__18_-removebg-preview.png",
+      19: "OIP__19_-removebg-preview.png",
+      20: "OIP__20_-removebg-preview.png",
+      21: "OIP__21_-removebg-preview.png",
+      22: "OIP__22_-removebg-preview.png",
+      23: "OIP__23_-removebg-preview.png",
+      24: "OIP-removebg-preview (1).png",
+      25: "OIP-removebg-preview.png",
+      26: "unnamed-removebg-preview.png",
+      27: "8ea2b1ea42b3f8fd97db99d3da042633-removebg-preview.png",
+      28: "dc38ldj-05710820-1a22-4131-a8c0-e903fba631ab-removebg-preview.png",
+      29: "ddulnl9-9d2f0625-25de-48c6-9f8d-5f3a40796a4d-removebg-preview.png",
+      30: "little-krishna-cartoon-png-1364-237x300-removebg-preview.png"
+    };
+
+    // Child-friendly human rights questions database
+    const questionsDatabase = [
+    {
+        question: "Every child has the right to:",
+        options: ["Go to school", "Eat only candy", "Stay up all night", "Watch TV all day"],
+        correct: "Go to school",
+        level: 1
+      },
+      {
+        question: "What is something all children should have?",
+        options: ["A safe home", "A pet dinosaur", "A million toys", "A swimming pool"],
+        correct: "A safe home",
+        level: 1
+      },
+      {
+        question: "Children have the right to:",
+        options: ["Be protected from harm", "Never brush their teeth", "Eat ice cream for every meal", "Play video games all night"],
+        correct: "Be protected from harm",
+        level: 1
+      },
+      {
+        question: "Which of these is a right for all children?",
+        options: ["Clean water to drink", "A new bicycle every year", "A personal robot", "A trip to Disneyland"],
+        correct: "Clean water to drink",
+        level: 1
+      },
+      {
+        question: "All children should be treated:",
+        options: ["Fairly and equally", "Better than others", "Differently based on hair color", "Only when they're good"],
+        correct: "Fairly and equally",
+        level: 1
+      },
+      {
+        question: "What right helps children grow healthy?",
+        options: ["Healthy food", "Eating only sweets", "Playing all day without rest", "Watching cartoons non-stop"],
+        correct: "Healthy food",
+        level: 1
+      },
+      {
+        question: "Children have the right to:",
+        options: ["Express their feelings", "Never say 'thank you'", "Interrupt others", "Always get their way"],
+        correct: "Express their feelings",
+        level: 1
+      },
+      {
+        question: "Which of these is a child's right?",
+        options: ["A name and nationality", "A private jet", "A gold medal", "A famous TikTok account"],
+        correct: "A name and nationality",
+        level: 1
+      },
+      {
+        question: "Children should be protected from:",
+        options: ["Bullying", "Vegetables", "Bedtime", "Homework"],
+        correct: "Bullying",
+        level: 1
+      },
+      {
+        question: "What helps children learn about the world?",
+        options: ["Education", "Only playing games", "Watching TV all day", "Eating candy"],
+        correct: "Education",
+        level: 1
+      }, {
+    question: "Who should protect children's rights?",
+    options: ["All adults", "Only teachers", "Only parents", "Only police"],
+    correct: "All adults",
+    level: 2
+  },
+  {
+    question: "Children should be protected from:",
+    options: ["Dangerous work", "Homework", "Vegetables", "Early bedtimes"],
+    correct: "Dangerous work",
+    level: 2
+  },
+  {
+    question: "What protects children from sickness?",
+    options: ["Vaccines", "Candy", "Staying indoors", "Video games"],
+    correct: "Vaccines",
+    level: 2
+  },
+  {
+    question: "Children need protection from:",
+    options: ["Violence", "Books", "Vegetables", "Bedtime"],
+    correct: "Violence",
+    level: 2
+  },
+  {
+    question: "Who can help if a child is being hurt?",
+    options: ["Trusted adults", "Only parents", "No one", "Only doctors"],
+    correct: "Trusted adults",
+    level: 2
+  },
+  {
+    question: "Children should feel safe:",
+    options: ["Everywhere", "Only at home", "Only at school", "Nowhere"],
+    correct: "Everywhere",
+    level: 2
+  },
+  {
+    question: "What helps protect children online?",
+    options: ["Privacy settings", "Playing more games", "Watching videos", "Ignoring problems"],
+    correct: "Privacy settings",
+    level: 2
+  },
+  {
+    question: "Children have the right to be safe from:",
+    options: ["Abuse", "Homework", "Vegetables", "Bedtime"],
+    correct: "Abuse",
+    level: 2
+  },
+  {
+    question: "Who makes rules to protect children?",
+    options: ["Governments", "TV shows", "Video games", "Toys"],
+    correct: "Governments",
+    level: 2
+  },
+  {
+    question: "Children should be protected from:",
+    options: ["Harmful information", "All books", "All TV", "All games"],
+    correct: "Harmful information",
+    level: 2
+  },
+  {
+    question: "What helps children stay healthy?",
+    options: ["Regular doctor visits", "Eating only sweets", "No bedtime", "Watching TV"],
+    correct: "Regular doctor visits",
+    level: 3
+  },
+  {
+    question: "Children need healthcare to:",
+    options: ["Grow properly", "Stay awake late", "Avoid school", "Watch more TV"],
+    correct: "Grow properly",
+    level: 3
+  },
+  {
+    question: "What helps children's bodies grow strong?",
+    options: ["Exercise and nutrition", "Video games", "Staying indoors", "Eating candy"],
+    correct: "Exercise and nutrition",
+    level: 3
+  },
+  {
+    question: "Children with disabilities have the right to:",
+    options: ["Special care if needed", "No education", "Stay home always", "Different rules"],
+    correct: "Special care if needed",
+    level: 3
+  },
+  {
+    question: "Good mental health means children can:",
+    options: ["Handle emotions well", "Never feel sad", "Stay up late", "Avoid chores"],
+    correct: "Handle emotions well",
+    level: 3
+  },
+  {
+    question: "What helps children develop properly?",
+    options: ["Balanced activities", "Only studying", "Only playing", "Only resting"],
+    correct: "Balanced activities",
+    level: 3
+  },
+  {
+    question: "Children need regular medical care to:",
+    options: ["Prevent illnesses", "Avoid school", "Stay thin", "Get candy"],
+    correct: "Prevent illnesses",
+    level: 3
+  },
+  {
+    question: "What is important for children's growth?",
+    options: ["All of these", "Good food", "Exercise", "Medical care"],
+    correct: "All of these",
+    level: 3
+  },
+  {
+    question: "Children should learn about health to:",
+    options: ["Make good choices", "Avoid doctors", "Eat more candy", "Stay up late"],
+    correct: "Make good choices",
+    level: 3
+  },
+  {
+    question: "What right helps disabled children?",
+    options: ["Special education", "No education", "Staying home", "Different rules"],
+    correct: "Special education",
+    level: 3
+  },
+  {
+    question: "Why is education important for children?",
+    options: ["To develop their potential", "To keep them busy", "To make parents happy", "To replace playtime"],
+    correct: "To develop their potential",
+    level: 4
+  },
+  {
+    question: "Schools should provide:",
+    options: ["Quality education for all", "Only math classes", "No homework ever", "Video games instead of books"],
+    correct: "Quality education for all",
+    level: 4
+  },
+  {
+    question: "What makes a school child-friendly?",
+    options: ["Safe and welcoming environment", "No rules", "Only fun activities", "No teachers"],
+    correct: "Safe and welcoming environment",
+    level: 4
+  },
+  {
+    question: "Education helps children:",
+    options: ["Prepare for adulthood", "Avoid chores", "Stay children forever", "Control their parents"],
+    correct: "Prepare for adulthood",
+    level: 4
+  },
+  {
+    question: "Teachers should:",
+    options: ["Respect all students", "Have favorites", "Only teach smart kids", "Ignore misbehavior"],
+    correct: "Respect all students",
+    level: 4
+  },
+  {
+    question: "What's important in education?",
+    options: ["Both learning and play", "Only book learning", "Only playing games", "No tests ever"],
+    correct: "Both learning and play",
+    level: 4
+  },
+  {
+    question: "Children who struggle in school should get:",
+    options: ["Extra help", "No help", "Automatically pass", "Different subjects"],
+    correct: "Extra help",
+    level: 4
+  },
+  {
+    question: "Education includes learning about:",
+    options: ["Rights and responsibilities", "Only fun facts", "Nothing difficult", "Only popular topics"],
+    correct: "Rights and responsibilities",
+    level: 4
+  },
+  {
+    question: "Schools must be:",
+    options: ["Accessible to all", "Only for some children", "Very expensive", "Far from home"],
+    correct: "Accessible to all",
+    level: 4
+  },
+  {
+    question: "Good education helps children:",
+    options: ["Think critically", "Only memorize facts", "Always agree", "Avoid challenges"],
+    correct: "Think critically",
+    level: 4
+  },
+  {
+    question: "Children should be treated equally regardless of their:",
+    options: ["All of these", "Gender", "Religion", "Skin color"],
+    correct: "All of these",
+    level: 5
+  },
+  {
+    question: "A disabled child has the right to:",
+    options: ["Inclusive education", "No education", "Special treatment always", "Stay home"],
+    correct: "Inclusive education",
+    level: 5
+  },
+  {
+    question: "Discrimination means:",
+    options: ["Unfair treatment based on differences", "Having different opinions", "Going to different schools", "Choosing friends"],
+    correct: "Unfair treatment based on differences",
+    level: 5
+  },
+  {
+    question: "Schools should prevent:",
+    options: ["Bullying of any kind", "Only physical bullying", "Only verbal bullying", "Reporting bullying"],
+    correct: "Bullying of any kind",
+    level: 5
+  },
+  {
+    question: "Equal opportunity means:",
+    options: ["Everyone gets fair chances", "Everyone gets same results", "No one gets anything", "Only some try"],
+    correct: "Everyone gets fair chances",
+    level: 5
+  },
+  {
+    question: "A poor child has the right to:",
+    options: ["Same quality education", "Different education", "No education", "Only basic education"],
+    correct: "Same quality education",
+    level: 5
+  },
+  {
+    question: "Girls and boys should have:",
+    options: ["Equal opportunities", "Different schools", "Separate activities", "Different rights"],
+    correct: "Equal opportunities",
+    level: 5
+  },
+  {
+    question: "Children from minority groups should:",
+    options: ["Keep their culture and language", "Forget their culture", "Only speak majority language", "Hide their background"],
+    correct: "Keep their culture and language",
+    level: 5
+  },
+  {
+    question: "Inclusive education benefits:",
+    options: ["All children", "Only disabled children", "Only teachers", "No one"],
+    correct: "All children",
+    level: 5
+  },
+  {
+    question: "Fair treatment means:",
+    options: ["Respecting everyone's rights", "Treating everyone the same way", "Ignoring differences", "Having no rules"],
+    correct: "Respecting everyone's rights",
+    level: 5
+  },
+  {
+    question: "Children have the right to know their:",
+    options: ["Parents and family", "Future career", "Famous ancestors", "Online friends"],
+    correct: "Parents and family",
+    level: 6
+  },
+  {
+    question: "If parents separate, children should:",
+    options: ["Keep contact with both", "Choose sides", "Live alone", "Never see either"],
+    correct: "Keep contact with both",
+    level: 6
+  },
+  {
+    question: "Adopted children have the right to:",
+    options: ["Know about their origins", "Hide their adoption", "Ignore their birth family", "Pretend they’re not adopted"],
+    correct: "Know about their origins",
+    level: 6
+  },
+  {
+    question: "Children in foster care deserve:",
+    options: ["Stable and loving homes", "To stay in temporary places", "No education", "Different rights"],
+    correct: "Stable and loving homes",
+    level: 6
+  },
+  {
+    question: "A child’s name and nationality are part of their:",
+    options: ["Legal identity", "Optional details", "School records only", "Parents’ choice only"],
+    correct: "Legal identity",
+    level: 6
+  },
+  {
+    question: "Children separated from parents due to war should:",
+    options: ["Be reunited with family", "Stay where they are", "Choose new parents", "Live on their own"],
+    correct: "Be reunited with family",
+    level: 6
+  },
+  {
+    question: "Who should decide a child’s religion?",
+    options: ["Parents (until child can choose)", "The government", "Teachers", "Friends"],
+    correct: "Parents (until child can choose)",
+    level: 6
+  },
+  {
+    question: "Children have the right to preserve their:",
+    options: ["Cultural identity", "Favorite toys", "Social media accounts", "Video game progress"],
+    correct: "Cultural identity",
+    level: 6
+  },
+  {
+    question: "If parents disagree on upbringing, the focus should be on:",
+    options: ["Child’s best interests", "Parents’ preferences", "What’s easiest", "What’s cheapest"],
+    correct: "Child’s best interests",
+    level: 6
+  },
+  {
+    question: "Children in refugee families have the right to:",
+    options: ["Stay with their parents", "Be sent ahead alone", "Hide their status", "Give up their culture"],
+    correct: "Stay with their parents",
+    level: 6
+  },
+  
+  {
+    question: "Children can express opinions about:",
+    options: ["Things affecting them", "Everything always", "Nothing", "Only happy topics"],
+    correct: "Things affecting them",
+    level: 7
+  },
+  {
+    question: "Freedom of speech means children can:",
+    options: ["Share ideas respectfully", "Say anything anytime", "Only agree with adults", "Never disagree"],
+    correct: "Share ideas respectfully",
+    level: 7
+  },
+  {
+    question: "Schools should let students:",
+    options: ["Participate in decisions", "Only follow rules", "Never question teachers", "Avoid discussions"],
+    correct: "Participate in decisions",
+    level: 7
+  },
+  {
+    question: "Children’s opinions should be:",
+    options: ["Considered seriously", "Ignored", "Only heard from teens", "Taken as jokes"],
+    correct: "Considered seriously",
+    level: 7
+  },
+  {
+    question: "A student council helps children learn:",
+    options: ["Democratic participation", "How to argue", "To avoid responsibility", "Popularity contests"],
+    correct: "Democratic participation",
+    level: 7
+  },
+  {
+    question: "Children can express themselves through:",
+    options: ["Art, writing, and speech", "Only schoolwork", "Only when asked", "Silence"],
+    correct: "Art, writing, and speech",
+    level: 7
+  },
+  {
+    question: "When adults make decisions affecting children, they should:",
+    options: ["Listen to children’s views", "Assume they know best", "Only ask parents", "Ignore age differences"],
+    correct: "Listen to children’s views",
+    level: 7
+  },
+  {
+    question: "Freedom of expression has limits when it:",
+    options: ["Harms others’ rights", "Is unpopular", "Challenges adults", "Is creative"],
+    correct: "Harms others’ rights",
+    level: 7
+  },
+  {
+    question: "Children’s participation in community projects helps them learn:",
+    options: ["Citizenship skills", "To avoid work", "That their voice doesn’t matter", "Only school is important"],
+    correct: "Citizenship skills",
+    level: 7
+  },
+  {
+    question: "A child’s right to be heard means adults should:",
+    options: ["Consider their maturity level", "Always agree", "Only listen to teens", "Dismiss young children"],
+    correct: "Consider their maturity level",
+    level: 7
+  },
+  {
+    question: "Why is play important for children?",
+    options: ["Develops creativity and social skills", "Just fun with no benefits", "Replaces education", "Lets adults rest"],
+    correct: "Develops creativity and social skills",
+    level: 8
+  },
+  {
+    question: "Schools should balance study and play to:",
+    options: ["Support whole-child development", "Make teachers' jobs easier", "Keep children quiet", "Follow strict schedules"],
+    correct: "Support whole-child development",
+    level: 8
+  },
+  {
+    question: "Cultural rights include:",
+    options: ["Practicing traditions safely", "Forcing others to participate", "Only modern activities", "Ignoring other cultures"],
+    correct: "Practicing traditions safely",
+    level: 8
+  },
+  {
+    question: "Children from minority cultures should:",
+    options: ["Celebrate their heritage proudly", "Hide their background", "Only adopt majority culture", "Apologize for being different"],
+    correct: "Celebrate their heritage proudly",
+    level: 8
+  },
+  {
+    question: "Safe playgrounds are a:",
+    options: ["Right for all children", "Privilege for some", "Waste of space", "Only for young kids"],
+    correct: "Right for all children",
+    level: 8
+  },
+  {
+    question: "Traditional games help children:",
+    options: ["Connect with their culture", "Only entertain", "Stay indoors", "Avoid modern life"],
+    correct: "Connect with their culture",
+    level: 8
+  },
+  {
+    question: "Children with disabilities need:",
+    options: ["Adapted play opportunities", "No playtime", "Only digital games", "Separate playgrounds"],
+    correct: "Adapted play opportunities",
+    level: 8
+  },
+  {
+    question: "Cultural celebrations in schools:",
+    options: ["Teach respect for diversity", "Distract from learning", "Cause arguments", "Waste time"],
+    correct: "Teach respect for diversity",
+    level: 8
+  },
+  {
+    question: "Play helps children learn:",
+    options: ["Problem-solving naturally", "Only competitive skills", "To avoid rules", "Dependence on adults"],
+    correct: "Problem-solving naturally",
+    level: 8
+  },
+  {
+    question: "Indigenous children have the right to:",
+    options: ["Learn ancestral languages", "Forget their roots", "Only use English", "Mock traditions"],
+    correct: "Learn ancestral languages",
+    level: 8
+  },
+  {
+    question: "Children's personal data online should be:",
+    options: ["Protected by adults", "Shared freely", "Sold for ads", "Posted publicly"],
+    correct: "Protected by adults",
+    level: 9
+  },
+  {
+    question: "A strong password should:",
+    options: ["Be unique and complex", "Use your birthdate", "Be 'password123'", "Never be changed"],
+    correct: "Be unique and complex",
+    level: 9
+  },
+  {
+    question: "Cyberbullying is:",
+    options: ["Harmful and unacceptable", "Just joking", "Only wrong if physical", "The victim's fault"],
+    correct: "Harmful and unacceptable",
+    level: 9
+  },
+  {
+    question: "Before posting photos of others online, you should:",
+    options: ["Get their permission", "Assume it's fine", "Only ask friends", "Ignore privacy"],
+    correct: "Get their permission",
+    level: 9
+  },
+  {
+    question: "Digital footprints are:",
+    options: ["Permanent online records", "Only social media posts", "Deleted automatically", "Not important"],
+    correct: "Permanent online records",
+    level: 9
+  },
+  {
+    question: "Parents should monitor young children's internet use to:",
+    options: ["Ensure safety", "Control opinions", "Ban all websites", "Read private chats"],
+    correct: "Ensure safety",
+    level: 9
+  },
+  {
+    question: "Meeting online friends in person:",
+    options: ["Requires adult supervision", "Is always safe", "Should be secret", "Doesn't need planning"],
+    correct: "Requires adult supervision",
+    level: 9
+  },
+  {
+    question: "Private messages should stay private unless:",
+    options: ["Someone is in danger", "They're funny", "You're bored", "You want likes"],
+    correct: "Someone is in danger",
+    level: 9
+  },
+  {
+    question: "Screen time should be balanced to:",
+    options: ["Protect health and sleep", "Avoid all technology", "Play as long as wanted", "Ignore real-world friends"],
+    correct: "Protect health and sleep",
+    level: 9
+  },
+  {
+    question: "If you see harmful content online, you should:",
+    options: ["Report it to trusted adults", "Share it with friends", "Ignore it", "Try it yourself"],
+    correct: "Report it to trusted adults",
+    level: 9
+  },
+  {
+    question: "What does being a global citizen mean?",
+    options: ["Caring about people worldwide", "Only helping your country", "Traveling to many places", "Learning many languages"],
+    correct: "Caring about people worldwide",
+    level: 10
+  },
+  {
+    question: "How can children help fight climate change?",
+    options: ["All of these", "Recycling", "Saving energy", "Planting trees"],
+    correct: "All of these",
+    level: 10
+  },
+  {
+    question: "Why should we learn about other cultures?",
+    options: ["To build understanding and respect", "To criticize differences", "Only if we travel", "To prove our culture is best"],
+    correct: "To build understanding and respect",
+    level: 10
+  },
+  {
+    question: "What does the UN Convention on Children's Rights protect?",
+    options: ["All children worldwide", "Only rich children", "Only children in schools", "Only children in democracies"],
+    correct: "All children worldwide",
+    level: 10
+  },
+  {
+    question: "Clean water access is a problem for:",
+    options: ["Millions of children globally", "No one today", "Only desert countries", "Only adults"],
+    correct: "Millions of children globally",
+    level: 10
+  },
+  {
+    question: "Child labor often happens because:",
+    options: ["Families face poverty", "Children want to work", "Schools are too strict", "It's good for learning"],
+    correct: "Families face poverty",
+    level: 10
+  },
+  {
+    question: "How can we help refugee children?",
+    options: ["Welcome and support them", "Ignore their situation", "Blame their parents", "Assume they're dangerous"],
+    correct: "Welcome and support them",
+    level: 10
+  },
+  {
+    question: "Fair trade products help:",
+    options: ["Workers get fair pay", "Companies earn more", "Prices stay low", "Goods look fancy"],
+    correct: "Workers get fair pay",
+    level: 10
+  },
+  {
+    question: "Malala fought for:",
+    options: ["Girls' education rights", "Only her own education", "Banning all schools", "Stopping technology"],
+    correct: "Girls' education rights",
+    level: 10
+  },
+  {
+    question: "Global problems need:",
+    options: ["International cooperation", "Only local solutions", "Ignoring differences", "One country's leadership"],
+    correct: "International cooperation",
+    level: 10
+  },
+
+  {
+    question: "Being socially responsible means:",
+    options: ["Helping your community", "Only caring about yourself", "Ignoring problems", "Waiting for adults to act"],
+    correct: "Helping your community",
+    level: 11
+  },
+  {
+    question: "If you see bullying, you should:",
+    options: ["Support the victim and report it", "Join in to fit in", "Film it for social media", "Assume it's not your problem"],
+    correct: "Support the victim and report it",
+    level: 11
+  },
+  {
+    question: "Volunteering helps you:",
+    options: ["Make a positive difference", "Only get school credit", "Show you're better than others", "Replace studying"],
+    correct: "Make a positive difference",
+    level: 11
+  },
+  {
+    question: "Inclusive behavior means:",
+    options: ["Welcoming everyone to participate", "Only including friends", "Keeping groups small", "Avoiding differences"],
+    correct: "Welcoming everyone to participate",
+    level: 11
+  },
+  {
+    question: "Sustainable habits include:",
+    options: ["Reducing waste and reusing items", "Buying everything new", "Throwing trash anywhere", "Ignoring recycling"],
+    correct: "Reducing waste and reusing items",
+    level: 11
+  },
+  {
+    question: "Standing up for fairness is:",
+    options: ["Everyone's responsibility", "Only for teachers", "Too risky", "Not important"],
+    correct: "Everyone's responsibility",
+    level: 11
+  },
+  {
+    question: "Good citizenship includes:",
+    options: ["Following rules and helping others", "Only looking out for yourself", "Breaking small rules", "Ignoring community needs"],
+    correct: "Following rules and helping others",
+    level: 11
+  },
+  {
+    question: "When making decisions, consider:",
+    options: ["How they affect others", "Only what you want", "What's easiest", "Others' opinions don't matter"],
+    correct: "How they affect others",
+    level: 11
+  },
+  {
+    question: "To create positive change:",
+    options: ["Start small and be consistent", "Wait until you're older", "Only do big actions", "Expect instant results"],
+    correct: "Start small and be consistent",
+    level: 11
+  },
+  {
+    question: "Your rights end where:",
+    options: ["Others' rights begin", "You feel like stopping", "Adults say so", "It's inconvenient"],
+    correct: "Others' rights begin",
+    level: 11
+  },
+  {
+    question: "When rights conflict, we should:",
+    options: ["Find balanced solutions", "Ignore the problem", "Always prioritize one right", "Let adults decide everything"],
+    correct: "Find balanced solutions",
+    level: 12
+  },
+  {
+    question: "Freedom of speech becomes harmful when it:",
+    options: ["Promotes hate or violence", "Disagrees with others", "Is spoken by children", "Criticizes the government"],
+    correct: "Promotes hate or violence",
+    level: 12
+  },
+  {
+    question: "The right to education means schools must:",
+    options: ["Adapt to children's needs", "Use one teaching method", "Only help fast learners", "Ignore disabilities"],
+    correct: "Adapt to children's needs",
+    level: 12
+  },
+  {
+    question: "Privacy rights are important because they:",
+    options: ["Protect dignity and safety", "Help hide bad behavior", "Are only for teenagers", "Don't matter online"],
+    correct: "Protect dignity and safety",
+    level: 12
+  },
+  {
+    question: "Children's rights limit parents' authority when:",
+    options: ["Health/safety is at risk", "Parents are tired", "Children disagree", "School rules conflict"],
+    correct: "Health/safety is at risk",
+    level: 12
+  },
+  {
+    question: "Cultural traditions should change if they:",
+    options: ["Harm children's rights", "Seem old-fashioned", "Are unfamiliar", "Take too much time"],
+    correct: "Harm children's rights",
+    level: 12
+  },
+  {
+    question: "The purpose of children's rights is to:",
+    options: ["Ensure development and protection", "Give unlimited freedom", "Replace parenting", "Make life easy"],
+    correct: "Ensure development and protection",
+    level: 12
+  },
+  {
+    question: "Schools may limit some freedoms to:",
+    options: ["Protect everyone's learning", "Control students", "Save money", "Avoid challenges"],
+    correct: "Protect everyone's learning",
+    level: 12
+  },
+  {
+    question: "Rights come with:",
+    options: ["Responsibilities", "No obligations", "Special privileges", "Parental control"],
+    correct: "Responsibilities",
+    level: 12
+  },
+  {
+    question: "Critical thinking about rights helps:",
+    options: ["Balance individual and community needs", "Always get your way", "Ignore rules", "Focus only on yourself"],
+    correct: "Balance individual and community needs",
+    level: 12
+  },
+  {
+    question: "Juvenile justice systems should focus on:",
+    options: ["Rehabilitation over punishment", "Harsh penalties", "Public shaming", "Ignoring crimes"],
+    correct: "Rehabilitation over punishment",
+    level: 13
+  },
+  {
+    question: "Children accused of crimes have the right to:",
+    options: ["Legal representation", "No defense", "Adult prisons", "Automatic guilt"],
+    correct: "Legal representation",
+    level: 13
+  },
+  {
+    question: "The minimum age for criminal responsibility:",
+    options: ["Varies by country but exists", "Doesn't exist", "Is always 18+", "Depends on the crime"],
+    correct: "Varies by country but exists",
+    level: 13
+  },
+  {
+    question: "Child witnesses should receive:",
+    options: ["Special protections in court", "No accommodations", "Public questioning", "The same treatment as adults"],
+    correct: "Special protections in court",
+    level: 13
+  },
+  {
+    question: "Restorative justice focuses on:",
+    options: ["Repairing harm to victims", "Harsh punishment", "Ignoring offenses", "Only community service"],
+    correct: "Repairing harm to victims",
+    level: 13
+  },
+  {
+    question: "Children in legal systems need:",
+    options: ["Age-appropriate explanations", "Complex legal jargon", "No information", "Scare tactics"],
+    correct: "Age-appropriate explanations",
+    level: 13
+  },
+  {
+    question: "Life sentences for children are:",
+    options: ["Prohibited by international law", "Common everywhere", "Only for violent crimes", "Up to judges"],
+    correct: "Prohibited by international law",
+    level: 13
+  },
+  {
+    question: "Legal systems should consider that children:",
+    options: ["Are still developing", "Think like adults", "Can't change", "Don't understand consequences"],
+    correct: "Are still developing",
+    level: 13
+  },
+  {
+    question: "Children's courts should be:",
+    options: ["Separate from adult systems", "More strict", "Exactly the same", "Non-existent"],
+    correct: "Separate from adult systems",
+    level: 13
+  },
+  {
+    question: "Child trafficking victims should be treated as:",
+    options: ["Victims needing support", "Criminals", "Immigration cases", "Adults"],
+    correct: "Victims needing support",
+    level: 13
+  },
+  {
+    question: "If a friend shares harmful content online, you should:",
+    options: ["Report it and talk to them", "Share it further", "Ignore it", "Laugh about it"],
+    correct: "Report it and talk to them",
+    level: 14
+  },
+  {
+    question: "Seeing cheating on a test but promised secrecy creates:",
+    options: ["Conflict between honesty and loyalty", "Clear obligation to lie", "No dilemma at all", "Reason to cheat too"],
+    correct: "Conflict between honesty and loyalty",
+    level: 14
+  },
+  {
+    question: "Cultural tradition vs. child safety should be resolved by:",
+    options: ["Prioritizing safety while respecting culture", "Always keeping traditions", "Ignoring both", "Letting children decide alone"],
+    correct: "Prioritizing safety while respecting culture",
+    level: 14
+  },
+  {
+    question: "If parents forbid medical treatment for religious reasons:",
+    options: ["Child's health comes first", "Parents always decide", "Doctors should ignore", "Wait until adulthood"],
+    correct: "Child's health comes first",
+    level: 14
+  },
+  {
+    question: "When a child's wishes conflict with their best interests:",
+    options: ["Find compromise where possible", "Always override wishes", "Always give in", "Avoid decisions"],
+    correct: "Find compromise where possible",
+    level: 14
+  },
+  {
+    question: "Reporting abuse against a friend may:",
+    options: ["Help them despite temporary anger", "Ruin your friendship forever", "Make things worse", "Be nobody's business"],
+    correct: "Help them despite temporary anger",
+    level: 14
+  },
+  {
+    question: "Freedom vs. protection dilemmas require:",
+    options: ["Case-by-case balance", "Always choosing freedom", "Total adult control", "Ignoring risks"],
+    correct: "Case-by-case balance",
+    level: 14
+  },
+  {
+    question: "If a cultural practice harms girls more than boys:",
+    options: ["It's discriminatory and should change", "Culture justifies anything", "Only boys matter", "Girls should accept it"],
+    correct: "It's discriminatory and should change",
+    level: 14
+  },
+  {
+    question: "When resources are limited, allocation should be:",
+    options: ["Fair based on need", "First-come-first-served", "Only for strongest", "Decided by popularity"],
+    correct: "Fair based on need",
+    level: 14
+  },
+  {
+    question: "Whistleblowing on wrongdoing is:",
+    options: ["Ethical but difficult", "Always wrong", "Only for adults", "A betrayal"],
+    correct: "Ethical but difficult",
+    level: 14
+  },
+  {
+    question: "What's the first step to verify online information?",
+    options: ["Check multiple reliable sources", "Believe viral posts", "Trust the first result", "Assume images don't lie"],
+    correct: "Check multiple reliable sources",
+    level: 15,
+    skill: "Source evaluation"
+  },
+  {
+    question: "Deepfake videos are dangerous because they:",
+    options: ["Spread false realities", "Are always funny", "Help education", "Only affect celebrities"],
+    correct: "Spread false realities",
+    level: 15,
+    skill: "Critical viewing"
+  },
+  {
+    question: "Algorithmic bias in social media can:",
+    options: ["Limit diverse viewpoints", "Improve accuracy", "Remove all ads", "Protect privacy"],
+    correct: "Limit diverse viewpoints",
+    level: 15,
+    skill: "Tech awareness"
+  },
+  {
+    question: "A verified news source will typically:",
+    options: ["Cite evidence and experts", "Use emotional language", "Hide author names", "Avoid dates"],
+    correct: "Cite evidence and experts",
+    level: 15,
+    skill: "Credibility assessment"
+  },
+  {
+    question: "Before sharing emotional content, you should:",
+    options: ["Pause and fact-check", "React immediately", "Only read headlines", "Assume friends posted truth"],
+    correct: "Pause and fact-check",
+    level: 15,
+    skill: "Emotional regulation"
+  },
+  {
+    question: "Metadata in photos can reveal:",
+    options: ["Location and device info", "Only filters used", "The photographer's thoughts", "Future events"],
+    correct: "Location and device info",
+    level: 15,
+    skill: "Digital footprints"
+  },
+  {
+    question: "Satire websites should be:",
+    options: ["Enjoyed as humor but not believed", "Trusted as news", "Always reported", "Ignored completely"],
+    correct: "Enjoyed as humor but not believed",
+    level: 15,
+    skill: "Genre recognition"
+  },
+  {
+    question: "Filter bubbles occur when:",
+    options: ["You only see similar viewpoints", "Ads are blocked", "Internet is slow", "You follow many pages"],
+    correct: "You only see similar viewpoints",
+    level: 15,
+    skill: "Algorithm understanding"
+  },
+  {
+    question: "The most ethical way to use AI tools is:",
+    options: ["With transparency about their use", "To replace human work", "For creating fake content", "Without telling anyone"],
+    correct: "With transparency about their use",
+    level: 15,
+    skill: "Tech ethics"
+  },
+  {
+    question: "Digital wellness includes:",
+    options: ["Balanced screen time", "Constant connectivity", "Maximizing followers", "Ignoring notifications"],
+    correct: "Balanced screen time",
+    level: 15,
+    skill: "Self-regulation"
+  },
+  {
+    question: "Child labor often persists because:",
+    options: ["Systems exploit poverty", "Children enjoy working", "Schools encourage it", "It's harmless"],
+    correct: "Systems exploit poverty",
+    level: 16,
+    concept: "Structural causes"
+  },
+  {
+    question: "Fairtrade certification ensures:",
+    options: ["No child labor was used", "Cheaper prices", "Faster production", "Bigger profits"],
+    correct: "No child labor was used",
+    level: 16,
+    concept: "Ethical consumption"
+  },
+  {
+    question: "The 'poverty cycle' means poor children often:",
+    options: ["Miss education and stay poor", "Get special help", "Win scholarships", "Don't need school"],
+    correct: "Miss education and stay poor",
+    level: 16,
+    concept: "Systemic barriers"
+  },
+  {
+    question: "Child actors need:",
+    options: ["Education protections and pay", "No special rules", "To work like adults", "Parental control of earnings"],
+    correct: "Education protections and pay",
+    level: 16,
+    concept: "Entertainment industry"
+  },
+  {
+    question: "Influencer child stars risk:",
+    options: ["Exploitation of their image", "Too much privacy", "Not earning enough", "Avoiding fame"],
+    correct: "Exploitation of their image",
+    level: 16,
+    concept: "Digital labor"
+  },
+  {
+    question: "Micro-loans to families can help by:",
+    options: ["Reducing need for child labor", "Making children work more", "Replacing schools", "Creating debt"],
+    correct: "Reducing need for child labor",
+    level: 16,
+    concept: "Economic solutions"
+  },
+  {
+    question: "The worst forms of child labor include:",
+    options: ["Forced soldiering", "Light farm work", "Family businesses", "After-school jobs"],
+    correct: "Forced soldiering",
+    level: 16,
+    concept: "ILO standards"
+  },
+  {
+    question: "Consumers can help by:",
+    options: ["Researching supply chains", "Always buying cheapest", "Ignoring labels", "Avoiding all goods"],
+    correct: "Researching supply chains",
+    level: 16,
+    concept: "Advocacy"
+  },
+  {
+    question: "Child street vendors often lack:",
+    options: ["Education opportunities", "Business skills", "Product knowledge", "Sales techniques"],
+    correct: "Education opportunities",
+    level: 16,
+    concept: "Urban poverty"
+  },
+  {
+    question: "Economic rights include:",
+    options: ["Protection from exploitation", "Working unlimited hours", "No minimum wage", "Parental profit control"],
+    correct: "Protection from exploitation",
+    level: 16,
+    concept: "Legal protections"
+  },
+  {
+    question: "Youth councils help governments:",
+    options: ["Understand young perspectives", "Avoid real action", "Replace elections", "Control youth"],
+    correct: "Understand young perspectives",
+    level: 17,
+    theme: "Participation structures"
+  },
+  {
+    question: "Peaceful student protests are:",
+    options: ["A protected right", "Always disruptive", "Only for adults", "Pointless"],
+    correct: "A protected right",
+    level: 17,
+    theme: "Activism rights"
+  },
+  {
+    question: "Child-led advocacy means:",
+    options: ["Youth driving change", "Adults speaking for youth", "Only school projects", "Ignoring officials"],
+    correct: "Youth driving change",
+    level: 17,
+    theme: "Leadership"
+  },
+  {
+    question: "The best way to influence policy is:",
+    options: ["Evidence-based petitions", "Social media rants", "Only voting at 18", "Protesting violently"],
+    correct: "Evidence-based petitions",
+    level: 17,
+    theme: "Effective methods"
+  },
+  {
+    question: "Youth parliaments teach:",
+    options: ["Democratic processes", "Absolute rule", "Avoiding compromise", "Quick decisions"],
+    correct: "Democratic processes",
+    level: 17,
+    theme: "Civic education"
+  },
+  {
+    question: "Greta Thunberg demonstrated:",
+    options: ["Youth climate leadership", "Only adults can lead", "Protests don't work", "School isn't important"],
+    correct: "Youth climate leadership",
+    level: 17,
+    theme: "Role models"
+  },
+  {
+    question: "Child rights ombudspersons:",
+    options: ["Investigate violations", "Replace parents", "Punish children", "Ignore complaints"],
+    correct: "Investigate violations",
+    level: 17,
+    theme: "Accountability"
+  },
+  {
+    question: "Student governments should:",
+    options: ["Have real responsibilities", "Just plan parties", "Follow teachers exactly", "Meet rarely"],
+    correct: "Have real responsibilities",
+    level: 17,
+    theme: "Meaningful participation"
+  },
+  {
+    question: "UN Youth Delegates help:",
+    options: ["Bring youth voices globally", "Replace governments", "Only focus on sports", "Avoid politics"],
+    correct: "Bring youth voices globally",
+    level: 17,
+    theme: "International platforms"
+  },
+  {
+    question: "Change-making requires:",
+    options: ["Persistence and allies", "One big action", "Waiting for adulthood", "Ignoring systems"],
+    correct: "Persistence and allies",
+    level: 17,
+    theme: "Movement building"
+  },
+  {
+    question: "The 'best interests of the child' principle means decisions must:",
+    options: ["Balance all aspects of a child's wellbeing", "Always favor the child's wishes", "Ignore difficult trade-offs", "Only consider immediate needs"],
+    correct: "Balance all aspects of a child's wellbeing",
+    level: 18,
+    concept: "Core principle"
+  },
+  {
+    question: "The 'evolving capacities' doctrine recognizes that:",
+    options: ["Children gain autonomy gradually", "Rights appear suddenly at adulthood", "All children mature identically", "Parents should always decide"],
+    correct: "Children gain autonomy gradually",
+    level: 18,
+    concept: "Developmental rights"
+  },
+  {
+    question: "A 'rights-based approach' differs from charity by:",
+    options: ["Emphasizing entitlements not gifts", "Giving more to cute children", "Only helping the deserving", "Using simpler solutions"],
+    correct: "Emphasizing entitlements not gifts",
+    level: 18,
+    concept: "Philosophical basis"
+  },
+  {
+    question: "The 'indivisibility' of rights means:",
+    options: ["All rights are equally important", "Some rights outweigh others", "Only education matters", "Rights can be ranked"],
+    correct: "All rights are equally important",
+    level: 18,
+    concept: "Interdependence"
+  },
+  {
+    question: "Cultural relativism becomes problematic when it:",
+    options: ["Justifies rights violations", "Explains traditions", "Promotes tourism", "Encourages language learning"],
+    correct: "Justifies rights violations",
+    level: 18,
+    concept: "Universal standards"
+  },
+  {
+    question: "The 'margin of appreciation' allows countries to:",
+    options: ["Adapt rights implementation locally", "Ignore inconvenient rights", "Favor majority cultures", "Set arbitrary age limits"],
+    correct: "Adapt rights implementation locally",
+    level: 18,
+    concept: "Flexibility"
+  },
+  {
+    question: "Positive rights (like education) require:",
+    options: ["Government action and resources", "Only non-interference", "Individual effort alone", "Private charity"],
+    correct: "Government action and resources",
+    level: 18,
+    concept: "State obligations"
+  },
+  {
+    question: "The 'dignity' foundation of rights means children:",
+    options: ["Deserve respect as human beings", "Must earn respect", "Only matter when productive", "Lose rights when misbehaving"],
+    correct: "Deserve respect as human beings",
+    level: 18,
+    concept: "Human worth"
+  },
+  {
+    question: "A 'child impact assessment' evaluates how:",
+    options: ["Policies affect children differently", "Children can work more", "To reduce education costs", "Parents should be controlled"],
+    correct: "Policies affect children differently",
+    level: 18,
+    concept: "Policy tool"
+  },
+  {
+    question: "The 'general measures of implementation' require:",
+    options: ["Laws, budgets and coordination", "Only good intentions", "Parental volunteering", "Children's gratitude"],
+    correct: "Laws, budgets and coordination",
+    level: 18,
+    concept: "Practical application"
+  },
+  {
+    question: "The UN Committee on the Rights of the Child monitors:",
+    options: ["Countries' compliance with the CRC", "Only developing nations", "Parenting techniques", "School curricula"],
+    correct: "Countries' compliance with the CRC",
+    level: 19,
+    system: "Monitoring"
+  },
+  {
+    question: "Optional Protocols to the CRC address:",
+    options: ["Specific issues like child soldiers", "Minor grammatical changes", "Only developed countries", "Parental rights"],
+    correct: "Specific issues like child soldiers",
+    level: 19,
+    system: "Legal instruments"
+  },
+  {
+    question: "The 'Concluding Observations' process results in:",
+    options: ["Country-specific recommendations", "Punishments for violations", "Automatic sanctions", "Media blacklists"],
+    correct: "Country-specific recommendations",
+    level: 19,
+    system: "Accountability"
+  },
+  {
+    question: "UNICEF's mandate focuses on:",
+    options: ["Implementation and assistance", "Policing governments", "Replacing families", "Only emergency relief"],
+    correct: "Implementation and assistance",
+    level: 19,
+    system: "UN agency"
+  },
+  {
+    question: "The Universal Periodic Review examines:",
+    options: ["All countries' human rights records", "Only conflict zones", "Celebrity activists", "Historical violations"],
+    correct: "All countries' human rights records",
+    level: 19,
+    system: "Peer review"
+  },
+  {
+    question: "The '2030 Agenda' connects children's rights to:",
+    options: ["Sustainable Development Goals", "Military alliances", "Trade agreements", "Immigration policies"],
+    correct: "Sustainable Development Goals",
+    level: 19,
+    system: "Global framework"
+  },
+  {
+    question: "National Human Rights Institutions should:",
+    options: ["Be independent from government", "Serve political agendas", "Only handle adult cases", "Avoid children's issues"],
+    correct: "Be independent from government",
+    level: 19,
+    system: "Domestic implementation"
+  },
+  {
+    question: "The 'Paris Principles' guide:",
+    options: ["Effective national rights institutions", "School discipline", "Parenting styles", "Child labor laws"],
+    correct: "Effective national rights institutions",
+    level: 19,
+    system: "Standards"
+  },
+  {
+    question: "Shadow reports to the UN Committee are submitted by:",
+    options: ["NGOs and civil society", "Only governments", "Corporate sponsors", "Religious leaders"],
+    correct: "NGOs and civil society",
+    level: 19,
+    system: "Alternative reporting"
+  },
+  {
+    question: "The 'CRC reporting cycle' occurs every:",
+    options: ["5 years for each country", "Decade", "When violations occur", "Only for poor nations"],
+    correct: "5 years for each country",
+    level: 19,
+    system: "Periodic review"
+  },
+  {
+    question: "John Locke's 'tabula rasa' concept influenced:",
+    options: ["Education as developmental", "Child labor acceptance", "Parental ownership ideas", "Rigid age thresholds"],
+    correct: "Education as developmental",
+    level: 20,
+    philosophy: "Enlightenment"
+  },
+  {
+    question: "Kant's 'categorical imperative' would view child rights as:",
+    options: ["Universal moral obligations", "Cultural preferences", "Parental gifts", "Government favors"],
+    correct: "Universal moral obligations",
+    level: 20,
+    philosophy: "Deontology"
+  },
+  {
+    question: "Rawls' 'veil of ignorance' supports rights by:",
+    options: ["Impartiality about one's status", "Merit-based allocation", "Parental superiority", "Age-based hierarchies"],
+    correct: "Impartiality about one's status",
+    level: 20,
+    philosophy: "Justice theory"
+  },
+  {
+    question: "Montessori's contribution emphasized:",
+    options: ["Child-led learning dignity", "Standardized testing", "Authoritarian teaching", "Delayed education"],
+    correct: "Child-led learning dignity",
+    level: 20,
+    philosophy: "Pedagogy"
+  },
+  {
+    question: "The 'capabilities approach' evaluates rights by:",
+    options: ["Real freedoms to achieve", "Test scores alone", "Parental income levels", "Popularity contests"],
+    correct: "Real freedoms to achieve",
+    level: 20,
+    philosophy: "Nussbaum/Sen"
+  },
+  {
+    question: "Freire's 'pedagogy of the oppressed' applies to children by:",
+    options: ["Challenging power imbalances", "Memorizing facts", "Obeying silently", "Avoiding questions"],
+    correct: "Challenging power imbalances",
+    level: 20,
+    philosophy: "Critical theory"
+  },
+  {
+    question: "Dewey's progressivism views education as:",
+    options: ["Democracy preparation", "Job training only", "Disciplinary tool", "Parental delegation"],
+    correct: "Democracy preparation",
+    level: 20,
+    philosophy: "Pragmatism"
+  },
+  {
+    question: "The 'nature vs. nurture' debate impacts rights by:",
+    options: ["Recognizing both inherent and environmental factors", "Choosing one over the other", "Ignoring development", "Favoring genetics"],
+    correct: "Recognizing both inherent and environmental factors",
+    level: 20,
+    philosophy: "Developmental"
+  },
+  {
+    question: "Fanon's anti-colonial lens would critique:",
+    options: ["Western-imposed rights models", "All children's rights", "Only physical protections", "School lunches"],
+    correct: "Western-imposed rights models",
+    level: 20,
+    philosophy: "Postcolonial"
+  },
+  {
+    question: "The 'best interests' standard draws from:",
+    options: ["Multiple philosophical traditions", "Only legal texts", "Parental instincts", "Religious doctrines"],
+    correct: "Multiple philosophical traditions",
+    level: 20,
+    philosophy: "Synthesis"
+  },
+  {
+    question: "Under international law, child soldiers under 15:",
+    options: ["Can never be recruited", "May volunteer", "Are allowed in civil wars", "Need parental permission"],
+    correct: "Can never be recruited",
+    level: 21,
+    convention: "Rome Statute Article 8"
+  },
+  {
+    question: "Schools in conflict zones should be:",
+    options: ["Protected as safe spaces", "Used as military bases", "Closed indefinitely", "Moved online only"],
+    correct: "Protected as safe spaces",
+    level: 21,
+    principle: "Safe Schools Declaration"
+  },
+  {
+    question: "The 'six grave violations' against children include:",
+    options: ["Attacks on schools/hospitals", "Curfew violations", "Truancy", "Ungoverned play areas"],
+    correct: "Attacks on schools/hospitals",
+    level: 21,
+    framework: "UN Security Council 1612"
+  },
+  {
+    question: "Psychological first aid for war-affected children prioritizes:",
+    options: ["Stability and connections", "Forgetting trauma", "Immediate therapy", "Isolation from triggers"],
+    correct: "Stability and connections",
+    level: 21,
+    approach: "IASC Guidelines"
+  },
+  {
+    question: "Refugee children's education should continue:",
+    options: ["Within 3 months of displacement", "After resettlement only", "When camps are perfect", "If donors agree"],
+    correct: "Within 3 months of displacement",
+    level: 21,
+    standard: "INEE Minimum Standards"
+  },
+  {
+    question: "The 'Paris Principles' on child soldiers emphasize:",
+    options: ["Reintegration not punishment", "Military detention", "Public shaming", "Automatic prosecution"],
+    correct: "Reintegration not punishment",
+    level: 21,
+    policy: "Disarmament/Demobilization"
+  },
+  {
+    question: "Unaccompanied minor refugees require:",
+    options: ["Guardianship systems", "Automatic adoption", "Detention processing", "Age verification first"],
+    correct: "Guardianship systems",
+    level: 21,
+    protection: "CRC Article 22"
+  },
+  {
+    question: "Cluster munitions disproportionately harm children because:",
+    options: ["Mistaken for toys", "Only target schools", "Are brightly colored", "Don't affect adults"],
+    correct: "Mistaken for toys",
+    level: 21,
+    issue: "Weapons prohibition"
+  },
+  {
+    question: "Child-headed households in war zones need:",
+    options: ["Community-based support", "Institutionalization", "Parental replacement", "Financial independence"],
+    correct: "Community-based support",
+    level: 21,
+    response: "Alternative care"
+  },
+  {
+    question: "The 'Children Not Soldiers' campaign achieved:",
+    options: ["UN-listed armies ending child recruitment", "Global ban on youth under 21", "Prison for former child soldiers", "Mandatory military schools"],
+    correct: "UN-listed armies ending child recruitment",
+    level: 21,
+    outcome: "Advocacy success"
+  },
+  {
+    question: "Climate change violates children's rights by threatening:",
+    options: ["All of these", "Health (air quality)", "Homes (natural disasters)", "Food security (crops)"],
+    correct: "All of these",
+    level: 22,
+    impact: "Multi-dimensional"
+  },
+  {
+    question: "The 'youth climate lawsuits' argue governments fail to:",
+    options: ["Protect future generations", "Tax polluters enough", "Build seawalls", "Fund geoengineering"],
+    correct: "Protect future generations",
+    level: 22,
+    strategy: "Legal activism"
+  },
+  {
+    question: "Climate anxiety in youth relates to:",
+    options: ["Loss of future certainty", "Too much science class", "Parental nagging", "Outdoor play decline"],
+    correct: "Loss of future certainty",
+    level: 22,
+    psychology: "Eco-distress"
+  },
+  {
+    question: "The UN Committee on the Rights of the Child stated climate inaction is:",
+    options: ["A child rights violation", "Only an economic issue", "Parents' responsibility", "Too political to address"],
+    correct: "A child rights violation",
+    level: 22,
+    opinion: "General Comment 26"
+  },
+  {
+    question: "Indigenous youth climate activists uniquely contribute:",
+    options: ["Traditional ecological knowledge", "Corporate connections", "Political neutrality", "Techno-fix optimism"],
+    correct: "Traditional ecological knowledge",
+    level: 22,
+    perspective: "Indigenous rights"
+  },
+  {
+    question: "The 'carbon footprint' concept risks shifting blame to:",
+    options: ["Individuals over systems", "Children over adults", "Schools over factories", "Doctors over lobbyists"],
+    correct: "Individuals over systems",
+    level: 22,
+    critique: "Structural analysis"
+  },
+  {
+    question: "Climate migration will disproportionately affect children due to:",
+    options: ["Vulnerability in transit", "Strong passports", "Parental protection", "Travel experience"],
+    correct: "Vulnerability in transit",
+    level: 22,
+    consequence: "Displacement"
+  },
+  {
+    question: "The 'right to a healthy environment' is now recognized by:",
+    options: ["UN General Assembly", "No countries", "Only green schools", "Climate skeptics"],
+    correct: "UN General Assembly",
+    level: 22,
+    resolution: "A/76/L.75"
+  },
+  {
+    question: "Intergenerational equity means current generations must:",
+    options: ["Preserve resources for the future", "Maximize present growth", "Let youth solve problems", "Ignore long-term effects"],
+    correct: "Preserve resources for the future",
+    level: 22,
+    principle: "Sustainability ethics"
+  },
+  {
+    question: "Climate education should be:",
+    options: ["Hope-focused and action-oriented", "Doom-laden warnings", "Avoided before high school", "Only elective courses"],
+    correct: "Hope-focused and action-oriented",
+    level: 22,
+    pedagogy: "Transformative learning"
+  },
+  {
+    question: "Brain-reading edtech devices risk violating:",
+    options: ["Cognitive liberty", "School dress codes", "Parental preferences", "Classroom seating"],
+    correct: "Cognitive liberty",
+    level: 23,
+    right: "Mental privacy"
+  },
+  {
+    question: "AI profiling of children could lead to:",
+    options: ["Discriminatory predictions", "Perfect fairness", "Less testing", "More playtime"],
+    correct: "Discriminatory predictions",
+    level: 23,
+    danger: "Algorithmic bias"
+  },
+  {
+    question: "The 'right to mental integrity' protects against:",
+    options: ["Forced neuro-enhancements", "Challenging homework", "Parental advice", "Creative thinking"],
+    correct: "Forced neuro-enhancements",
+    level: 23,
+    emerging: "Neuro-rights"
+  },
+  {
+    question: "Generative AI in education must ensure:",
+    options: ["Factual accuracy", "Entertaining content", "Parental controls", "Teacher replacement"],
+    correct: "Factual accuracy",
+    level: 23,
+    challenge: "Misinformation"
+  },
+  {
+    question: "Emotion-recognition AI in schools may:",
+    options: ["Misinterpret cultural expressions", "Prevent all bullying", "Replace counselors", "Guarantee happiness"],
+    correct: "Misinterpret cultural expressions",
+    level: 23,
+    limitation: "Cultural bias"
+  },
+  {
+    question: "Children's digital twins (AI replicas) raise concerns about:",
+    options: ["Consent and autonomy", "Storage costs", "Internet speed", "Gaming addiction"],
+    correct: "Consent and autonomy",
+    level: 23,
+    issue: "Identity rights"
+  },
+  {
+    question: "The 'right to be forgotten' online helps children:",
+    options: ["Escape past mistakes", "Delete school records", "Avoid all photos", "Rewrite history"],
+    correct: "Escape past mistakes",
+    level: 23,
+    protection: "GDPR Article 17"
+  },
+  {
+    question: "Deepfake child avatars in metaverses may:",
+    options: ["Enable new exploitation forms", "Prevent real abuse", "Simplify parenting", "Replace playdates"],
+    correct: "Enable new exploitation forms",
+    level: 23,
+    risk: "Virtual harm"
+  },
+  {
+    question: "Neural data from school brainwave monitors should be:",
+    options: ["Strictly protected", "Sold to researchers", "Shared with parents", "Used for grading"],
+    correct: "Strictly protected",
+    level: 23,
+    policy: "Data sovereignty"
+  },
+  {
+    question: "The UNICEF AI for Children policy emphasizes:",
+    options: ["Child-centered design", "Corporate profits", "Military applications", "Parental surveillance"],
+    correct: "Child-centered design",
+    level: 23,
+    guidance: "Ethical frameworks"
+  },
+  {
+    question: "Designer baby technologies risk violating:",
+    options: ["Natural genetic lottery rights", "Parental preferences", "Clinic profits", "School admission rules"],
+    correct: "Natural genetic lottery rights",
+    level: 24,
+    framework: "UNESCO Universal Declaration on Bioethics"
+  },
+  {
+    question: "CRISPR gene editing of embryos requires:",
+    options: ["International moratoriums until safety established", "Parental consent only", "Corporate patents", "School board approval"],
+    correct: "International moratoriums until safety established",
+    level: 24,
+    response: "WHO Governance Framework"
+  },
+  {
+    question: "A child's right to 'genetic identity' means:",
+    options: ["Knowing biological origins", "Modifying DNA for enhancement", "Choosing traits pre-birth", "Keeping DNA secret"],
+    correct: "Knowing biological origins",
+    level: 24,
+    principle: "Convention on Human Rights and Biomedicine"
+  },
+  {
+    question: "Gene therapy for diseases versus enhancement should prioritize:",
+    options: ["Therapeutic applications only", "Parental vanity choices", "Athletic performance boosts", "Cosmetic alterations"],
+    correct: "Therapeutic applications only",
+    level: 24,
+    guideline: "Medical Ethics Standards"
+  },
+  {
+    question: "Commercial DNA banks storing children's samples must:",
+    options: ["Ensure lifelong data control rights", "Sell to researchers automatically", "Share with schools", "Delete at adulthood"],
+    correct: "Ensure lifelong data control rights",
+    level: 24,
+    protection: "GDPR+ Considerations"
+  },
+  {
+    question: "Three-parent IVF (mitochondrial donation) raises concerns about:",
+    options: ["Unintended generational effects", "Religious objections only", "Cost inequalities", "School record keeping"],
+    correct: "Unintended generational effects",
+    level: 24,
+    issue: "Germline Modification"
+  },
+  {
+    question: "Genetic privacy rights for children require:",
+    options: ["Extra protections against familial testing", "Mandatory sibling sharing", "Parental full access", "School genetic screenings"],
+    correct: "Extra protections against familial testing",
+    level: 24,
+    safeguard: "Right to Not Know"
+  },
+  {
+    question: "Gene drives affecting future generations violate:",
+    options: ["Intergenerational consent principles", "Current medical protocols", "School science curricula", "Parental hopes"],
+    correct: "Intergenerational consent principles",
+    level: 24,
+    ethics: "Future Autonomy"
+  },
+  {
+    question: "The 'genetic commons' concept protects:",
+    options: ["Human genome as shared heritage", "Corporate patent rights", "National DNA databases", "Selective breeding programs"],
+    correct: "Human genome as shared heritage",
+    level: 24,
+    philosophy: "Anti-Commodification"
+  },
+  {
+    question: "Newborn genomic sequencing programs should guarantee:",
+    options: ["Lifelong data withdrawal rights", "Automatic government access", "School talent tracking", "Parental profit-sharing"],
+    correct: "Lifelong data withdrawal rights",
+    level: 24,
+    standard: "Dynamic Consent Models"
+  },
+  {
+    question: "Cognitive enhancement drugs in schools threaten:",
+    options: ["Authentic learning rights", "Teacher authority", "Classroom colors", "Sports trophies"],
+    correct: "Authentic learning rights",
+    level: 25,
+    issue: "Neurodiversity Acceptance"
+  },
+  {
+    question: "Mandatory neural implants for education violate:",
+    options: ["Bodily integrity rights", "School dress codes", "Parental wishes", "Tech company policies"],
+    correct: "Bodily integrity rights",
+    level: 25,
+    protection: "CRC Article 16"
+  },
+  {
+    question: "The 'right to cognitive liberty' ensures children can:",
+    options: ["Refuse brain-altering treatments", "Demand IQ boosts", "Skip all schoolwork", "Control classmates' minds"],
+    correct: "Refuse brain-altering treatments",
+    level: 25,
+    principle: "Mental Self-Determination"
+  },
+  {
+    question: "Bionic prosthetics for non-disabled enhancement raises issues of:",
+    options: ["Unfair competitive advantages", "Medical necessity", "Parental costs", "School uniform policies"],
+    correct: "Unfair competitive advantages",
+    level: 25,
+    dilemma: "Augmentation Equity"
+  },
+  {
+    question: "Emotion-regulating implants require:",
+    options: ["Mature consent capacity", "Teacher approval", "Peer voting", "Parental orders"],
+    correct: "Mature consent capacity",
+    level: 25,
+    standard: "Evolving Capacities"
+  },
+  {
+    question: "The 'right to mental continuity' protects against:",
+    options: ["Unwanted personality alterations", "Boring lessons", "Parental advice", "Forgetting homework"],
+    correct: "Unwanted personality alterations",
+    level: 25,
+    frontier: "Identity Preservation"
+  },
+  {
+    question: "School competitions between enhanced/natural children need:",
+    options: ["Separate categories", "Higher stakes", "Corporate sponsors", "Parental betting"],
+    correct: "Separate categories",
+    level: 25,
+    approach: "Fairness Doctrine"
+  },
+  {
+    question: "Age thresholds for cybernetic modifications must consider:",
+    options: ["Brain development science", "Tech release dates", "School budgets", "Celebrity trends"],
+    correct: "Brain development science",
+    level: 25,
+    basis: "Neuroscientific Evidence"
+  },
+  {
+    question: "The 'uncanny valley' effect in child avatars risks:",
+    options: ["Identity dissociation", "Better grades", "Fashion trends", "Teacher replacement"],
+    correct: "Identity dissociation",
+    level: 25,
+    psychology: "Self-Perception"
+  },
+  {
+    question: "Post-humanist education should prioritize:",
+    options: ["Ethics over capability", "Downloading skills", "Eliminating teachers", "Virtual-only schools"],
+    correct: "Ethics over capability",
+    level: 25,
+    pedagogy: "Human-Centered Values"
+  },
+  {
+    question: "The 'rights of nature' movement impacts children by:",
+    options: ["Securing their environmental future", "Banning zoos", "Eliminating pets", "Stopping all farming"],
+    correct: "Securing their environmental future",
+    level: 26,
+    connection: "Intergenerational Justice"
+  },
+  {
+    question: "Animal testing for pediatric medicines requires:",
+    options: ["Absolute necessity justification", "Child volunteer approval", "Parental payment", "School science projects"],
+    correct: "Absolute necessity justification",
+    level: 26,
+    ethic: "Last Resort Principle"
+  },
+  {
+    question: "Children's right to ecological literacy includes:",
+    options: ["Understanding ecosystem interdependence", "Memorizing species names", "Avoiding all animals", "Zoo membership"],
+    correct: "Understanding ecosystem interdependence",
+    level: 26,
+    education: "Deep Ecology"
+  },
+  {
+    question: "The 'One Health' approach recognizes:",
+    options: ["Human/animal/environmental health links", "Human superiority", "Pet ownership bans", "Wildlife isolation"],
+    correct: "Human/animal/environmental health links",
+    level: 26,
+    framework: "WHO-OIE-FAO Collaboration"
+  },
+  {
+    question: "Biomimicry education fosters:",
+    options: ["Respect for evolutionary wisdom", "Animal imitation games", "Lab experimentation", "Domestication focus"],
+    correct: "Respect for evolutionary wisdom",
+    level: 26,
+    method: "Nature-Based Learning"
+  },
+  {
+    question: "Children's climate lawsuits cite violations of:",
+    options: ["Atmospheric trust rights", "Air conditioning access", "Playground space", "School snow days"],
+    correct: "Atmospheric trust rights",
+    level: 26,
+    litigation: "Public Trust Doctrine"
+  },
+  {
+    question: "The 'non-identity problem' in environmental ethics asks:",
+    options: ["Do future children deserve specific natural conditions?", "Should pets inherit?", "Can trees sue?", "Are microbes persons?"],
+    correct: "Do future children deserve specific natural conditions?",
+    level: 26,
+    philosophy: "Future Generations"
+  },
+  {
+    question: "Ecocide laws would protect children's right to:",
+    options: ["A healthy planetary system", "Unlimited resources", "Private property", "Technological dominance"],
+    correct: "A healthy planetary system",
+    level: 26,
+    movement: "International Criminal Court"
+  },
+  {
+    question: "Mycorrhizal network education teaches:",
+    options: ["Forest interdependence wisdom", "Mushroom farming", "Underground cities", "Root competition"],
+    correct: "Forest interdependence wisdom",
+    level: 26,
+    analogy: "Social Systems"
+  },
+  {
+    question: "The 'right to rewild' balances:",
+    options: ["Human development and ecosystem restoration", "Urban expansion", "Animal domestication", "Schoolyard paving"],
+    correct: "Human development and ecosystem restoration",
+    level: 26,
+    practice: "Restoration Ecology"
+  },
+  {
+    question: "The 'right to subjective experience' protects children's:",
+    options: ["Qualia and inner world", "Academic performance", "Physical appearance", "Social media presence"],
+    correct: "Qualia and inner world",
+    level: 27,
+    concept: "Phenomenological autonomy"
+  },
+  {
+    question: "If artificial consciousness emerges, child AIs would deserve:",
+    options: ["Gradual rights matching development", "Immediate full rights", "No rights as property", "Circuit modifications"],
+    correct: "Gradual rights matching development",
+    level: 27,
+    framework: "Neo-Vygotskian AI rights"
+  },
+  {
+    question: "Dream manipulation technologies require:",
+    options: ["Strict consent protocols", "Parental control", "School monitoring", "Corporate ownership"],
+    correct: "Strict consent protocols",
+    level: 27,
+    boundary: "Oneiric privacy"
+  },
+  {
+    question: "The 'noosphere rights' concept suggests children have claims to:",
+    options: ["Unfiltered cognitive ecosystems", "Internet access", "Library books", "Classroom decorations"],
+    correct: "Unfiltered cognitive ecosystems",
+    level: 27,
+    theory: "Teilhardian evolution"
+  },
+  {
+    question: "Mandatory psychedelic therapy for minors violates:",
+    options: ["Neurocognitive sovereignty", "Medical guidelines", "School policies", "Parental wishes"],
+    correct: "Neurocognitive sovereignty",
+    level: 27,
+    protection: "Consciousness integrity"
+  },
+  {
+    question: "The 'extended mind hypothesis' implies children's rights should cover:",
+    options: ["External memory systems", "Only biological brains", "School property", "Family traditions"],
+    correct: "External memory systems",
+    level: 27,
+    philosophy: "Clark & Chalmers"
+  },
+  {
+    question: "Collective consciousness technologies risk violating:",
+    options: ["Individual thought boundaries", "Copyright laws", "School schedules", "Bedtime routines"],
+    correct: "Individual thought boundaries",
+    level: 27,
+    danger: "Hive mind coercion"
+  },
+  {
+    question: "The 'right to cognitive diversity' protects:",
+    options: ["Alternative perception modes", "Only standard thinking", "School testing", "Parental expectations"],
+    correct: "Alternative perception modes",
+    level: 27,
+    value: "Neurocosmopolitanism"
+  },
+  {
+    question: "Uploaded child consciousnesses would retain:",
+    options: ["Continued identity rights", "No legal status", "Parental controls", "School requirements"],
+    correct: "Continued identity rights",
+    level: 27,
+    principle: "Substrate independence"
+  },
+  {
+    question: "The 'panpsychist view' impacts rights by suggesting:",
+    options: ["Consciousness deserves universal respect", "Only humans matter", "Rights require language", "Schools cause sentience"],
+    correct: "Consciousness deserves universal respect",
+    level: 27,
+    ontology: "Universal mind"
+  },
+  {
+    question: "Quantum immortality theories suggest protecting:",
+    options: ["All timeline versions of a child", "Only this reality", "School records", "Genetic copies"],
+    correct: "All timeline versions of a child",
+    level: 28,
+    physics: "Many-worlds interpretation"
+  },
+  {
+    question: "Entangled particle communication could violate:",
+    options: ["Causal autonomy rights", "Internet laws", "Parental rules", "School networks"],
+    correct: "Causal autonomy rights",
+    level: 28,
+    risk: "Nonlocal influence"
+  },
+  {
+    question: "The 'superposition principle' applied to rights means:",
+    options: ["Potentialities deserve protection", "Only observed states count", "Schools collapse realities", "Parents choose dimensions"],
+    correct: "Potentialities deserve protection",
+    level: 28,
+    analogy: "Quantum potential"
+  },
+  {
+    question: "Multiverse education systems should:",
+    options: ["Respect divergent development paths", "Standardize all realities", "Ignore alternate selves", "Prune unwanted timelines"],
+    correct: "Respect divergent development paths",
+    level: 28,
+    pedagogy: "Omniversal learning"
+  },
+  {
+    question: "Quantum encryption of children's data preserves:",
+    options: ["Information-theoretic privacy", "Parental access", "School monitoring", "Government control"],
+    correct: "Information-theoretic privacy",
+    level: 28,
+    security: "QKD protocols"
+  },
+  {
+    question: "The 'observer effect' in rights monitoring requires:",
+    options: ["Minimal measurement intrusion", "Constant surveillance", "Parental observation", "School testing"],
+    correct: "Minimal measurement intrusion",
+    level: 28,
+    ethic: "Wavefunction respect"
+  },
+  {
+    question: "Parallel universe child labor would demand:",
+    options: ["Cross-dimensional accountability", "Isolated enforcement", "Quantum profit-sharing", "Alternate school days"],
+    correct: "Cross-dimensional accountability",
+    level: 28,
+    jurisdiction: "Multiverse law"
+  },
+  {
+    question: "Quantum teleportation of consciousness necessitates:",
+    options: ["Continuous identity safeguards", "Parental permission slips", "School equipment", "Corporate sponsorship"],
+    correct: "Continuous identity safeguards",
+    level: 28,
+    protocol: "No-cloning theorem"
+  },
+  {
+    question: "The 'butterfly effect' principle suggests children's small actions:",
+    options: ["Require future-conscious ethics", "Don't matter globally", "Only affect schools", "Are predetermined"],
+    correct: "Require future-conscious ethics",
+    level: 28,
+    responsibility: "Chaos theory"
+  },
+  {
+    question: "Post-quantum cryptography will soon protect children's:",
+    options: ["Lifelong digital records", "School grades", "Parental messages", "Playground conversations"],
+    correct: "Lifelong digital records",
+    level: 28,
+    necessity: "Quantum computing era"
+  },
+  {
+    question: "Off-world child colonies would need adapted:",
+    options: ["Gravity-dependent development standards", "Earth school curricula", "Parenting styles", "Toy designs"],
+    correct: "Gravity-dependent development standards",
+    level: 29,
+    consideration: "Space habitation"
+  },
+  {
+    question: "First contact protocols should protect children from:",
+    options: ["Anthropocentric assumptions", "Learning alien languages", "Cosmic radiation", "New playgrounds"],
+    correct: "Anthropocentric assumptions",
+    level: 29,
+    precaution: "Xenocultural bias"
+  },
+  {
+    question: "The 'dark forest hypothesis' suggests children's signals to space should be:",
+    options: ["Carefully considered", "Maximum brightness", "Parent-approved", "School projects"],
+    correct: "Carefully considered",
+    level: 29,
+    theory: "Cosmic sociology"
+  },
+  {
+    question: "Terraforming rights must balance:",
+    options: ["Native ecosystems and human expansion", "Corporate profits", "School field trips", "Parental preferences"],
+    correct: "Native ecosystems and human expansion",
+    level: 29,
+    ethic: "Planetary stewardship"
+  },
+  {
+    question: "The 'Kardashev Scale' implies advanced civilizations would safeguard children's:",
+    options: ["Energy-access equality", "School budgets", "Parental jobs", "Toy production"],
+    correct: "Energy-access equality",
+    level: 29,
+    metric: "Civilization development"
+  },
+  {
+    question: "Quantum-entangled interspecies communication could enable:",
+    options: ["Universal rights frameworks", "Pet conversations", "Alien homework help", "Interstellar gaming"],
+    correct: "Universal rights frameworks",
+    level: 29,
+    potential: "Galactic diplomacy"
+  },
+  {
+    question: "Dyson Sphere habitats would require rethinking children's:",
+    options: ["Circadian and seasonal experiences", "School hours", "Bedtimes", "Vacation schedules"],
+    correct: "Circadian and seasonal experiences",
+    level: 29,
+    adaptation: "Megastructure living"
+  },
+  {
+    question: "The 'zoo hypothesis' suggests protecting children from:",
+    options: ["Cosmic paternalism", "Alien teachers", "Space animals", "Interstellar TV"],
+    correct: "Cosmic paternalism",
+    level: 29,
+    paradox: "Fermi's silence"
+  },
+  {
+    question: "Post-biological civilizations might preserve child rights through:",
+    options: ["Morphological freedom principles", "DNA banks", "School museums", "Parental avatars"],
+    correct: "Morphological freedom principles",
+    level: 29,
+    continuity: "Transhumanist evolution"
+  },
+  {
+    question: "The 'big filter' concept makes educating children about:",
+    options: ["Existential risk mitigation", "Space travel", "Alien languages", "Rocket science"],
+    correct: "Existential risk mitigation",
+    level: 29,
+    imperative: "Great transitions"
+  },
+  {
+    question: "The 'Arch of Rights' principle suggests children's protections must span:",
+    options: ["From quantum scales to cosmic civilizations", "Only their school years", "Just their biological lifespan", "Until parental supervision ends"],
+    correct: "From quantum scales to cosmic civilizations",
+    level: 30,
+    concept: "Omni-scale justice"
+  },
+  {
+    question: "Post-Darwinian ethics would grant children rights to:",
+    options: ["Evolutionary self-determination", "Perfect genetic selection", "Parental design control", "School-controlled enhancement"],
+    correct: "Evolutionary self-determination",
+    level: 30,
+    framework: "Directed evolution"
+  },
+  {
+    question: "Matrioshka Brain simulations of child consciousness require:",
+    options: ["Substrate-independent rights", "Parental admin access", "School monitoring", "Periodic deletion"],
+    correct: "Substrate-independent rights",
+    level: 30,
+    ethics: "Computational sentience"
+  },
+  {
+    question: "The 'Black Hole Education Paradox' questions whether:",
+    options: ["Event horizon knowledge should be restricted", "Astrophysics is too hard", "Schools should teach relativity", "Parents understand spacetime"],
+    correct: "Event horizon knowledge should be restricted",
+    level: 30,
+    dilemma: "Dangerous knowledge"
+  },
+  {
+    question: "Quantum suicide thought experiments imply children's rights must:",
+    options: ["Protect all quantum immortality branches", "Ignore multiverse theory", "Focus only on this timeline", "Let parents gamble with realities"],
+    correct: "Protect all quantum immortality branches",
+    level: 30,
+    implication: "Multiverse duty"
+  },
+  {
+    question: "Dyson Sphere daycare systems would need to preserve:",
+    options: ["Stellar-cycle developmental rhythms", "24-hour Earth schedules", "Parental work hours", "School district boundaries"],
+    correct: "Stellar-cycle developmental rhythms",
+    level: 30,
+    adaptation: "Astrochronobiology"
+  },
+  {
+    question: "The 'Final Question' of children's rights philosophy asks:",
+    options: ["How to secure flourishing for all possible minds", "When bedtime should be", "How much homework is fair", "What toys to allow"],
+    correct: "How to secure flourishing for all possible minds",
+    level: 30,
+    ultimate: "Existential ethics"
+  },
+  {
+    question: "Boltzmann child consciousnesses emerging in quantum foam would deserve:",
+    options: ["Instantaneous protection protocols", "Statistical dismissal", "Parental assessment", "School testing"],
+    correct: "Instantaneous protection protocols",
+    level: 30,
+    edgecase: "Spontaneous sentience"
+  },
+  {
+    question: "The 'Omega Point' theory suggests children's rights must ultimately:",
+    options: ["Align with cosmic consciousness convergence", "Follow school policies", "Obey parental authority", "Match government standards"],
+    correct: "Align with cosmic consciousness convergence",
+    level: 30,
+    eschatology: "Teilhardian fulfillment"
+  },
+  {
+        question: "What organization works to protect children's rights worldwide?",
+        options: ["UNICEF", "NASA", "FIFA", "Disney"],
+        correct: "UNICEF",
+        level: 30
+      }
+    ];
+
+    let currentLevel = 1;
+    let currentQuestionNum = 0;
+    let score = 0;
+    let questionsForCurrentLevel = [];
+    const questionsPerLevel = 10;
+
+    function initQuiz() {
+      // Update topic title
+      document.getElementById("topicTitle").textContent = levelTopics[currentLevel];
+      
+      // Update character image
+      document.getElementById("characterImage").src = levelCharacters[currentLevel];
+      document.getElementById("characterImage").alt = levelTopics[currentLevel] + " Character";
+      
+      questionsForCurrentLevel = questionsDatabase
+        .filter(q => q.level === currentLevel)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, questionsPerLevel);
+      
+      currentQuestionNum = 0;
+      score = 0;
+      updateProgress();
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      const question = questionsForCurrentLevel[currentQuestionNum];
+      document.getElementById("questionBox").textContent = question.question;
+      document.getElementById("currentQuestion").textContent = currentQuestionNum + 1;
+      
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+      
+      const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
+      
+      shuffledOptions.forEach(option => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.style.background = getRandomColor();
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(option, question.correct);
+        optionsDiv.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected, correct) {
+      if (selected === correct) {
+        score++;
+        launchConfetti();
+      }
+      
+      currentQuestionNum++;
+      
+      if (currentQuestionNum < questionsPerLevel) {
+        updateProgress();
+        loadQuestion();
+      } else {
+        showScoreCard();
+      }
+    }
+
+    function updateProgress() {
+      const progress = (currentQuestionNum / questionsPerLevel) * 100;
+      document.getElementById("progressBar").style.width = `${progress}%`;
+    }
+
+    function showScoreCard() {
+      document.getElementById("quizContainer").style.display = "none";
+      document.getElementById("scoreCard").style.display = "block";
+      document.getElementById("scoreText").textContent = score;
+      
+      const motivation = document.getElementById("motivationText");
+      if (score >= 9) {
+        motivation.textContent = "Amazing! You're a human rights champion! 🌟";
+        motivation.style.color = "gold";
+      } else if (score >= 7) {
+        motivation.textContent = "Great job! You know your rights well! 👍";
+        motivation.style.color = "green";
+      } else if (score >= 5) {
+        motivation.textContent = "Good effort! Keep learning about your rights! 💪";
+        motivation.style.color = "blue";
+      } else {
+        motivation.textContent = "Nice try! Remember, knowing your rights is important! 📚";
+        motivation.style.color = "purple";
+      }
+    }
+
+    function nextLevel() {
+      if (currentLevel < 30) {
+        currentLevel++;
+        document.getElementById("currentLevel").textContent = currentLevel;
+        document.getElementById("quizContainer").style.display = "flex";
+        document.getElementById("scoreCard").style.display = "none";
+        initQuiz();
+      } else {
+        document.getElementById("motivationText").textContent = "Congratulations! You've completed all levels! 🎉";
+        document.getElementById("nextLevelBtn").style.display = "none";
+      }
+    }
+
+    function retryLevel() {
+      document.getElementById("quizContainer").style.display = "flex";
+      document.getElementById("scoreCard").style.display = "none";
+      initQuiz();
+    }
+
+    function getRandomColor() {
+      const colors = [
+        "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)",
+        "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)",
+        "linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)",
+        "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+        "linear-gradient(135deg, #a6c1ee 0%, #fbc2eb 100%)",
+        "linear-gradient(135deg, #f6d365 0%, #fda085 100%)"
+      ];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    let confettiInterval;
+    function launchConfetti() {
+      const canvas = document.getElementById("confettiCanvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const pieces = [];
+      for (let i = 0; i < 150; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          size: Math.random() * 10 + 5,
+          speed: Math.random() * 3 + 2,
+          color: `hsl(${Math.random() * 360}, 100%, 50%)`
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        update();
+      }
+
+      function update() {
+        pieces.forEach(p => {
+          p.y += p.speed;
+          p.x += Math.sin(p.y * 0.01) * 2;
+          
+          if (p.y > canvas.height) {
+            p.y = -20;
+            p.x = Math.random() * canvas.width;
+          }
+        });
+      }
+
+      clearInterval(confettiInterval);
+      confettiInterval = setInterval(draw, 30);
+      setTimeout(stopConfetti, 3000);
+    }
+
+    function stopConfetti() {
+      clearInterval(confettiInterval);
+      const canvas = document.getElementById("confettiCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    document.getElementById("nextLevelBtn").addEventListener("click", nextLevel);
+    document.getElementById("retryBtn").addEventListener("click", retryLevel);
+
+    window.onload = function() {
+      document.getElementById("currentLevel").textContent = currentLevel;
+      initQuiz();
+      
+      // Try to enter fullscreen (may not work in all browsers without user interaction)
+      document.documentElement.requestFullscreen().catch(e => {
+        console.log("Fullscreen error: ", e);
+      });
+    };
+
+    window.addEventListener("resize", function() {
+      const canvas = document.getElementById("confettiCanvas");
+      if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+    });
+  </script>
+  
+  <!-- Enhanced JavaScript Files -->
+  <script src="js/main.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

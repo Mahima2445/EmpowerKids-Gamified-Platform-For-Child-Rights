@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Rights - Kids Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            transform: scale(1.02);
+        }
+        .correct-answer {
+            background-color: #4ade80 !important;
+            color: white !important;
+        }
+        .wrong-answer {
+            background-color: #f87171 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    <header class="bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="../index.html" class="text-2xl font-bold">Kids Learning Hub</a>
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="basic-rights.html" class="hover:text-blue-200">Basic Rights</a></li>
+                    <li><a href="protection-rights.html" class="hover:text-blue-200">Protection Rights</a></li>
+                    <li><a href="participation-rights.html" class="hover:text-blue-200">Participation Rights</a></li>
+                    <li><a href="development-rights.html" class="hover:text-blue-200">Development Rights</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8">Development Rights</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4">Learn About Development Rights</h2>
+                <div class="video-container mb-6">
+                    <iframe src="https://www.youtube.com/embed/V1BFLitBkco" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="text-gray-700">Development rights ensure that every child has the opportunity to reach their full potential. These rights include access to education, healthcare, play, and cultural activities that support their growth and development.</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold mb-4">Test Your Knowledge</h2>
+                <button id="quizBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full mb-4">Start Quiz</button>
+                
+                <div id="quizContainer" class="hidden">
+                    <p id="question" class="text-lg font-semibold mb-4"></p>
+                    <div id="options" class="space-y-4 mb-4"></div>
+                    <p id="feedback" class="mb-4 font-semibold"></p>
+                    <div class="flex justify-between">
+                        <button id="prevBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+                            Previous Question
+                        </button>
+                        <button id="nextBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+                            Next Question
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const quizContainer = document.getElementById('quizContainer');
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const feedbackEl = document.getElementById('feedback');
+        const quizBtn = document.getElementById('quizBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answers = [];
+
+        const questions = [
+            {
+                question: "What is a key development right for children?",
+                options: ["The right to education", "The right to unlimited screen time", "The right to skip homework", "The right to stay up late"],
+                correct: 0
+            },
+            {
+                question: "Why is education important for child development?",
+                options: ["It's not important", "It helps children learn and grow", "It keeps children busy", "It makes parents happy"],
+                correct: 1
+            },
+            {
+                question: "Which of these is a development right?",
+                options: ["Access to healthcare", "Access to video games", "Access to candy", "Access to TV shows"],
+                correct: 0
+            },
+            {
+                question: "How does play contribute to child development?",
+                options: ["It doesn't matter", "It helps physical and mental growth", "It wastes time", "It makes children tired"],
+                correct: 1
+            },
+            {
+                question: "What role do cultural activities play in development?",
+                options: ["They are unnecessary", "They help children understand their heritage", "They are boring", "They take too much time"],
+                correct: 1
+            },
+            {
+                question: "Which organization supports children's development rights?",
+                options: ["UNICEF", "FIFA", "NASA", "WWE"],
+                correct: 0
+            },
+            {
+                question: "Development rights include:",
+                options: ["Only education", "Access to comprehensive development opportunities", "Only playtime", "Only healthcare"],
+                correct: 1
+            },
+            {
+                question: "What is the purpose of development rights?",
+                options: ["To keep children busy", "To make life difficult", "To help children reach their full potential", "To give parents a break"],
+                correct: 2
+            },
+            {
+                question: "How can parents support children's development rights?",
+                options: ["By ignoring them", "By providing learning opportunities", "By being strict", "By giving them everything they want"],
+                correct: 1
+            },
+            {
+                question: "Development rights help children:",
+                options: ["Grow into capable adults", "Avoid responsibilities", "Stay children forever", "Ignore learning"],
+                correct: 0
+            }
+        ];
+
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answers = new Array(questions.length).fill(null);
+            quizContainer.classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const question = questions[currentQuestion];
+            questionEl.textContent = `Question ${currentQuestion + 1}: ${question.question}`;
+
+            optionsEl.innerHTML = question.options.map((option, index) => `
+                <button class="quiz-option w-full p-4 mb-4 bg-white rounded-lg shadow-md hover:shadow-lg text-left ${answers[currentQuestion] === index ? 'bg-blue-100 border-blue-500' : ''}" 
+                        onclick="handleAnswer(${index})">
+                    ${option}
+                </button>
+            `).join('');
+
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === questions.length - 1 ? 'Finish Quiz' : 'Next Question';
+            feedbackEl.textContent = '';
+        }
+
+        function handleAnswer(selectedIndex) {
+            answers[currentQuestion] = selectedIndex;
+            const correct = selectedIndex === questions[currentQuestion].correct;
+            
+            const options = optionsEl.getElementsByClassName('quiz-option');
+            options[selectedIndex].classList.add(correct ? 'correct-answer' : 'wrong-answer');
+            
+            if (correct) {
+                score++;
+                feedbackEl.textContent = 'Correct! Well done!';
+                feedbackEl.className = 'text-green-600 font-bold';
+            } else {
+                feedbackEl.textContent = 'Sorry, that\'s not correct. Try again!';
+                feedbackEl.className = 'text-red-600 font-bold';
+            }
+        }
+
+        function showResults() {
+            quizContainer.innerHTML = `
+                <h2 class="text-2xl font-bold mb-4">Quiz Complete!</h2>
+                <p class="text-lg mb-4">You scored ${score} out of ${questions.length}!</p>
+                <button onclick="initQuiz()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+                    Try Again
+                </button>
+            `;
+        }
+
+        quizBtn.addEventListener('click', initQuiz);
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        });
+    </script>
+</body>
+</html>

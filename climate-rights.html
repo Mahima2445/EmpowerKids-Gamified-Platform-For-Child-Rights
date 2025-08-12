@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Rights - Kids Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            transform: scale(1.02);
+        }
+        .correct-answer {
+            background-color: #4ade80 !important;
+            color: white !important;
+        }
+        .wrong-answer {
+            background-color: #f87171 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    <header class="bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <h1 class="text-2xl font-bold">Kids Learning Hub</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="corusesreal.html" class="bg-yellow-400 hover:bg-yellow-500 text-purple-900 font-bold py-2 px-4 rounded-full flex items-center">
+                    <i class="fas fa-home mr-2"></i> Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+           
+                    <h2 class="text-3xl font-bold text-purple-800 mb-2">Understanding Climate Rights</h2>
+            <div class="video-container mb-6">
+                <iframe src="https://www.youtube.com/embed/PslL9WC-2cQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="prose max-w-none">
+                <p class="text-gray-700 mb-4">Climate rights are about ensuring everyone, especially children, has access to:</p>
+                <ul class="list-disc pl-6 mb-6 text-gray-700">
+                    <li>Clean air and water</li>
+                    <li>A healthy environment</li>
+                    <li>Protection from climate disasters</li>
+                    <li>Education about environmental issues</li>
+                    <li>A voice in climate decisions</li>
+                </ul>
+                <p class="text-gray-700 mb-4">Children can help protect climate rights by:</p>
+                <ul class="list-disc pl-6 mb-6 text-gray-700">
+                    <li>Learning about climate change</li>
+                    <li>Reducing waste and recycling</li>
+                    <li>Saving energy and water</li>
+                    <li>Participating in environmental activities</li>
+                    <li>Sharing knowledge with others</li>
+                </ul>
+            </div>
+        </section>
+
+            <div class="bg-white rounded-xl shadow-xl p-6 mb-8">
+                <h3 class="text-2xl font-bold text-purple-800 mb-4">Test Your Knowledge!</h3>
+                <button id="quizBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full mb-4">
+                    Start Quiz
+                </button>
+                
+                <div id="quizContainer" class="hidden">
+                    <div id="question" class="text-xl font-semibold mb-4"></div>
+                    <div id="options" class="mb-4"></div>
+                    <div id="feedback" class="mb-4"></div>
+                    <div class="flex justify-between">
+                        <button id="prevBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full hidden">
+                            Previous Question
+                        </button>
+                        <button id="nextBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+                            Next Question
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const quizContainer = document.getElementById('quizContainer');
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const feedbackEl = document.getElementById('feedback');
+        const quizBtn = document.getElementById('quizBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answers = [];
+
+        const questions = [
+            {
+                question: "What is a climate right?",
+                options: [
+                    "The right to pollute",
+                    "The right to a healthy environment",
+                    "The right to ignore climate change",
+                    "The right to cut down trees"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why is clean air important?",
+                options: [
+                    "It's not important",
+                    "Only for plants",
+                    "For healthy breathing and life",
+                    "Only for animals"
+                ],
+                correct: 2
+            },
+            {
+                question: "How can children help protect the environment?",
+                options: [
+                    "By using more plastic",
+                    "By wasting water",
+                    "By recycling and reducing waste",
+                    "By leaving lights on"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is climate change?",
+                options: [
+                    "Daily weather changes",
+                    "Long-term changes in Earth's climate",
+                    "Changing seasons",
+                    "Temperature changes during the day"
+                ],
+                correct: 1
+            },
+            {
+                question: "Why should children learn about environmental issues?",
+                options: [
+                    "It's not important for children",
+                    "Only adults need to know",
+                    "To help protect the planet's future",
+                    "Just for fun"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is recycling?",
+                options: [
+                    "Throwing everything away",
+                    "Reusing materials to make new things",
+                    "Buying new things",
+                    "Using more plastic"
+                ],
+                correct: 1
+            },
+            {
+                question: "How can we save energy at home?",
+                options: [
+                    "Leave all lights on",
+                    "Keep windows open with AC on",
+                    "Turn off lights when not needed",
+                    "Use more electricity"
+                ],
+                correct: 2
+            },
+            {
+                question: "Why is clean water important?",
+                options: [
+                    "Only for swimming",
+                    "It's not important",
+                    "For all life on Earth",
+                    "Only for plants"
+                ],
+                correct: 2
+            },
+            {
+                question: "What are climate disasters?",
+                options: [
+                    "Fun weather events",
+                    "Normal rain",
+                    "Extreme weather events that can harm people",
+                    "Sunny days"
+                ],
+                correct: 2
+            },
+            {
+                question: "How can children have a voice in climate decisions?",
+                options: [
+                    "They can't participate",
+                    "By staying quiet",
+                    "By joining environmental activities",
+                    "By ignoring the issue"
+                ],
+                correct: 2
+            }
+        ];
+
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answers = new Array(questions.length).fill(null);
+            quizContainer.classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const question = questions[currentQuestion];
+            questionEl.textContent = `Question ${currentQuestion + 1}: ${question.question}`;
+
+            optionsEl.innerHTML = question.options.map((option, index) => `
+                <button class="quiz-option w-full p-4 mb-4 bg-white rounded-lg shadow-md hover:shadow-lg text-left ${answers[currentQuestion] === index ? 'bg-blue-100 border-blue-500' : ''}" 
+                        onclick="handleAnswer(${index})">
+                    ${option}
+                </button>
+            `).join('');
+
+            prevBtn.classList.toggle('hidden', currentQuestion === 0);
+            nextBtn.textContent = currentQuestion === questions.length - 1 ? 'Finish Quiz' : 'Next Question';
+            feedbackEl.innerHTML = '';
+        }
+
+        window.handleAnswer = (index) => {
+            answers[currentQuestion] = index;
+            renderQuestion();
+        }
+
+        function showResults() {
+            score = answers.reduce((total, answer, index) => {
+                return total + (answer === questions[index].correct ? 1 : 0);
+            }, 0);
+
+            optionsEl.innerHTML = '';
+            questionEl.textContent = `Quiz Complete! Your Score: ${score}/${questions.length}`;
+            
+            if (score >= questions.length * 0.8) {
+                feedbackEl.innerHTML = `
+                    <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded-r-lg mb-4">
+                        <p class="text-green-800 font-bold">Amazing job! You're a climate rights expert! <i class="fas fa-star"></i></p>
+                    </div>
+                `;
+            } else if (score >= questions.length * 0.6) {
+                feedbackEl.innerHTML = `
+                    <div class="bg-blue-100 border-l-4 border-blue-500 p-4 rounded-r-lg mb-4">
+                        <p class="text-blue-800 font-bold">Good job! Keep learning about climate rights! <i class="fas fa-thumbs-up"></i></p>
+                    </div>
+                `;
+            } else {
+                feedbackEl.innerHTML = `
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-r-lg mb-4">
+                        <p class="text-yellow-800 font-bold">Keep learning! Watch the video again and try once more! <i class="fas fa-book-reader"></i></p>
+                    </div>
+                `;
+            }
+
+            prevBtn.classList.add('hidden');
+            nextBtn.textContent = 'Try Again';
+            nextBtn.onclick = initQuiz;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentQuestion--;
+            renderQuestion();
+        });
+
+        quizBtn.addEventListener('click', initQuiz);
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Checklist Generator | Education Rights Hub</title>
+    <link rel="stylesheet" href="output.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark-primary text-white transition-colors duration-300">
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white animate-fadeIn">
+        <nav class="container mx-auto px-4 py-2">
+            <a href="parentsu.html" class="text-white hover:text-gray-200"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+        </nav>
+        <h1 class="text-4xl font-semibold font-mono text-center text-gray-950 py-7">Admission Checklist Generator</h1>
+    </header>
+
+    <main class="container mx-auto p-4">
+        <div class="max-w-2xl mx-auto bg-dark-secondary p-6 rounded-lg shadow-md">
+            <form id="checklistGenerator" class="space-y-6">
+                <div class="space-y-4">
+                    <label class="block">
+                        <span class="text-lg font-medium">Admission Type</span>
+                        <select id="admissionType" class="mt-1 block w-full rounded-md bg-dark-primary border-gray-600 text-white focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+                            <option value="new">New Admission</option>
+                            <option value="transfer">School Transfer</option>
+                            <option value="rte">RTE Admission</option>
+                        </select>
+                    </label>
+
+                    <label class="block">
+                        <span class="text-lg font-medium">Grade Level</span>
+                        <select id="gradeLevel" class="mt-1 block w-full rounded-md bg-dark-primary border-gray-600 text-white focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+                            <option value="primary">Primary (1-5)</option>
+                            <option value="middle">Middle (6-8)</option>
+                            <option value="secondary">Secondary (9-10)</option>
+                            <option value="senior">Senior Secondary (11-12)</option>
+                        </select>
+                    </label>
+
+                    <label class="block">
+                        <span class="text-lg font-medium">Student Category</span>
+                        <select id="category" class="mt-1 block w-full rounded-md bg-dark-primary border-gray-600 text-white focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+                            <option value="general">General</option>
+                            <option value="sc">SC</option>
+                            <option value="st">ST</option>
+                            <option value="obc">OBC</option>
+                            <option value="ews">EWS</option>
+                        </select>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-purple-600 text-white px-6 py-3 rounded-lg transform transition-all duration-300 hover:bg-blue-600 hover:shadow-xl flex items-center justify-center">
+                    <i class="fas fa-list-check mr-2"></i>Generate Checklist
+                </button>
+            </form>
+
+            <div id="checklist" class="mt-8 p-6 bg-dark-primary rounded-lg hidden">
+                <h3 class="text-xl font-semibold mb-4">Required Documents Checklist</h3>
+                <ul id="checklistItems" class="space-y-3">
+                    <!-- Checklist items will be inserted here -->
+                </ul>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('checklistGenerator').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const admissionType = document.getElementById('admissionType').value;
+            const gradeLevel = document.getElementById('gradeLevel').value;
+            const category = document.getElementById('category').value;
+            
+            // Base documents required for all admissions
+            const baseDocuments = [
+                'Birth Certificate',
+                'Passport Size Photographs',
+                'Residential Address Proof',
+                'Parent ID Proof',
+                'Aadhar Card'
+            ];
+            
+            // Additional documents based on admission type
+            const additionalDocs = {
+                'new': [
+                    'Previous Academic Records (if any)',
+                    'Medical Fitness Certificate'
+                ],
+                'transfer': [
+                    'Transfer Certificate from Previous School',
+                    'Previous Academic Records',
+                    'Character Certificate',
+                    'Migration Certificate (if applicable)'
+                ],
+                'rte': [
+                    'Income Certificate',
+                    'Caste Certificate (if applicable)',
+                    'Bank Account Details',
+                    'BPL Card (if applicable)'
+                ]
+            };
+            
+            // Category specific documents
+            const categoryDocs = {
+                'sc': ['Caste Certificate'],
+                'st': ['Tribe Certificate'],
+                'obc': ['OBC Certificate (Non-Creamy Layer)'],
+                'ews': ['EWS Certificate', 'Income Certificate']
+            };
+            
+            // Combine all required documents
+            let documents = [...baseDocuments];
+            documents = documents.concat(additionalDocs[admissionType] || []);
+            if(category !== 'general') {
+                documents = documents.concat(categoryDocs[category] || []);
+            }
+            
+            // Create checklist HTML
+            const checklistHTML = documents.map(doc => `
+                <li class="flex items-center space-x-3">
+                    <input type="checkbox" class="rounded bg-dark-primary border-gray-600 text-purple-600 focus:ring-purple-500">
+                    <span>${doc}</span>
+                </li>
+            `).join('');
+            
+            document.getElementById('checklistItems').innerHTML = checklistHTML;
+            document.getElementById('checklist').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

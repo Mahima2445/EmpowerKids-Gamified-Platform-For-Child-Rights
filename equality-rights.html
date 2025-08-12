@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equality Rights - Kids Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .quiz-option {
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            transform: scale(1.02);
+        }
+        .correct-answer {
+            background-color: #4ade80 !important;
+            color: white !important;
+        }
+        .wrong-answer {
+            background-color: #f87171 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    <header class="bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="../index.html" class="text-2xl font-bold">Kids Learning Hub</a>
+            </div>
+            <nav>
+                <a href="corusesreal.html" class="hover:text-blue-200 transition-colors">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8 text-purple-600">Equality Rights</h1>
+
+        <section class="mb-12 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-purple-500">Learn About Equality Rights</h2>
+            <div class="video-container mb-6">
+                <iframe src="Equality Vs Equity _ Class 6 - Civics _ Learn With BYJU S.mp4" 
+                        title="Equality Rights for Children" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <div class="prose max-w-none">
+                <p class="mb-4">Equality rights ensure that all children are treated fairly and have the same opportunities, regardless of their:</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Race or ethnicity</li>
+                    <li>Gender</li>
+                    <li>Religion or beliefs</li>
+                    <li>Abilities or disabilities</li>
+                    <li>Social or economic background</li>
+                </ul>
+                <p>Understanding equality rights helps create a more inclusive and fair society where every child can thrive and reach their full potential.</p>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6 text-center text-purple-500">Test Your Knowledge</h2>
+            <div id="quiz" class="bg-white rounded-lg shadow-lg p-6">
+                <div id="question" class="text-xl mb-6"></div>
+                <div id="options" class="space-y-4"></div>
+                <div id="feedback" class="mt-4 p-4 rounded-lg hidden"></div>
+                <div class="flex justify-between mt-6">
+                    <button id="prevBtn" class="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition-colors hidden">Previous</button>
+                    <button id="nextBtn" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors hidden">Next</button>
+                </div>
+                <div id="results" class="mt-6 text-center hidden">
+                    <h3 class="text-xl font-semibold mb-4">Quiz Complete!</h3>
+                    <p class="text-lg">Your score: <span id="score">0</span>/10</p>
+                    <button onclick="initQuiz()" class="mt-4 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">Try Again</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const quizContainer = document.getElementById('quiz');
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const feedbackEl = document.getElementById('feedback');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const resultsEl = document.getElementById('results');
+        const scoreEl = document.getElementById('score');
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answers = [];
+
+        const questions = [
+            {
+                question: "What does equality mean?",
+                options: ["Everyone gets the same things", "Fair treatment and opportunities for all", "Only helping some people", "Being exactly the same"],
+                correct: 1
+            },
+            {
+                question: "Why is it important to respect different cultures?",
+                options: ["It's not important", "Only during holidays", "It creates understanding and inclusion", "To learn new languages"],
+                correct: 2
+            },
+            {
+                question: "How should we treat people with disabilities?",
+                options: ["Ignore them", "With respect and equal opportunities", "Give them special treatment only", "Keep them separate"],
+                correct: 1
+            },
+            {
+                question: "What is discrimination?",
+                options: ["Being kind to everyone", "Unfair treatment based on differences", "Having different friends", "Learning about cultures"],
+                correct: 1
+            },
+            {
+                question: "Why should all children have equal access to education?",
+                options: ["It's not necessary", "Only some need it", "Everyone deserves a chance to learn", "To make schools bigger"],
+                correct: 2
+            },
+            {
+                question: "What can you do to promote equality?",
+                options: ["Ignore differences", "Treat everyone with respect", "Stay with similar people", "Avoid new people"],
+                correct: 1
+            },
+            {
+                question: "Gender equality means:",
+                options: ["Boys and girls have equal opportunities", "Boys are better", "Girls are better", "They should be separate"],
+                correct: 0
+            },
+            {
+                question: "Economic background should NOT affect:",
+                options: ["Friendship choices", "Food preferences", "Access to basic rights", "Favorite colors"],
+                correct: 2
+            },
+            {
+                question: "Religious equality means:",
+                options: ["Everyone must follow one religion", "No religion is allowed", "Respecting different beliefs", "Ignoring religion"],
+                correct: 2
+            },
+            {
+                question: "The goal of equality rights is:",
+                options: ["Making everyone the same", "Creating a fair and inclusive society", "Separating people", "Ignoring differences"],
+                correct: 1
+            }
+        ];
+
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answers = new Array(questions.length).fill(null);
+            quizContainer.classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const question = questions[currentQuestion];
+            questionEl.textContent = `Question ${currentQuestion + 1}: ${question.question}`;
+
+            optionsEl.innerHTML = question.options.map((option, index) => `
+                <button class="quiz-option w-full p-4 mb-4 bg-white rounded-lg shadow-md hover:shadow-lg text-left ${answers[currentQuestion] === index ? 'bg-blue-100 border-blue-500' : ''}" 
+                        onclick="handleAnswer(${index})">
+                    ${option}
+                </button>
+            `).join('');
+
+            prevBtn.classList.toggle('hidden', currentQuestion === 0);
+            nextBtn.classList.toggle('hidden', currentQuestion === questions.length - 1);
+            resultsEl.classList.add('hidden');
+            feedbackEl.classList.add('hidden');
+        }
+
+        function handleAnswer(index) {
+            answers[currentQuestion] = index;
+            const correct = questions[currentQuestion].correct === index;
+            
+            feedbackEl.textContent = correct ? 'Correct! Well done!' : 'Incorrect. Try again!';
+            feedbackEl.className = `mt-4 p-4 rounded-lg ${correct ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+            feedbackEl.classList.remove('hidden');
+
+            if (correct) {
+                score++;
+            }
+
+            const options = optionsEl.getElementsByClassName('quiz-option');
+            for (let i = 0; i < options.length; i++) {
+                options[i].classList.remove('correct-answer', 'wrong-answer');
+                if (i === index) {
+                    options[i].classList.add(correct ? 'correct-answer' : 'wrong-answer');
+                }
+                options[i].disabled = true;
+            }
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        function showResults() {
+            questionEl.textContent = '';
+            optionsEl.innerHTML = '';
+            feedbackEl.classList.add('hidden');
+            prevBtn.classList.add('hidden');
+            nextBtn.classList.add('hidden');
+            resultsEl.classList.remove('hidden');
+            scoreEl.textContent = score;
+        }
+
+        initQuiz();
+    </script>
+</body>
+</html>
