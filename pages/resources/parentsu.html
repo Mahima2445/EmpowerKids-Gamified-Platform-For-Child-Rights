@@ -1,53 +1,244 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parent and teacher Support Section</title>
-    <link rel="stylesheet" href="output.css">
-    <!--  npx tailwindcss -i ./src/input.css -o ./public/output.css --watch -->
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
-    <script>
-        function toggleTools() {
-            const toolsGrid = document.getElementById('toolsGrid');
-            const toolsArrow = document.getElementById('toolsArrow');
-            
-            if (toolsGrid.style.maxHeight === '0px' || !toolsGrid.style.maxHeight) {
-                toolsGrid.style.maxHeight = toolsGrid.scrollHeight + 'px';
-                toolsArrow.style.transform = 'rotate(180deg)';
-            } else {
-                toolsGrid.style.maxHeight = '0px';
-                toolsArrow.style.transform = 'rotate(0deg)';
-            }
-        }
-
-        // Show tools section by default when page loads
-        window.addEventListener('load', () => {
-            const toolsGrid = document.getElementById('toolsGrid');
-            toolsGrid.style.maxHeight = toolsGrid.scrollHeight + 'px';
-        });
-    </script>
+    <title>Parent Resources - EmpowerKids Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../CSS/main.css">
+    <link rel="icon" href="../../assets/503-Kid-Game-Pre-Designed-Logo-removebg-preview.png" type="image/png">
 </head>
-<body class="bg-dark-primary text-white transition-colors duration-300">
-
-    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white animate-fadeIn">
-        <h1 class="text-4xl font-semibold font-mono text-center text-gray-950 py-7">Parent and Teacher Support</h1>
-        <button class="bg-teal-100 hover:bg-teal-200 text-teal-700 px-4 py-2 rounded-full text-sm transition btn-hover">
-            <a href="homepage.html"> Back to Home</a> <i class="fas fa-chevron-right ml-1"></i>
-            </button>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo and Navigation -->
+            <div class="flex items-center space-x-8">
+                <div class="flex items-center">
+                    <img src="../../assets/503-Kid-Game-Pre-Designed-Logo-removebg-preview.png" alt="EmpowerKids Logo" class="h-12 w-12">
+                    <span class="ml-2 text-2xl font-bold">EmpowerKids</span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../../homepage.html" class="nav-link px-2 py-2 transition">Home</a>
+                    <a href="../learning/corusesreal.html" class="nav-link px-2 py-2 transition">Courses</a>
+                    <a href="../activities/quiz.html" class="nav-link px-2 py-2 transition">Quiz</a>
+                    <a href="parentsu.html" class="nav-link px-2 py-2 transition text-yellow-300">Parents</a>
+                    <a href="../activities/games.html" class="nav-link px-2 py-2 transition">Games</a>
+                    <a href="faq.html" class="nav-link px-2 py-2 transition">FAQ</a>
+                </nav>
+            </div>
+            
+            <!-- User Section -->
+            <div class="flex items-center space-x-4">
+                <div id="user-info" class="hidden items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center font-bold text-purple-800">
+                        <span id="user-initial">U</span>
+                    </div>
+                    <div class="text-sm hidden md:block">
+                        <div id="username" class="font-medium"></div>
+                        <div id="user-email" class="text-xs text-purple-200"></div>
+                    </div>
+                    <button id="logout-btn" class="ml-2 text-white hover:text-yellow-300 transition">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+                
+                <div id="auth-buttons" class="flex space-x-3">
+                    <a href="../auth/login page.html" class="bg-white text-indigo-600 hover:bg-gray-100 px-5 py-2 rounded-full text-sm font-medium transition btn-hover shadow-sm">
+                        Login
+                    </a>
+                    <a href="../auth/singinpage.html" class="bg-yellow-400 hover:bg-yellow-500 text-purple-800 px-5 py-2 rounded-full text-sm font-medium transition btn-hover shadow-sm">
+                        Signup
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-indigo-700 px-4 py-3 transition-all duration-300 ease-in-out">
+            <a href="../../homepage.html" class="block py-3 text-white hover:text-yellow-300 transition border-b border-indigo-600">Home</a>
+            <a href="../learning/corusesreal.html" class="block py-3 text-white hover:text-yellow-300 transition border-b border-indigo-600">Courses</a>
+            <a href="../activities/quiz.html" class="block py-3 text-white hover:text-yellow-300 transition border-b border-indigo-600">Quiz</a>
+            <a href="parentsu.html" class="block py-3 text-yellow-300 border-b border-indigo-600">Parents</a>
+            <a href="faq.html" class="block py-3 text-white hover:text-yellow-300 transition">FAQ</a>
+        </div>
     </header>
 
-    <main class="container mx-auto p-4">
-        <!-- Education Right -->
-        <section class="bg-dark-secondary mb-8 p-6 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 animate-fadeIn">
-            <h2 class=" text-2xl font-semibold mb-4">Education Rights</h2>
-            <p class="mb-4">The Right to Education (RTE) Act is a landmark legislation in India that ensures free and compulsory education for all children aged 6 to 14 years. It guarantees every child the right to quality education, regardless of their background, and holds schools accountable for providing a safe and inclusive learning environment.</p>
-            <a href="faq.html" class="bg-purple-600 text-white px-6 py-3 rounded-lg transform transition-all duration-300 hover:scale-110 hover:bg-blue-600 hover:shadow-xl inline-flex items-center justify-center animate-float">Explore FAQs</a>
+    <!-- Hero Section -->
+    <section class="hero-pattern bg-indigo-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-indigo-900 mb-6">
+                    Parent & Teacher <span class="gradient-text">Support</span>
+                </h1>
+                <p class="text-lg text-indigo-800 mb-8 max-w-3xl mx-auto">
+                    Empowering parents and teachers with knowledge, tools, and resources to advocate for children's educational rights
+                </p>
+                <div class="flex justify-center items-center space-x-4">
+                    <div class="bg-yellow-400 p-3 rounded-full">
+                        <i class="fas fa-users text-purple-800 text-2xl"></i>
+                    </div>
+                    <div class="bg-indigo-600 p-3 rounded-full">
+                        <i class="fas fa-heart text-white text-2xl"></i>
+                    </div>
+                    <div class="bg-green-500 p-3 rounded-full">
+                        <i class="fas fa-hands-helping text-white text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+        <!-- Education Rights Section -->
+        <section class="mb-16">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-6">
+                    <div class="flex items-center space-x-4 text-white">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                        <h2 class="text-2xl font-bold">Education Rights Overview</h2>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-xl font-semibold text-indigo-800 mb-4">Right to Education (RTE) Act</h3>
+                            <p class="text-indigo-600 mb-6">
+                                The RTE Act is a landmark legislation in India that ensures free and compulsory education for all children aged 6 to 14 years. It guarantees every child the right to quality education, regardless of their background, and holds schools accountable for providing a safe and inclusive learning environment.
+                            </p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <div class="bg-green-100 p-2 rounded-full flex-shrink-0">
+                                        <i class="fas fa-check text-green-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-indigo-800">Free Education</h4>
+                                        <p class="text-sm text-indigo-600">No fees for children aged 6-14 in government schools</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-3">
+                                    <div class="bg-blue-100 p-2 rounded-full flex-shrink-0">
+                                        <i class="fas fa-users text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-indigo-800">25% Reservation</h4>
+                                        <p class="text-sm text-indigo-600">Private schools must reserve seats for disadvantaged children</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-3">
+                                    <div class="bg-purple-100 p-2 rounded-full flex-shrink-0">
+                                        <i class="fas fa-shield-alt text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-indigo-800">Quality Standards</h4>
+                                        <p class="text-sm text-indigo-600">Schools must meet infrastructure and teaching quality requirements</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <img src="../../assets/Children_playing.png" alt="Children Learning" class="w-full max-w-sm mx-auto rounded-lg shadow-lg">
+                            <div class="mt-6">
+                                <a href="faq.html" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-medium transition btn-hover shadow-lg inline-flex items-center">
+                                    Explore FAQs <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- guides for parent -->
-        <section class="bg-dark-secondary mb-8 p-6 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 animate-fadeIn">
-            <h2 class="text-2xl font-semibold mb-4">Guides for Parents</h2>
+        <!-- Parent Guides Section -->
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <span class="inline-block bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold mb-3">PARENT RESOURCES</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-indigo-900 mb-4">Guides for Parents</h2>
+                <p class="text-lg text-indigo-600 max-w-2xl mx-auto">
+                    Essential resources to help you advocate for your child's educational rights
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- School Admission Guide -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-emerald-500 flex items-center justify-center relative">
+                        <i class="fas fa-school text-white text-6xl"></i>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-green-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-emerald-800 mb-3">School Admission Guide</h3>
+                        <p class="text-emerald-600 mb-5">
+                            Step-by-step process for getting your child admitted to school under RTE.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-emerald-500">
+                                <i class="fas fa-download mr-1"></i> Download PDF
+                            </span>
+                            <button class="bg-emerald-100 hover:bg-emerald-200 text-emerald-700 px-4 py-2 rounded-full text-sm transition btn-hover">
+                                View Guide <i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rights Checklist -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center relative">
+                        <i class="fas fa-clipboard-list text-white text-6xl"></i>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-blue-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-3">Rights Checklist</h3>
+                        <p class="text-indigo-600 mb-5">
+                            Ensure your child's school is meeting all RTE requirements.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-indigo-500">
+                                <i class="fas fa-check-circle mr-1"></i> Interactive
+                            </span>
+                            <button class="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-4 py-2 rounded-full text-sm transition btn-hover">
+                                Start Check <i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legal Support -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center relative">
+                        <i class="fas fa-gavel text-white text-6xl"></i>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-purple-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-pink-800 mb-3">Legal Support</h3>
+                        <p class="text-pink-600 mb-5">
+                            Know your legal options when schools don't comply with RTE.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-pink-500">
+                                <i class="fas fa-phone mr-1"></i> Helpline
+                            </span>
+                            <button class="bg-pink-100 hover:bg-pink-200 text-pink-700 px-4 py-2 rounded-full text-sm transition btn-hover">
+                                Get Help <i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
             <p class="mb-4">Ensure your child’s education with a step-by-step guide to school enrollment, understand key school policies like fees and attendance, and discover practical tips to support learning at home. Empower yourself to create a bright future for your child.</p>
             <a href="parent.html" class="bg-purple-600 text-white px-6 py-3 rounded-lg transform transition-all duration-300 hover:scale-110 hover:bg-blue-600 hover:shadow-xl inline-flex items-center justify-center animate-float">View Guide</a>
         </section>
@@ -76,25 +267,116 @@
                 <!-- Admission Checklist Generator -->
                 <div class="bg-dark-primary p-4 rounded-lg shadow-inner">
                     <i class="fas fa-tasks text-purple-500 text-3xl mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-2">Admission Checklist</h3>
-                    <p class="text-gray-300 mb-4">Generate a customized checklist for school admission process.</p>
-                    <a href="checklist.html" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-blue-600 inline-flex items-center"><i class="fas fa-list-check mr-2"></i>Create List</a>
-                </div>
-                <!-- RTE Eligibility Checker -->
-                <div class="bg-dark-primary p-4 rounded-lg shadow-inner">
-                    <i class="fas fa-check-circle text-purple-500 text-3xl mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-2">RTE Eligibility Check</h3>
-                    <p class="text-gray-300 mb-4">Check if your child is eligible for RTE Act benefits.</p>
-                    <a href="eligibility.html" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-blue-600 inline-flex items-center"><i class="fas fa-search mr-2"></i>Check Now</a>
-                </div>
-            </div>
         </section>
-
     </main>
 
-    <footer class="bg-dark-secondary text-white text-center py-6 mt-8 animate-fadeIn">
-        <p>&copy; 2025 Education Rights Hub</p>
+    <!-- Footer -->
+    <footer class="bg-indigo-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="../../assets/503-Kid-Game-Pre-Designed-Logo-removebg-preview.png" alt="EmpowerKids Logo" class="h-10 w-10">
+                        <span class="ml-2 text-xl font-bold">EmpowerKids</span>
+                    </div>
+                    <p class="text-indigo-300 text-sm mb-4">
+                        Empowering children and parents through education rights awareness.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-indigo-300 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-indigo-300 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-indigo-300 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../../homepage.html" class="text-indigo-300 hover:text-white transition">Home</a></li>
+                        <li><a href="../learning/corusesreal.html" class="text-indigo-300 hover:text-white transition">Courses</a></li>
+                        <li><a href="../activities/quiz.html" class="text-indigo-300 hover:text-white transition">Quiz</a></li>
+                        <li><a href="parentsu.html" class="text-indigo-300 hover:text-white transition">Parents</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Parent Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="faq.html" class="text-indigo-300 hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="text-indigo-300 hover:text-white transition">Admission Guide</a></li>
+                        <li><a href="#" class="text-indigo-300 hover:text-white transition">Rights Checklist</a></li>
+                        <li><a href="#" class="text-indigo-300 hover:text-white transition">Legal Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-indigo-300">
+                        <p><i class="fas fa-envelope mr-2"></i>support@empowerkids.org</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Punjab, India</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-indigo-800 pt-8 text-center">
+                <p class="text-indigo-400 text-sm">
+                    &copy; 2025 EmpowerKids Platform. Created by Mahima Singh.
+                </p>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('block');
+            
+            // Toggle icon between bars and times
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Check for logged in user
+        document.addEventListener('DOMContentLoaded', function() {
+            const userData = localStorage.getItem('empowerkids_current_user');
+            const userInfo = document.getElementById('user-info');
+            const authButtons = document.getElementById('auth-buttons');
+            
+            if (userData) {
+                const user = JSON.parse(userData);
+                document.getElementById('username').textContent = user.name || user.username;
+                document.getElementById('user-email').textContent = user.email;
+                document.getElementById('user-initial').textContent = (user.name || user.username).charAt(0).toUpperCase();
+                
+                userInfo.classList.remove('hidden');
+                userInfo.classList.add('flex');
+                authButtons.classList.add('hidden');
+                
+                // Logout functionality
+                document.getElementById('logout-btn').addEventListener('click', function() {
+                    localStorage.removeItem('empowerkids_current_user');
+                    window.location.reload();
+                });
+            }
+        });
+    </script>
+    
+    <!-- Main JavaScript Files -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/auth.js"></script>
 </body>
 </html>
