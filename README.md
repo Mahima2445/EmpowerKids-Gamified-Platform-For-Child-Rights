@@ -117,32 +117,51 @@ To empower children and parents with knowledge about educational rights and oppo
 empowerkids-platform/
 │
 ├── 📄 homepage.html              # Main landing page
-├── 📄 intropage.html            # Welcome/intro page
-├── 📄 corusesreal.html          # Courses overview
-├── 📄 quiz.html                 # Quiz platform
-│
-├── 📁 pages/                    # Organized page structure
-│   ├── 📁 auth/                 # Authentication pages
-│   ├── 📁 rights/               # Rights modules
-│   └── 📁 resources/            # Parent/Teacher resources
-│
-├── 📁 auth/                     # Authentication pages
-│   ├── login page.html
-│   └── singinpage.html
-│
-├── 📁 rights/                   # Rights education modules
-│   ├── basic-rights.html
-│   ├── education-rights.html
-│   ├── protection-rights.html
-│   ├── development-rights.html
-│   └── [other rights modules]
-│
-├── 📁 resources/                # Parent/Teacher resources
-│   ├── parentsu.html
-│   ├── parent.html
-│   ├── teacher.html
-│   ├── faq.html
-│   └── checklist.html
+├── 📄 pages/
+│   ├── 📄 intropage.html        # Welcome/intro page
+│   ├── � auth/                 # Authentication pages
+│   │   ├── login page.html
+│   │   └── singinpage.html
+│   ├── 📁 rights/               # Rights education modules
+│   │   ├── basic-rights.html
+│   │   ├── education-rights.html
+│   │   ├── protection-rights.html
+│   │   ├── development-rights.html
+│   │   ├── participation-rights.html
+│   │   ├── equality-rights.html
+│   │   ├── digital-rights.html
+│   │   ├── health-rights.html
+│   │   ├── expression-rights.html
+│   │   ├── family-rights.html
+│   │   ├── nature-rights.html
+│   │   ├── climate-rights.html
+│   │   ├── tech-ai-rights.html
+│   │   ├── genetic-rights.html
+│   │   ├── neuro-rights.html
+│   │   ├── quantum-rights.html
+│   │   ├── space-rights.html
+│   │   ├── war-conflict.html
+│   │   ├── balancing-rights.html
+│   │   └── rights-dilemmas.html
+│   ├── 📁 resources/            # Parent/Teacher resources
+│   │   ├── parent.html
+│   │   ├── parentsu.html
+│   │   ├── teacher.html
+│   │   ├── faq.html
+│   │   ├── checklist.html
+│   │   ├── calculator.html
+│   │   └── eligibility.html
+│   ├── 📁 activities/           # Games and interactive content
+│   │   ├── quiz.html
+│   │   ├── games.html
+│   │   └── play-culture.html
+│   └── 📁 learning/             # Learning modules
+│       ├── corusesreal.html     # Course catalog
+│       ├── consciousness.html
+│       ├── critical-thinking.html
+│       ├── global-citizenship.html
+│       ├── justice-systems.html
+│       └── social-responsibility.html
 │
 ├── 📁 CSS/                      # Stylesheets
 │   ├── main.css                 # Unified CSS file
@@ -155,15 +174,16 @@ empowerkids-platform/
 │   └── auth.js                  # Authentication
 │
 ├── 📁 assets/                   # Images, videos, icons
-│   ├── images/
-│   ├── videos/
-│   └── icons/
+│   ├── 503-Kid-Game-Pre-Designed-Logo-removebg-preview.png
+│   ├── [educational videos]
+│   └── [images and graphics]
 │
 ├── 📁 backend/                  # Backend files
 │   ├── dbconfig.php
 │   └── login.php
 │
 ├── 📁 docs/                     # Documentation
+│   └── DEVELOPMENT.md
 │
 └── 📄 README.md                 # Project documentation
 ```
