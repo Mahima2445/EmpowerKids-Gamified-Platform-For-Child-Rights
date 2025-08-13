@@ -5,8 +5,12 @@
   "main": "homepage.html",
   "scripts": {
     "dev": "serve . -p 3000",
+    "start": "serve . -p 3000",
     "build": "tailwindcss -i ./CSS/input.css -o ./CSS/output.css --watch",
-    "build-prod": "tailwindcss -i ./CSS/input.css -o ./CSS/output.css --minify"
+    "build-prod": "tailwindcss -i ./CSS/input.css -o ./CSS/output.css --minify",
+    "preview": "serve . -p 8080",
+    "deploy:netlify": "netlify deploy --prod",
+    "deploy:vercel": "vercel --prod"
   },
   "keywords": [
     "children-rights",
