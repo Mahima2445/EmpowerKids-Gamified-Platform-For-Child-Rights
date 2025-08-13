@@ -4,9 +4,10 @@
 
 ### Option 1: GitHub Pages (Recommended - Already Configured!)
 
-Your platform is already set up for automatic GitHub Pages deployment! 
+Your platform is already set up for automatic GitHub Pages deployment!
 
 **Steps to activate:**
+
 1. Go to your GitHub repository: `https://github.com/Mahima2445/EmpowerKids-Gamified-Platform-For-Child-Rights`
 2. Click on **Settings** tab
 3. Scroll down to **Pages** section
@@ -20,6 +21,7 @@ Your platform is already set up for automatic GitHub Pages deployment!
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Mahima2445/EmpowerKids-Gamified-Platform-For-Child-Rights)
 
 **Manual deployment:**
+
 1. Visit [netlify.com](https://netlify.com)
 2. Drag and drop your project folder to Netlify
 3. Your site will be live instantly with a random URL
@@ -30,13 +32,16 @@ Your platform is already set up for automatic GitHub Pages deployment!
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/Mahima2445/EmpowerKids-Gamified-Platform-For-Child-Rights)
 
 **Steps:**
+
 1. Visit [vercel.com](https://vercel.com)
 2. Sign up with GitHub
 3. Import your repository
 4. Deploy with default settings
 
 # Push your code
+
 git push -u origin main
+
 ```
 
 ### Step 3: Enable GitHub Pages
@@ -51,8 +56,10 @@ git push -u origin main
 ### Step 4: Access Your Site
 Your site will be available at:
 ```
+
 https://YOUR-USERNAME.github.io/empowerkids-platform
-```
+
+````
 
 *Note: It may take a few minutes for the site to be live*
 
@@ -91,22 +98,25 @@ firebase init hosting
 
 # Deploy
 firebase deploy
-```
+````
 
 ## 🔧 Local Development Server
 
 ### Option 1: Node.js serve
+
 ```bash
 npm install
 npm run dev
 ```
 
 ### Option 2: Python server
+
 ```bash
 python -m http.server 8000
 ```
 
 ### Option 3: PHP server (if using backend)
+
 ```bash
 php -S localhost:8000
 ```
@@ -132,12 +142,14 @@ Not Deployed:
 ## 🔒 Environment Configuration
 
 ### Production Settings
+
 - Ensure all paths are relative
 - Optimize images and videos
 - Minify CSS and JavaScript
 - Enable HTTPS
 
 ### GitHub Pages Limitations
+
 - Static files only (no server-side processing)
 - No PHP backend support
 - File size limits (1GB repository, 100MB per file)
@@ -145,11 +157,13 @@ Not Deployed:
 ## 📊 Monitoring Your Deployment
 
 ### GitHub Pages Status
+
 - Check repository Settings > Pages for deployment status
 - View deployment history in Actions tab
 - Monitor traffic in Insights tab
 
 ### Custom Domain (Optional)
+
 1. Purchase domain from provider
 2. Add CNAME file with your domain
 3. Configure DNS settings
@@ -160,21 +174,25 @@ Not Deployed:
 ### Common Issues:
 
 **Site not loading:**
+
 - Check if GitHub Pages is enabled
 - Verify main branch has your files
 - Wait 5-10 minutes for deployment
 
 **Images not showing:**
+
 - Check file paths use `assets/` prefix
 - Ensure files are committed to repository
 - Verify file names match exactly (case-sensitive)
 
 **CSS not loading:**
+
 - Check file paths in HTML
 - Ensure CSS files are in repository
 - Clear browser cache
 
 **JavaScript errors:**
+
 - Check browser console for errors
 - Verify file paths are correct
 - Ensure all dependencies are loaded
@@ -182,12 +200,14 @@ Not Deployed:
 ## 📈 Performance Optimization
 
 ### Before Deployment:
+
 1. Optimize image sizes
 2. Minify CSS and JavaScript
 3. Remove unused files
 4. Test on multiple devices
 
 ### After Deployment:
+
 1. Test site speed
 2. Check mobile responsiveness
 3. Verify all links work
