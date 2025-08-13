@@ -3,170 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses - EmpowerKids Platform</title>
+    <title>Kids Rights Learning Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../CSS/main.css">
-    <link rel="icon" href="../../assets/503-Kid-Game-Pre-Designed-Logo-removebg-preview.png" type="image/png">
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
-    <!-- Header -->
-    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo and Navigation -->
-            <div class="flex items-center space-x-8">
-                <div class="flex items-center">
-                    <img src="../../assets/503-Kid-Game-Pre-Designed-Logo-removebg-preview.png" alt="EmpowerKids Logo" class="h-12 w-12">
-                    <span class="ml-2 text-2xl font-bold">EmpowerKids</span>
-                </div>
-                
-                <nav class="hidden md:flex space-x-6">
-                    <a href="../../homepage.html" class="nav-link px-2 py-2 transition">Home</a>
-                    <a href="corusesreal.html" class="nav-link px-2 py-2 transition text-yellow-300">Courses</a>
-                    <a href="../activities/quiz.html" class="nav-link px-2 py-2 transition">Quiz</a>
-                    <a href="../resources/parentsu.html" class="nav-link px-2 py-2 transition">Parents</a>
-                    <a href="../activities/games.html" class="nav-link px-2 py-2 transition">Games</a>
-                    <a href="../resources/faq.html" class="nav-link px-2 py-2 transition">FAQ</a>
-                </nav>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen font-sans">
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-6 py-6">
+            <div class="flex items-center space-x-3">
+                <i class="fas fa-chalkboard-teacher text-4xl text-white opacity-90"></i>
+                <h1 class="text-3xl font-bold tracking-tight">Kids Rights Learning Hub</h1>
             </div>
-            
-            <!-- User Section -->
-            <div class="flex items-center space-x-4">
-                <div id="user-info" class="hidden items-center space-x-2">
-                    <div class="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center font-bold text-purple-800">
-                        <span id="user-initial">U</span>
-                    </div>
-                    <div class="text-sm hidden md:block">
-                        <div id="username" class="font-medium"></div>
-                        <div id="user-email" class="text-xs text-purple-200"></div>
-                    </div>
-                    <button id="logout-btn" class="ml-2 text-white hover:text-yellow-300 transition">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </button>
-                </div>
-                
-                <div id="auth-buttons" class="flex space-x-3">
-                    <a href="../auth/login page.html" class="bg-white text-indigo-600 hover:bg-gray-100 px-5 py-2 rounded-full text-sm font-medium transition btn-hover shadow-sm">
-                        Login
-                    </a>
-                    <a href="../auth/singinpage.html" class="bg-yellow-400 hover:bg-yellow-500 text-purple-800 px-5 py-2 rounded-full text-sm font-medium transition btn-hover shadow-sm">
-                        Signup
-                    </a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-white p-2 focus:outline-none">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-indigo-700 px-4 py-3 transition-all duration-300 ease-in-out">
-            <a href="../../homepage.html" class="block py-3 text-white hover:text-yellow-300 transition border-b border-indigo-600">Home</a>
-            <a href="corusesreal.html" class="block py-3 text-yellow-300 border-b border-indigo-600">Courses</a>
-            <a href="../activities/quiz.html" class="block py-3 text-white hover:text-yellow-300 transition border-b border-indigo-600">Quiz</a>
-            <a href="../resources/parentsu.html" class="block py-3 text-white hover:text-yellow-300 transition border-b border-indigo-600">Parents</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-pattern bg-indigo-100 py-16">
-        <div class="container mx-auto px-4">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-indigo-900 mb-6">
-                    Children's Rights <span class="gradient-text">Learning Hub</span>
-                </h1>
-                <p class="text-lg text-indigo-800 mb-8 max-w-3xl mx-auto">
-                    Explore interactive courses designed to help you understand and advocate for children's fundamental rights
-                </p>
-                <div class="flex justify-center items-center space-x-4">
-                    <div class="bg-yellow-400 p-3 rounded-full">
-                        <i class="fas fa-chalkboard-teacher text-purple-800 text-2xl"></i>
-                    </div>
-                    <div class="bg-indigo-600 p-3 rounded-full">
-                        <i class="fas fa-child text-white text-2xl"></i>
-                    </div>
-                    <div class="bg-green-500 p-3 rounded-full">
-                        <i class="fas fa-heart text-white text-2xl"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-16">
-        <div class="text-center mb-12">
-            <span class="inline-block bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold mb-3">LEARNING PATHS</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-indigo-900 mb-4">Explore Children's Rights Topics</h2>
-            <p class="text-lg text-indigo-600 max-w-2xl mx-auto">
-                Interactive courses designed to help you understand and advocate for children's fundamental rights
-            </p>
-        </div>
+    <main class="container mx-auto px-6 py-12">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-purple-900 mb-12 text-center tracking-tight">Explore Children's Rights Topics</h2>
             
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Basic Rights -->
-            <a href="../rights/basic-rights.html" class="group bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                <div class="h-48 bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center relative">
-                    <i class="fas fa-star text-white text-6xl"></i>
-                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-blue-300"></div>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-xl font-bold text-indigo-800">Basic Rights</h3>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Beginner</span>
-                    </div>
-                    <p class="text-indigo-600 mb-5">
-                        Understanding your fundamental rights as a child.
-                    </p>
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-sm text-indigo-500 mr-2">
-                                <i class="fas fa-star text-yellow-400"></i> 4.9
-                            </span>
-                            <span class="text-sm text-indigo-400">
-                                <i class="fas fa-user-graduate mr-1"></i> 200+
-                            </span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Basic Rights -->
+                <a href="../rights/basic-rights.html" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-5 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-star text-2xl"></i>
                         </div>
-                        <span class="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-4 py-2 rounded-full text-sm transition btn-hover">
-                            Learn Now <i class="fas fa-chevron-right ml-1"></i>
-                        </span>
+                        <h3 class="text-2xl font-bold text-purple-900 group-hover:text-purple-700 transition-colors duration-300">Basic Rights</h3>
                     </div>
-                </div>
-            </a>
+                    <p class="text-gray-600 text-lg">Understanding your fundamental rights.</p>
+                </a>
 
-            <!-- Protection Rights -->
-            <a href="../rights/protection-rights.html" class="group bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                <div class="h-48 bg-gradient-to-r from-red-400 to-pink-500 flex items-center justify-center relative">
-                    <i class="fas fa-shield-alt text-white text-6xl"></i>
-                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-red-300"></div>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-xl font-bold text-pink-800">Protection Rights</h3>
-                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Essential</span>
-                    </div>
-                    <p class="text-pink-600 mb-5">
-                        Discover how children are protected from harm and discrimination.
-                    </p>
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-sm text-pink-500 mr-2">
-                                <i class="fas fa-star text-yellow-400"></i> 4.8
-                            </span>
-                            <span class="text-sm text-pink-400">
-                                <i class="fas fa-user-graduate mr-1"></i> 180+
-                            </span>
+                <!-- Protection Rights -->
+                <a href="../rights/protection-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-500 mr-4">
+                            <i class="fas fa-user-shield text-2xl"></i>
                         </div>
-                        <span class="bg-pink-100 hover:bg-pink-200 text-pink-700 px-4 py-2 rounded-full text-sm transition btn-hover">
-                            Learn Now <i class="fas fa-chevron-right ml-1"></i>
-                        </span>
+                        <h3 class="text-xl font-bold text-purple-800">Protection Rights</h3>
                     </div>
-                </div>
-            </a>
+                    <p class="text-gray-600">Discover how children are protected from harm.</p>
+                </a>
 
                 <!-- Health Rights -->
-                <a href="health-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/health-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-500 mr-4">
                             <i class="fas fa-heartbeat text-2xl"></i>
@@ -177,7 +56,7 @@
                 </a>
 
                 <!-- Education Rights -->
-                <a href="education-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/education-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500 mr-4">
                             <i class="fas fa-graduation-cap text-2xl"></i>
@@ -188,7 +67,7 @@
                 </a>
 
                 <!-- Equality Rights -->
-                <a href="equality-rights.html" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100">
+                <a href="../rights/equality-rights.html" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100">
                     <div class="flex items-center mb-6">
                         <div class="w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mr-5 group-hover:scale-110 transition-transform duration-300">
                             <i class="fas fa-balance-scale text-2xl"></i>
@@ -199,7 +78,7 @@
                 </a>
 
                 <!-- Family Rights -->
-                <a href="family-rights.html" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100">
+                <a href="../rights/family-rights.html" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100">
                     <div class="flex items-center mb-6">
                         <div class="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 mr-5 group-hover:scale-110 transition-transform duration-300">
                             <i class="fas fa-home text-2xl"></i>
@@ -210,7 +89,7 @@
                 </a>
 
                 <!-- Expression Rights -->
-                <a href="expression-rights.html" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100">
+                <a href="../rights/expression-rights.html" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border border-gray-100">
                     <div class="flex items-center mb-6">
                         <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mr-5 group-hover:scale-110 transition-transform duration-300">
                             <i class="fas fa-comments text-2xl"></i>
@@ -221,7 +100,7 @@
                 </a>
 
                 <!-- Play & Culture -->
-                <a href="play-culture.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/play-culture.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-500 mr-4">
                             <i class="fas fa-theater-masks text-2xl"></i>
@@ -232,7 +111,7 @@
                 </a>
 
                 <!-- Digital Rights -->
-                <a href="digital-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/digital-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
                             <i class="fas fa-laptop text-2xl"></i>
@@ -265,7 +144,7 @@
                 </a>
 
                 <!-- Balancing Rights -->
-                <a href="balancing-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/balancing-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-500 mr-4">
                             <i class="fas fa-balance-scale-right text-2xl"></i>
@@ -287,7 +166,7 @@
                 </a>
 
                 <!-- Rights Dilemmas -->
-                <a href="rights-dilemmas.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/rights-dilemmas.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 mr-4">
                             <i class="fas fa-puzzle-piece text-2xl"></i>
@@ -309,7 +188,7 @@
                 </a>
 
                 <!-- Child Labor -->
-                <a href="child-labor.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/child-labor.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-500 mr-4">
                             <i class="fas fa-ban text-2xl"></i>
@@ -320,7 +199,7 @@
                 </a>
 
                 <!-- Youth Participation -->
-                <a href="participation-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/participation-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-500 mr-4">
                             <i class="fas fa-users text-2xl"></i>
@@ -331,7 +210,7 @@
                 </a>
 
                 <!-- Rights Principles -->
-                <a href="rights-principles.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/rights-principles.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500 mr-4">
                             <i class="fas fa-book text-2xl"></i>
@@ -342,7 +221,7 @@
                 </a>
 
                 <!-- UN Systems -->
-                <a href="un-systems.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/un-systems.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
                             <i class="fas fa-building text-2xl"></i>
@@ -353,7 +232,7 @@
                 </a>
 
                 <!-- Philosophy -->
-                <a href="philosophy.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/philosophy.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 mr-4">
                             <i class="fas fa-lightbulb text-2xl"></i>
@@ -364,7 +243,7 @@
                 </a>
 
                 <!-- War & Conflict -->
-                <a href="war-conflict.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/war-conflict.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-500 mr-4">
                             <i class="fas fa-dove text-2xl"></i>
@@ -375,7 +254,7 @@
                 </a>
 
                 <!-- Climate Rights -->
-                <a href="climate-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/climate-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-500 mr-4">
                             <i class="fas fa-leaf text-2xl"></i>
@@ -386,7 +265,7 @@
                 </a>
 
                 <!-- Tech & AI -->
-                <a href="tech-ai.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/tech-ai-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
                             <i class="fas fa-robot text-2xl"></i>
@@ -397,7 +276,7 @@
                 </a>
 
                 <!-- Genetic Rights -->
-                <a href="genetic-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/genetic-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 mr-4">
                             <i class="fas fa-dna text-2xl"></i>
@@ -408,7 +287,7 @@
                 </a>
 
                 <!-- Neuro Rights -->
-                <a href="neuro-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/neuro-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center text-pink-500 mr-4">
                             <i class="fas fa-brain text-2xl"></i>
@@ -419,7 +298,7 @@
                 </a>
 
                 <!-- Nature Rights -->
-                <a href="nature-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/nature-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-500 mr-4">
                             <i class="fas fa-tree text-2xl"></i>
@@ -441,7 +320,7 @@
                 </a>
 
                 <!-- Quantum Rights -->
-                <a href="quantum-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/quantum-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-4">
                             <i class="fas fa-atom text-2xl"></i>
@@ -452,7 +331,7 @@
                 </a>
 
                 <!-- Space Rights -->
-                <a href="space-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/space-rights.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-500 mr-4">
                             <i class="fas fa-rocket text-2xl"></i>
@@ -463,7 +342,7 @@
                 </a>
 
                 <!-- Future Rights -->
-                <a href="rights-dilemmas.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <a href="../rights/rights-dilemmas.html" class="bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500 mr-4">
                             <i class="fas fa-clock text-2xl"></i>
@@ -473,16 +352,356 @@
                     <p class="text-gray-600">Emerging rights and future challenges.</p>
                 </a>
             </div>
+
+            <!-- Video Learning Section -->
+            <div class="mt-20">
+                <div class="text-center mb-12">
+                    <span class="inline-block bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold mb-3">VIDEO LEARNING</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-purple-900 mb-4">Educational Videos</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Watch these comprehensive videos to deepen your understanding of children's rights
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Video 1: Article 26 Education -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/Article 26_ The Right to Education.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs">
+                                Essential
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Article 26: Right to Education</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Understanding the fundamental right to education under Article 26
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Educational Video
+                                </span>
+                                <span class="text-xs text-green-600 font-semibold">
+                                    <i class="fas fa-check-circle mr-1"></i> Watch to Learn
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 2: Children's Rights & Responsibilities -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/RIGHTS and RESPONSIBILITIES of Children 👧🏻👦🏻📖 Smile and Learn.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded text-xs">
+                                Beginner
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Rights & Responsibilities</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Learn about children's rights and responsibilities in an easy way
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Smile and Learn
+                                </span>
+                                <span class="text-xs text-green-600 font-semibold">
+                                    <i class="fas fa-star mr-1"></i> Popular
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 3: Digital Rights -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/Children s rights in a digital world.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-purple-600 text-white px-2 py-1 rounded text-xs">
+                                Modern
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Digital World Rights</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Understanding children's rights in our digital age
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Digital Focus
+                                </span>
+                                <span class="text-xs text-purple-600 font-semibold">
+                                    <i class="fas fa-globe mr-1"></i> Current
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 4: Equality vs Equity -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/Equality Vs Equity _ Class 6 - Civics _ Learn With BYJU S.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-orange-600 text-white px-2 py-1 rounded text-xs">
+                                Core Concept
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Equality vs Equity</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Understanding the important difference between equality and equity
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> BYJU'S Learning
+                                </span>
+                                <span class="text-xs text-orange-600 font-semibold">
+                                    <i class="fas fa-balance-scale mr-1"></i> Key Topic
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 5: Freedom of Expression -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/Freedom of Expression explained (explainity® explainer video).mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs">
+                                Freedom
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Freedom of Expression</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Learn about the fundamental right to express yourself freely
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Explainity
+                                </span>
+                                <span class="text-xs text-blue-600 font-semibold">
+                                    <i class="fas fa-microphone mr-1"></i> Expression
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 6: Understanding Culture -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/25. Understanding one's culture - Educational video for Kids - Role-play conversation.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-purple-600 text-white px-2 py-1 rounded text-xs">
+                                Cultural
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Understanding Culture</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Educational video about understanding one's culture for kids
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Role-play
+                                </span>
+                                <span class="text-xs text-purple-600 font-semibold">
+                                    <i class="fas fa-heart mr-1"></i> Culture
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 7: Neuro Rights -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/Neurorights_ Why It Is Important to Understand Your Legal Rights.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-pink-600 text-white px-2 py-1 rounded text-xs">
+                                Advanced
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Neuro Rights</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Understanding your legal rights in neuroscience and technology
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Legal Focus
+                                </span>
+                                <span class="text-xs text-pink-600 font-semibold">
+                                    <i class="fas fa-brain mr-1"></i> Modern Rights
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 8: Balancing Rights -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/Balancing rights and the law.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-teal-600 text-white px-2 py-1 rounded text-xs">
+                                Complex
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Balancing Rights & Law</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                How to balance different rights and legal considerations
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Legal Education
+                                </span>
+                                <span class="text-xs text-teal-600 font-semibold">
+                                    <i class="fas fa-balance-scale mr-1"></i> Balance
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 9: Child Labor -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/Child Labor in the Industrial Revolution - Video Infographic.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs">
+                                Historical
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Child Labor History</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Understanding the history of child labor and protection rights
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Historical
+                                </span>
+                                <span class="text-xs text-red-600 font-semibold">
+                                    <i class="fas fa-shield-alt mr-1"></i> Protection
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 10: Nature Rights -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/How can we recognise the rights of nature_.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded text-xs">
+                                Environmental
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Rights of Nature</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Exploring how we can recognize and protect the rights of nature
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Environmental
+                                </span>
+                                <span class="text-xs text-green-600 font-semibold">
+                                    <i class="fas fa-tree mr-1"></i> Nature
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 11: War & Human Rights -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/Human Rights 101 _ Episode 6_ What are the laws of war .mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-gray-600 text-white px-2 py-1 rounded text-xs">
+                                International
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Laws of War</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Understanding human rights and international laws during conflicts
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Human Rights 101
+                                </span>
+                                <span class="text-xs text-gray-600 font-semibold">
+                                    <i class="fas fa-dove mr-1"></i> Peace
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 12: Critical Thinking -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <div class="relative">
+                            <video width="100%" height="200" controls class="w-full">
+                                <source src="../../assets/Casually Explained_ Critical Thinking.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded text-xs">
+                                Thinking
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-purple-800 mb-2">Critical Thinking</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Learn how to think critically about rights and complex issues
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-purple-500">
+                                    <i class="fas fa-play-circle mr-1"></i> Casually Explained
+                                </span>
+                                <span class="text-xs text-yellow-600 font-semibold">
+                                    <i class="fas fa-brain mr-1"></i> Think Smart
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
+
     <nav class="container mx-auto px-4 py-2">
-        <a href="homepage.html" class="text-black hover:text-yellow-700"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
+        <a href="../../homepage.html" class="text-black hover:text-yellow-700"><i class="fas fa-arrow-left mr-2"></i>Back to Home</a>
     </nav>
+    
     <footer class="bg-gradient-to-r from-purple-500 to-blue-500 text-white mt-12">
         <div class="container mx-auto px-4 py-6 text-center">
             <p>© 2025 Kids Rights Learning Hub. All rights reserved.</p>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Quiz elements
@@ -501,19 +720,19 @@
 
             const questions = [
                 {
-                    question: "What is the closest planet to the Sun?",
-                    options: ["Venus", "Mercury", "Mars", "Earth"],
+                    question: "What is the most important right of a child?",
+                    options: ["Right to Play", "Right to Education", "Right to Protection", "All are equally important"],
+                    correct: 3
+                },
+                {
+                    question: "Which organization protects children's rights globally?",
+                    options: ["WHO", "UNICEF", "UNESCO", "UNDP"],
                     correct: 1
                 },
                 {
-                    question: "Which planet is known as the Red Planet?",
-                    options: ["Jupiter", "Saturn", "Mars", "Neptune"],
-                    correct: 2
-                },
-                {
-                    question: "What is the largest planet in our Solar System?",
-                    options: ["Earth", "Mars", "Saturn", "Jupiter"],
-                    correct: 3
+                    question: "What does the Right to Expression mean?",
+                    options: ["Right to be silent", "Right to speak your mind", "Right to argue", "Right to complain"],
+                    correct: 1
                 }
             ];
 
@@ -563,30 +782,20 @@
                 if (score === questions.length) {
                     feedbackEl.innerHTML = `
                         <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-r-lg mb-4">
-                            <p class="text-yellow-800 font-bold">Perfect! <i class="fas fa-star"></i> You're a solar system expert!</p>
+                            <p class="text-yellow-800 font-bold">Perfect! <i class="fas fa-star"></i> You're a rights expert!</p>
                         </div>
-                        <img src="https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif" alt="Celebration" class="rounded-lg mx-auto h-48">
                     `;
                 } else if (score >= questions.length * 0.7) {
                     feedbackEl.innerHTML = `
                         <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded-r-lg mb-4">
-                            <p class="text-green-800 font-bold">Great job! <i class="fas fa-thumbs-up"></i> You know a lot about space!</p>
+                            <p class="text-green-800 font-bold">Great job! <i class="fas fa-thumbs-up"></i> You know a lot about rights!</p>
                         </div>
-                        <img src="https://media.giphy.com/media/l0HU7JI1QyZExXQ4M/giphy.gif" alt="Good job" class="rounded-lg mx-auto h-48">
-                    `;
-                } else if (score >= questions.length * 0.4) {
-                    feedbackEl.innerHTML = `
-                        <div class="bg-blue-100 border-l-4 border-blue-500 p-4 rounded-r-lg mb-4">
-                            <p class="text-blue-800 font-bold">Good try! <i class="fas fa-rocket"></i> Keep learning about space!</p>
-                        </div>
-                        <img src="https://media.giphy.com/media/3o6Zt6ML6BklcajjsA/giphy.gif" alt="Keep learning" class="rounded-lg mx-auto h-48">
                     `;
                 } else {
                     feedbackEl.innerHTML = `
-                        <div class="bg-purple-100 border-l-4 border-purple-500 p-4 rounded-r-lg mb-4">
-                            <p class="text-purple-800 font-bold">Nice try! <i class="fas fa-moon"></i> Watch the video again and try the quiz once more!</p>
+                        <div class="bg-blue-100 border-l-4 border-blue-500 p-4 rounded-r-lg mb-4">
+                            <p class="text-blue-800 font-bold">Good try! <i class="fas fa-rocket"></i> Keep learning about rights!</p>
                         </div>
-                        <img src="https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif" alt="Try again" class="rounded-lg mx-auto h-48">
                     `;
                 }
             }
