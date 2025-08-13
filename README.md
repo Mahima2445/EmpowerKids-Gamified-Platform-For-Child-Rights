@@ -57,7 +57,7 @@ To empower children and parents with knowledge about educational rights and oppo
 
 ### Live Demo
 
-🔗 **[Visit EmpowerKids Platform](https://your-github-username.github.io/empowerkids-platform)**
+🔗 **[Visit EmpowerKids Platform](https://mahima2445.github.io/EmpowerKids-Gamified-Platform-For-Child-Rights/)**
 
 ### Screenshots
 
